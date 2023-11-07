@@ -45,6 +45,20 @@ Route::post('post', [PostController::class, 'store'])
 -> name('post.store');
 
 Route::get('post', [PostController::class, 'index'])
--> middleware(['auth']);
+-> middleware(['auth'])
+-> name('post.index');
+
+Route::get('post/show/{post}', [PostController::class, 'show'])
+-> name('post.show');
+
+// router to edit
+Route::get('post/{post}/edit', [PostController::class, 'edit'])
+-> name('post.edit');
+Route::patch('post/{post}', [PostController::class, 'update'])
+-> name('post.update');
+
+// router for delete
+Route::delete('post/{post}', [PostController::class, 'destroy'])
+-> name('post.destroy');
 
 require __DIR__.'/auth.php';
