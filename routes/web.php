@@ -37,12 +37,14 @@ Route::get('test', [TestController::class, 'test'])
 
 // to route to post\create
 Route::get('post/create', [PostController::class, 'create'])
+-> middleware(['auth'])
 -> name('create');
 
 // to route to post store to post title and body
 Route::post('post', [PostController::class, 'store'])
 -> name('post.store');
 
-Route::get('post', [PostController::class, 'index']);
+Route::get('post', [PostController::class, 'index'])
+-> middleware(['auth']);
 
 require __DIR__.'/auth.php';
