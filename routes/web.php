@@ -68,8 +68,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
-Route::resource('post', PostController::class);
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +83,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('post', PostController::class);
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -96,7 +97,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-Route::get('/testview', function () {
-    return view('/testview/testview');
-})->name('testview');
