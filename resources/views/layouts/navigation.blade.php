@@ -11,12 +11,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <!-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    -->
-                    
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                 
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                         投稿一覧<br>Worlds
                     </x-nav-link>
@@ -37,7 +32,7 @@
                                 <div>{{ Auth::user()->name }}</div>
                             @endauth
                             @guest
-                                <div>ゲスト<br>Guest</div>
+                                <div>新規登録・ログイン<br>Register / Login</div>
                             @endguest
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -51,7 +46,7 @@
                     <x-slot name="content">
                         @auth    
                             <x-dropdown-link :href="route('profile.edit')">
-                                プロファイル<br>{{ __('Profile') }}
+                                {{ __('Profile') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -61,7 +56,7 @@
                                 <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                                    ログアウト<br>{{ __('Log Out') }}
+                                    {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
                         @endauth
@@ -89,11 +84,6 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <!--
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-            -->
             <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                 投稿一覧<br>Worlds
             </x-responsive-nav-link>
