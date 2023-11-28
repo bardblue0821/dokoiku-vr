@@ -1,3 +1,5 @@
+<html data-theme="light">
+
 <x-app-layout>  
     <x-slot name='header'>
         <h2 class='font-semibold text-xl text-gray-800 leading-tight'>
@@ -25,7 +27,6 @@
                     </form>
                 </div>
 
-
                 <hr class='w-full'>
                 <p class='mt-4 whitespace-pre-line'>
                     {{$post->body}}
@@ -33,6 +34,9 @@
                 <div class='text-sm font-semibold flex flex-row-reverse'>
                     <p> {{$post->created_at}} </p>
                 </div>
+
+                {{(asset($post->image))}};
+                <img src="{{ 'storage/' . asset($post->image) }}" />
             </div>
         </div>
     </div>

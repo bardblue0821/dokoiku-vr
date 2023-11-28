@@ -13,11 +13,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                 
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                        投稿一覧<br>Worlds
+                        行きたいワールド一覧<br>Worlds
                     </x-nav-link>
                     @auth
                     <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                        新規投稿<br>Create post
+                        行きたいワールド作成<br>Create post
                     </x-nav-link>
                     @endauth
                 </div>

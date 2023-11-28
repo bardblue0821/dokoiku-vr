@@ -25,4 +25,5 @@ export default {
         forms,
         require('preline/plugin'), // preline https://preline.co/docs/frameworks-laravel.html
     ],
+    darkMode: ['class', '[data-theme="synthwave"]'],
 };
