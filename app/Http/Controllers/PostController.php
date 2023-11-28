@@ -33,9 +33,17 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => 'required | max:20',
             'body'  => 'required | max:400',
+            'image' => 'image',
         ]);
         $validated['user_id'] = auth()->id();
-        $post = Post::create($validated);
+
+        if(request('image')){
+            $filename=request()->file('image')->getClientOriginalName();
+            $validated['image']=request('image')->storeAs('public/images', $filename);
+        }
+
+        $post = Post::create($validated);        
+
         $request->session()->flash('mesage', '保存しました');
         return redirect()->route('post.index');
     }
