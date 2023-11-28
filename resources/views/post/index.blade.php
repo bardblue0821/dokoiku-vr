@@ -13,6 +13,9 @@
             </div>
             <!-- text - end -->
 
+            <div class='py-4'>
+                {{$posts->onEachSide(5)->links()}}
+            </div>
             <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
                 @foreach($posts as $post)
                 <!-- article - start -->
@@ -23,10 +26,10 @@
 
                         <div class="flex flex-1 flex-col p-4 sm:p-6">
                             <h2 class="mb-2 text-lg font-semibold text-gray-800">
-                            <a href="#" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">{{$post->title}}</a>
+                            <a href="#" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">{{\Illuminate\Support\Str::limit($post->title, 100, '...')}}</a>
                         </h2>
 
-                        <p class="mb-8 text-gray-500">{{$post->body}}</p>
+                        <p class="mb-8 text-gray-500">{{\Illuminate\Support\Str::limit($post->body, 100, '...')}}</p>
 
                         <div class="mt-auto flex items-end justify-between">
                             <div class="flex items-center gap-2">
@@ -47,7 +50,9 @@
                 <!-- article - end -->
                 @endforeach  
             </div>
-            {{$posts->onEachSide(5)->links()}}
+            <div class='py-4'>
+                {{$posts->onEachSide(5)->links()}}
+            </div>
         </div>
     </div>    
 </x-app-layout>

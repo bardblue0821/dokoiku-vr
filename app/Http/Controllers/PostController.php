@@ -13,7 +13,7 @@ class PostController extends Controller
     public function index()
     {
         //$posts = Post::all();
-        $posts = Post::orderBy('created_at','asc')->paginate(18);
+        $posts = Post::orderBy('created_at','desc')->paginate(18);
         return view('post.index', compact('posts'));
     }
 
@@ -31,8 +31,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required | max:20',
-            'body'  => 'required | max:400',
+            'title' => 'required | max:100',
+            'body'  => 'required | max:5000',
             'image' => 'image',
         ]);
         $validated['user_id'] = auth()->id();
