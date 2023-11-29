@@ -34,6 +34,8 @@ class PostController extends Controller
             'title' => 'required | max:100',
             'body'  => 'required | max:5000',
             'image' => 'image',
+            'tag' =>  'required',
+            'link' => 'required',
         ]);
         $validated['user_id'] = auth()->id();
 

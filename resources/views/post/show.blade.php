@@ -25,6 +25,14 @@
                         <span class="text-gray-500">記事作成日 Created at</span>
                         <span class="ml-auto text-gray-900">{{$post->created_at}}</span>
                     </div>
+                    <div class="flex border-t border-gray-200 py-2">
+                        <span class="text-gray-500">表示回数 </span>
+                        <span class="ml-auto text-gray-900">120</span>
+                    </div>
+                    <div class="flex border-t border-gray-200 py-2">
+                        <span class="text-gray-500">サイト訪問回数 </span>
+                        <span class="ml-auto text-gray-900">120</span>
+                    </div>
 
                     <div class="flex py-4">
                         <!--span class="title-font font-medium text-2xl text-gray-900">$58.00</span-->
@@ -53,4 +61,6 @@
             </div>
         </div>
     </section>
+
+    
 </x-app-layout>
