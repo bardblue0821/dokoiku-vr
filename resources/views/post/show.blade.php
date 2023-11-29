@@ -37,11 +37,12 @@
                     </div>
                     <div class='flex flex-row-reverse px-2 py-2'>
                         @if (Auth::user()->id == $post->user_id)
-                            <form method="post" action="{{route('post.destroy', $post)}}" class="flex-2">
+                            <form method="post" onsubmit="return confirm('本当に削除しますか？')" action="{{route('post.destroy', $post)}}" class="flex-2">
                                 @csrf
                                 @method('delete')
                                 <button class="flex ml-2 text-white bg-red-700 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded">削除 delete</button>    
                             </form>
+
                             <a href="{{route('post.edit', $post)}}">
                                 <button class="flex ml-2 text-white bg-gray-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-700 rounded">編集 edit</button>
                             </a>
