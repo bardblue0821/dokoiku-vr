@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// There are controllers for PostController
+// Controllers for PostController
 Route::resource('/post', PostController::class)
 ->middleware(['auth', 'verified']);
 

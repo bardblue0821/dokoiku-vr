@@ -13,6 +13,20 @@
             </div>
             <!-- text - end -->
 
+            <!-- Search form -->
+            <form method="GET" action="{{ route('post.index') }}">
+                <input type="search" placeholder="検索ワード" name="search" value="@if (isset($search_word)) {{ $search_word }} @endif">
+                <div>
+                    <button type="submit">検索</button>
+                    <button>
+                        <a href="{{ route('post.index') }}" class="text-white">
+                            クリア
+                        </a>
+                    </button>
+                </div>
+            </form>
+            <!-- Search form end -->
+
             <div class='py-4'>
                 {{$posts->onEachSide(5)->links()}}
             </div>
@@ -43,7 +57,7 @@
                                 </div>
                             </div>
 
-                            <span class="rounded border px-2 py-1 text-sm text-gray-500">Article</span>
+                            <span class="rounded border px-2 py-1 text-sm text-gray-500">{{$post->tag}}</span>
                         </div>
                         </div>
                     </div>
