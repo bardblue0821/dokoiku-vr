@@ -25,12 +25,24 @@
                     <x-input-error :messages="$errors->get('title')" class="mt-2" />
                 </div>
 
-                <div class="sm:col-span-1">
+                <!--div class="sm:col-span-1">
                     <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ジャンル*<br>World type*</label>
                     <input name="tag" id='tag' value="{{old('tag')}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('tag')" class="mt-2" />
-                </div>
+                </div-->
 
+                <div class="sm:col-span-1">
+                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ジャンル*<br>World type*</label>
+                    <select class="tag" id="tag" name="tag" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
+                        <option value="未設定 Undefined">未設定 Undefined</option>
+                        <option value="景観 Outdoor">景観 Outdoor</option>
+                        <option value="ハウス Indoor">ハウス Indoor</option>
+                        <option value="ゲーム Game">ゲーム Game</option>
+                        <option value="ホラー Horror">ホラー Horror</option>
+                        <option value="イベント Event">イベント Event</option>
+                        <option value="作業 Workplace">作業 Workplace</option>
+                    </select>
+                </div>
 
                 <div class="sm:col-span-3">
                     <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">何したい？などあれば (検索用)<br>Comment</label>

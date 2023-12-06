@@ -32,10 +32,10 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required | max:100',
-            'body'  => 'required | max:5000',
+            'body'  => 'max:10000',
             'image' => 'image',
-            'tag' =>  'required',
-            'link' => 'required',
+            'tag' => 'required',
+            'link' => 'required | starts_with:https://vrchat.com/home/world/wrld',
         ]);
         $validated['user_id'] = auth()->id();
 
@@ -73,7 +73,7 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required | max:20',
-            'body'  => 'required | max:200',
+            'body'  => 'required | max:5000',
         ]);
 
         $validated['user_id'] = auth()->id();
