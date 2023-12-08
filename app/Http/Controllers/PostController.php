@@ -16,30 +16,42 @@ class PostController extends Controller
         $posts = Post::orderBy('created_at','desc')->paginate(18);
 
         // 検索フォームで入力された値を取得する
-        $search = $request->input('search');
+        $search_body = $request->input('search_body');
+        $search_tag = $request->input('search_tag');
 
-        // もし検索フォームにキーワードが入力されたら
-        if ($search) {
-            // クエリビルダ
-            $query = Post::query();
-
+        // クエリビルダ
+        $query = Post::query();
+        $posts = $query->orderBy('created_at', 'desc')->paginate(20);
+        
+        if ($search_body) {
             // 全角スペースを半角に変換
-            $spaceConversion = mb_convert_kana($search, 's');
+            $spaceConversion = mb_convert_kana($search_body, 's');
 
             // 単語を半角スペースで区切り、配列にする（例："山田 翔" → ["山田", "翔"]）
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
 
-            // 単語をループで回し、ユーザーネームと部分一致するものがあれば、$queryとして保持される
             foreach($wordArraySearched as $value) {
                 $query->where('title', 'like', '%'.$value.'%');
             }
-
-            // 上記で取得した$queryをページネートにし、変数$usersに代入
-            $posts = $query->paginate(20);
+            
+            $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
+        if ($search_tag) {
+            // 全角スペースを半角に変換
+            $spaceConversion = mb_convert_kana($search_tag, 's');
 
-        return view('post.index')->with(['posts' => $posts, 'search' => $search]);
+            // 単語を半角スペースで区切り、配列にする（例："山田 翔" → ["山田", "翔"]）
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+
+            foreach($wordArraySearched as $value) {
+                $query->where('tag', 'like', '%'.$value.'%');
+            }
+            
+            $posts = $query->orderBy('created_at', 'desc')->paginate(20);
+        }
+
+        return view('post.index')->with(['posts' => $posts, 'search_body' => $search_body]);
     }
 
     /**
@@ -98,7 +110,7 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required | max:20',
-            'body'  => 'required | max:5000',
+            'body'  => 'max:5000',
             'image' => 'image',
             'tag' => 'required',
             'link' => 'required | starts_with:https://vrchat.com/home/world/wrld',
