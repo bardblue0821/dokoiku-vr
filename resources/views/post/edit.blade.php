@@ -3,9 +3,9 @@
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
-                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">どこ行きたい？🙌</h2>
+                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">編集画面⌨️</h2>
 
-                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please let me know which world you wanna visit!</p>
+                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please edit the section you want to edit and press the send button.</p>
             </div>
             <!-- text - end -->
 
@@ -15,8 +15,8 @@
                 @csrf
                 @method('patch')
                 <div class="sm:col-span-3">
-                    <label for="link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク (必須)<br>Link to the world description the official VRChat (Required)<br>Eg. https://vrchat.com/home/world/wrld_xxxxxxxx</label>
-                    <input name="link" id='link' value="{{old('link', $post->link)}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+                    <label for="link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク (必須)<br>Link to the world description the official VRChat (Required)</label>
+                    <input name="link" id='link' value="{{old('link', $post->link)}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('link')" class="mt-2" />
                 </div>
 
@@ -40,7 +40,7 @@
                         <option value="ハウス Indoor">ハウス Indoor</option>
                         <option value="ゲーム Game">ゲーム Game</option>
                         <option value="ホラー Horror">ホラー Horror</option>
-                        <option value="イベント Event">イベント Event</option>
+                        <option value="イベント/展示 Event/Display">イベント/展示 Event/Display</option>
                         <option value="作業 Workplace">作業 Workplace</option>
                     </select>
                 </div>
@@ -58,8 +58,8 @@
                     <input id="image" type="file" name="image">
                 </div-->
                 
-                <div class="flex items-center justify-between sm:col-span-3">
-                    <x-primary-button class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">送信<br>Send</x-primary-button>
+                <div class="flex items-center justify-between sm:col-span-3 mx-auto">
+                    <x-primary-button class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">送信 Send</x-primary-button>
 
                     <!--span class="text-sm text-gray-500">*必須項目 Required</span-->
                 </div>
