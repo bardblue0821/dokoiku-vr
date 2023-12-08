@@ -1,7 +1,5 @@
-<html data-theme="light">
-
 <x-app-layout>
-    <section class="text-gray-600 body-font overflow-hidden">
+    <section class="bg-white text-gray-600 body-font overflow-hidden">
         <div class="container px-5 py-24 mx-auto">
             <div class="lg:w-4/5 mx-auto flex flex-wrap">
                 <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
@@ -17,22 +15,22 @@
                         <span class="text-gray-500">ジャンル World type</span>
                         <span class="ml-auto text-gray-900">{{$post->tag}}</span>
                     </div>
-                    <div class="flex border-t border-gray-200 py-2">
+                    <!--div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">PC/Quest</span>
                         <span class="ml-auto text-gray-900">PC only</span>
-                    </div>
+                    </div-->
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">記事作成日 Created at</span>
                         <span class="ml-auto text-gray-900">{{$post->created_at}}</span>
                     </div>
-                    <div class="flex border-t border-gray-200 py-2">
+                    <!--div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">表示回数 </span>
                         <span class="ml-auto text-gray-900">未実装</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">サイト訪問回数 </span>
                         <span class="ml-auto text-gray-900">未実装</span>
-                    </div>
+                    </div-->
 
                     <div class="flex py-4">
                         <!--span class="title-font font-medium text-2xl text-gray-900">$58.00</span-->
@@ -60,7 +58,5 @@
                 <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-100 object-cover object-center rounded" src="https://dummyimage.com/400x400">
             </div>
         </div>
-    </section>
-
-    
+    </section>    
 </x-app-layout>
