@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
 // Controllers for PostController
 Route::resource('/post', PostController::class)
-->middleware(['auth', 'verified']);
+->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';
