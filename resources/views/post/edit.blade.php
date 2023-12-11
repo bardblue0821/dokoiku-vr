@@ -17,12 +17,14 @@
                 <div class="sm:col-span-3">
                     <label for="link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク (必須)<br>Link to the world description the official VRChat (Required)</label>
                     <input name="link" id='link' value="{{old('link', $post->link)}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">編集前: {{old('body', $post->link)}}</label>
                     <x-input-error :messages="$errors->get('link')" class="mt-2" />
                 </div>
 
                 <div class="sm:col-span-2">
                     <label for="title" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ワールド名<br>World name</label>
                     <input name="title" id='title' value="{{old('title', $post->title)}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">編集前: {{old('body', $post->title)}}</label>
                     <x-input-error :messages="$errors->get('title', $post->title)" class="mt-2" />
                 </div>
 
@@ -43,12 +45,13 @@
                         <option value="イベント/展示 Event/Display">イベント/展示 Event/Display</option>
                         <option value="作業 Workplace">作業 Workplace</option>
                     </select>
+                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">編集前: {{old('body', $post->tag)}}</label>
                 </div>
 
                 <div class="sm:col-span-3">
                     <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">何したい？などあれば (検索用)<br>Comment</label>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">元の文章: {{old('body', $post->body)}}</label>
+                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">編集前: {{old('body', $post->body)}}</label>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>
 
