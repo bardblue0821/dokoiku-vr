@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -67,6 +68,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // basic info storing
         $validated = $request->validate([
             'title' => 'required | max:100',
             'body'  => 'max:10000',
@@ -75,13 +77,15 @@ class PostController extends Controller
             'link' => 'required | starts_with:https://vrchat.com/home/world/wrld',
         ]);
         $validated['user_id'] = auth()->id();
-
-        if(request('image')){
-            $filename=request()->file('image')->getClientOriginalName();
-            $validated['image']=request('image')->storeAs('public/images', $filename);
-        }
-
-        $post = Post::create($validated);        
+        $post = Post::create($validated);    
+        
+        // image storing
+        $file_name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/img', $file_name);
+        $image = new Image();
+        $image->name = $file_name;
+        $image->path = 'storage/img/'.$file_name;
+        $image->save();
 
         $request->session()->flash('mesage', '保存しました');
         return redirect()->route('post.index');
@@ -92,7 +96,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show', compact('post'));
+        $image = Image::first();
+        return view('post.show', compact('post', 'image'));
     }
 
     /**
