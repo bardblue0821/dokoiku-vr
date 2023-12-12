@@ -74,10 +74,10 @@ class PostController extends Controller
         // basic info storing
         $validated = $request->validate([
             'title' => 'required | max:100',
-            'body'  => 'max:10000',
+            'body' => 'max:10000',
             'image' => 'image',
             'tag' => 'required',
-            'link' => 'required | starts_with:https://vrchat.com/home/world/wrld',
+            'link'=> 'required|unique:posts,link|starts_with:https://vrchat.com/home/world/wrld',
         ]);
         $validated['user_id'] = auth()->id();
         $post = Post::create($validated);    
