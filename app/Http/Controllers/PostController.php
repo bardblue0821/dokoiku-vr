@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -32,7 +33,7 @@ class PostController extends Controller
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
 
             foreach($wordArraySearched as $value) {
-                $query->where('title', 'like', '%'.$value.'%');
+                $query->where(DB::raw("CONCAT(title, ' ', body)"), 'like', '%'.$value.'%');
             }
             
             $posts = $query->orderBy('created_at', 'desc')->paginate(20);
