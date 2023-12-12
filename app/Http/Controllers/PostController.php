@@ -80,15 +80,24 @@ class PostController extends Controller
             'link'=> 'required|unique:posts,link|starts_with:https://vrchat.com/home/world/wrld',
         ]);
         $validated['user_id'] = auth()->id();
+
+        // image storing
+        $file_name = $request->file('image');
+        if($file_name) {
+            $request->file('image')->storeAs('public/img', $file_name);
+            $validated['image'] = 'storage/img/'.$file_name;
+        }
+        
+        // save
         $post = Post::create($validated);    
         
         // image storing
-        $file_name = $request->file('image');
-        $request->file('image')->storeAs('public/img', $file_name);
-        $image = new Image();
-        $image->name = $file_name;
-        $image->path = 'storage/img/'.$file_name;
-        $image->save();
+        //$file_name = $request->file('image');
+        //$request->file('image')->storeAs('public/img', $file_name);
+        //$image = new Image();
+        //$image->name = $file_name;
+        //$image->path = 'storage/img/'.$file_name;
+        //$image->save();
 
         $request->session()->flash('mesage', '保存しました');
         return redirect()->route('post.index');
@@ -117,14 +126,22 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $validated = $request->validate([
-            'title' => 'required | max:20',
-            'body'  => 'max:5000',
+            'title' => 'required | max:100',
+            'body' => 'max:10000',
             'image' => 'image',
             'tag' => 'required',
-            'link' => 'required | starts_with:https://vrchat.com/home/world/wrld',
+            'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld',
         ]);
 
         $validated['user_id'] = auth()->id();
+
+        // image storing
+        $file_name = $request->file('image');
+        if($file_name) {
+            $request->file('image')->storeAs('public/img', $file_name);
+            $validated['image'] = 'storage/img/'.$file_name;
+        }
+
         $post->update($validated);
         $request->session()->flash('message', '更新しました');
         return redirect()->route('post.show', compact('post'));
