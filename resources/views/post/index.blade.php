@@ -92,7 +92,7 @@
                 <!-- article - start -->
                     <div class="flex flex-col overflow-hidden rounded-lg border bg-white">
                         <a href="{{route('post.show', $post)}}" class="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
-                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+                        <img src='{{$image->path}}' loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
                         </a>
 
                         <div class="flex flex-1 flex-col p-4 sm:p-6">

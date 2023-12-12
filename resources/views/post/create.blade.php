@@ -56,6 +56,13 @@
                     <label for='image' class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像があればぜひ → </label>
                     <input id="image" type="file" name="image">
                 </div-->
+
+                <!-- image upload -->
+                <div class="sm:col-span-3">
+                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像あれば！</label>
+                    <input type="file" name="image">                   
+                </div>
+                
                 
                 <div class="flex items-center justify-between sm:col-span-3 mx-auto">
                     <x-primary-button class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">送信 Send</x-primary-button>
@@ -63,6 +70,7 @@
                     <!--span class="text-sm text-gray-500">*必須項目 Required</span-->
                 </div>
 
+                
             </form>
             <!-- form - end -->
         </div>

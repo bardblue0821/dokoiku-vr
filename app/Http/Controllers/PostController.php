@@ -52,7 +52,9 @@ class PostController extends Controller
             $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
-        return view('post.index')->with(['posts' => $posts, 'search_body' => $search_body]);
+        $image = Image::first();
+
+        return view('post.index')->with(['posts' => $posts, 'search_body' => $search_body, 'image' => $image]);
     }
 
     /**
@@ -80,7 +82,7 @@ class PostController extends Controller
         $post = Post::create($validated);    
         
         // image storing
-        $file_name = $request->file('image')->getClientOriginalName();
+        $file_name = $request->file('image');
         $request->file('image')->storeAs('public/img', $file_name);
         $image = new Image();
         $image->name = $file_name;
