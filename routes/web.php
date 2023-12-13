@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WannaVisitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,11 @@ Route::middleware('auth')->group(function () {
 // Controllers for PostController
 Route::resource('/post', PostController::class)
 ->middleware(['auth']);
+
+// routing to like/unlike function (wanna visit function)
+Route::get('/post/wannavisit/{post}', [WannaVisitController::class, 'wannavisit'])->name('wannavisit');
+Route::get('/post/un_wannavisit/{post}', [WannaVisitController::class, 'un_wannavisit'])->name('un_wannavisit');
+
 
 
 require __DIR__.'/auth.php';

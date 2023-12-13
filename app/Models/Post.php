@@ -21,4 +21,9 @@ class Post extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+ 
+    public function wanna_visits() {
+        //return $this->hasMany('App\Models\Nice');
+        return $this->hasMany(WannaVisit::class);
+    }
 }
