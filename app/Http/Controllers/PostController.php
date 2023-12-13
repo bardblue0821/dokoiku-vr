@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Image;
 use App\Models\WannaVisit;
+use App\Models\Visited;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -111,7 +112,8 @@ class PostController extends Controller
     {
         $image = Image::first();
         $wannavisit=WannaVisit::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
-        return view('post.show', compact('post', 'image', 'wannavisit'));
+        $visited=Visited::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+        return view('post.show', compact('post', 'image', 'wannavisit', 'visited'));
     }
 
     /**

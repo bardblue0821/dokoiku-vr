@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WannaVisitController;
+use App\Http\Controllers\VisitedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,13 @@ Route::middleware('auth')->group(function () {
 Route::resource('/post', PostController::class)
 ->middleware(['auth']);
 
-// routing to like/unlike function (wanna visit function)
+// routing to like/unlike function (wanna visit button)
 Route::get('/post/wannavisit/{post}', [WannaVisitController::class, 'wannavisit'])->name('wannavisit');
 Route::get('/post/un_wannavisit/{post}', [WannaVisitController::class, 'un_wannavisit'])->name('un_wannavisit');
+
+// routing to like/unlike function (visited button)
+Route::get('/post/visited/{post}', [VisitedController::class, 'visited'])->name('visited');
+Route::get('/post/un_visited/{post}', [VisitedController::class, 'un_visited'])->name('un_visited');
 
 
 

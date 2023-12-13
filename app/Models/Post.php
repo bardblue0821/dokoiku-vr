@@ -26,4 +26,8 @@ class Post extends Model
         //return $this->hasMany('App\Models\Nice');
         return $this->hasMany(WannaVisit::class);
     }
+
+    public function visiteds() {
+        return $this->hasMany(Visited::class);
+    }
 }

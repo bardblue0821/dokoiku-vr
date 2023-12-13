@@ -66,8 +66,29 @@
                                 </a>
                             </button>
                         @endif
+
+                        @if($visited)    
+                            <button class="bg-red-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                <img calss="px-4" src="{{asset('img/nicebutton.png')}}" width="30px">
+                                <a href="{{ route('un_visited', $post) }}" class="btn btn-success btn-sm">
+                                    <span class="badge">
+                                        行ったよ！  {{ $post->visiteds->count() }}
+                                    </span>
+                                </a>
+                            </button>
+                        @else
+                            <button class="bg-gray-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                <img src="{{asset('img/un_nicebutton.png')}}" width="30px">
+                                <a href="{{ route('visited', $post) }}" class="btn btn-secondary btn-sm">
+                                    <span class="badge">
+                                        行ったよ！  {{ $post->visiteds->count() }}
+                                    </span>
+                                </a>
+                            </button>
+                        @endif
                     </div>
 
+                    
                     <div class='flex flex-row-reverse px-2 py-2'>
                         @if (Auth::user()->id == $post->user_id)
                             <form method="post" onsubmit="return confirm('本当に削除しますか？')" action="{{route('post.destroy', $post)}}" class="flex-2">
