@@ -9,6 +9,8 @@ class WannaVisit extends Model
 {
     use HasFactory;
 
+    protected $table = 'wanna_visits';
+
     public function user() {
         return $this->belongsTo(User::class);
     }

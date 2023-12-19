@@ -8,6 +8,7 @@ use App\Models\WannaVisit;
 use App\Models\Visited;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -16,22 +17,35 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        //$posts = Post::all();
+        //$posts = Post::all(); // no pagination
         $posts = Post::orderBy('created_at','desc')->paginate(18);
 
-        // 検索フォームで入力された値を取得する
+        // obtain requested values
         $search_body = $request->input('search_body');
         $search_tag = $request->input('search_tag');
-
-        // クエリビルダ
+        $search_selection = $request->input('search_selection');  // str:wannavisit or str:visited
+        
+        // search
+        // build query
         $query = Post::query();
-        $posts = $query->orderBy('created_at', 'desc')->paginate(20);
+        
+        if ($search_selection == 'wannavisit') {
+            $user_id = Auth::id();
+            $posts = Post::whereHas('wanna_visits', function($query) use($request){
+                $query->where('user_id', Auth::id());
+            })->orderBy('created_at', 'desc')->paginate(20);
+        } elseif ($search_selection == 'visited') {
+            $user_id = Auth::id();
+            $posts = Post::whereHas('visiteds', function($query) use($request){
+                $query->where('user_id', Auth::id());
+            })->orderBy('created_at', 'desc')->paginate(20);
+        }
         
         if ($search_body) {
-            // 全角スペースを半角に変換
+            // transform full-space to half-space
             $spaceConversion = mb_convert_kana($search_body, 's');
 
-            // 単語を半角スペースで区切り、配列にする（例："山田 翔" → ["山田", "翔"]）
+            // devide by space and array ex. ["Michael","Jordan"]
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
 
             foreach($wordArraySearched as $value) {
@@ -42,10 +56,10 @@ class PostController extends Controller
         }
 
         if ($search_tag) {
-            // 全角スペースを半角に変換
+            // transform full-space to half-space
             $spaceConversion = mb_convert_kana($search_tag, 's');
 
-            // 単語を半角スペースで区切り、配列にする（例："山田 翔" → ["山田", "翔"]）
+            // devide by space and array ex. ["Michael","Jordan"]
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
 
             foreach($wordArraySearched as $value) {
@@ -55,9 +69,8 @@ class PostController extends Controller
             $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
-        $image = Image::first();
-
-        return view('post.index')->with(['posts' => $posts, 'search_body' => $search_body, 'image' => $image]);
+        return view('post.index')
+            ->with(['posts' => $posts]);
     }
 
     /**

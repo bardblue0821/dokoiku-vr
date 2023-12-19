@@ -33,21 +33,10 @@
                     </div-->
 
                     <!-- Link button -->
-                    <div class="flex py-4">
-                        <button class="flex ml-auto text-white bg-teal-500 border-0 py-2 px-6 focus:outline-none hover:bg-teal-600 rounded" onclick="window.open('{{$post->link}}') " rel="noopener noreferrer" target="_blank">VRChat サイトへ</button>
-                    </div>
-
-                    <!-- wannavisit / un_wannavisit -->
-                    <div class="flex py-4">
-                        <!--button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                            </svg>
-                        </button-->
-                        
+                    <div class="flex py-4">                        
                         @if($wannavisit)    
                             <button class="bg-red-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <img calss="px-4" src="{{asset('img/nicebutton.png')}}" width="30px">
+                                <img calss="px-4" src="{{asset('img/wannavisitbutton.png')}}" width="30px">
                                 <a href="{{ route('un_wannavisit', $post) }}" class="btn btn-success btn-sm">
                                     <span class="badge">
                                         行きたい！  {{ $post->wanna_visits->count() }}
@@ -58,7 +47,7 @@
                             
                         @else
                             <button class="bg-gray-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <img src="{{asset('img/un_nicebutton.png')}}" width="30px">
+                                <img src="{{asset('img/un_wannavisitbutton.png')}}" width="30px">
                                 <a href="{{ route('wannavisit', $post) }}" class="btn btn-secondary btn-sm">
                                     <span class="badge">
                                         行きたい！  {{ $post->wanna_visits->count() }}
@@ -68,8 +57,8 @@
                         @endif
 
                         @if($visited)    
-                            <button class="bg-red-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <img calss="px-4" src="{{asset('img/nicebutton.png')}}" width="30px">
+                            <button class="bg-orange-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mx-2 rounded inline-flex items-center">
+                                <img calss="px-4" src="{{asset('img/visitedbutton.png')}}" width="30px">
                                 <a href="{{ route('un_visited', $post) }}" class="btn btn-success btn-sm">
                                     <span class="badge">
                                         行ったよ！  {{ $post->visiteds->count() }}
@@ -77,8 +66,8 @@
                                 </a>
                             </button>
                         @else
-                            <button class="bg-gray-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                <img src="{{asset('img/un_nicebutton.png')}}" width="30px">
+                            <button class="bg-gray-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mx-2 rounded inline-flex items-center">
+                                <img src="{{asset('img/un_visitedbutton.png')}}" width="30px">
                                 <a href="{{ route('visited', $post) }}" class="btn btn-secondary btn-sm">
                                     <span class="badge">
                                         行ったよ！  {{ $post->visiteds->count() }}
@@ -86,6 +75,14 @@
                                 </a>
                             </button>
                         @endif
+
+                        <button class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 mx-2 rounded inline-flex items-center"" onclick="window.open('{{$post->link}}') " rel="noopener noreferrer" target="_blank">VRChat サイトへ</button>
+                    
+                        <!--button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                            </svg>
+                        </button-->
                     </div>
 
                     
