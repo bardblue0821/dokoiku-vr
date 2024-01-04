@@ -33,7 +33,7 @@
                                 <option value="ハウス Indoor">ハウス Indoor</option>
                                 <option value="ゲーム Game">ゲーム Game</option>
                                 <option value="ホラー Horror">ホラー Horror</option>
-                                <option value="イベント/展示 Event/Display">イベント/展示 Event/Display</option>
+                                <option value="展示 Display">展示 Display</option>
                                 <option value="作業 Workplace">作業 Workplace</option>
                             </select>
                         
