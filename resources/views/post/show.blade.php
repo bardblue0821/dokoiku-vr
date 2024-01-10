@@ -13,7 +13,7 @@
                     <p class="leading-relaxed mb-4">{{$post->body}}</p>
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">ジャンル World type</span>
-                        <span class="ml-auto text-gray-900">{{$post->tag}}</span>
+                        <span class="ml-auto text-gray-900">{{$post->categories->name}}</span>
                     </div>
                     <!--div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">PC/Quest</span>
