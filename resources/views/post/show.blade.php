@@ -53,7 +53,7 @@
                                         行きたい！  {{ $post->wanna_visits->count() }}
                                     </span>
                                 </a>
-                            </button> 
+                            </button>
                         @endif
 
                         @if($visited)    
@@ -103,7 +103,7 @@
                 <img alt="{{$post->title}}" class="lg:w-1/2 w-full lg:h-auto h-100 object-cover object-center rounded" src="{{ asset($post->image) }}">
             </div>
         </div>
-    </section>   
+    </section>    
 </x-app-layout>
 
 
