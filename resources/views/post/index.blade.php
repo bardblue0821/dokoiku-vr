@@ -21,16 +21,20 @@
                             <label class="text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
                                 ワールド名<br>Name
                             </label>
-                            <input class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" type="search_body" name="search_body" placeholder="検索ワード Query" value="{{request()->search_body}}">
+                            <input class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" type="search_body" name="search_body" placeholder="検索ワード Query" value="@if (isset($search_word)) {{ $search_word }} @endif">
                         
                             <label class="text-gray-500 font-bold md:text-right ml-4 mb-1 md:mb-0 pr-4 ml:40" for="inline-full-name">
                                 ワールド分類<br>Category
                             </label>
-                            <select class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_category" name="search_category">
+                            <select class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_tag" name="search_tag">
                                 <option value=""></option>
-                                @foreach ($categories as $category)
-                                    <option value="{{$category->id}}" {{request()->search_category == $category->id ? "selected" : "";}}>{{$category->name}}</option>
-                                @endforeach
+                                <option value="未設定 Undefined">未設定 Undefined</option>
+                                <option value="景観 Outdoor">景観 Outdoor</option>
+                                <option value="ハウス Indoor">ハウス Indoor</option>
+                                <option value="ゲーム Game">ゲーム Game</option>
+                                <option value="ホラー Horror">ホラー Horror</option>
+                                <option value="展示 Display">展示 Display</option>
+                                <option value="作業 Workplace">作業 Workplace</option>
                             </select>
                         
                             <label class="text-gray-500 font-bold md:text-right ml-4 mb-1 md:mb-0 pr-4" for="inline-full-name">
@@ -39,8 +43,8 @@
                         
                             <select class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_selection" name="search_selection">
                                 <option value=""></option>
-                                <option value="wannavisit" {{request()->search_selection == "wannavisit" ? "selected" : "";}}>行きたい！ Wannavisit</option>
-                                <option value="visited" {{request()->search_selection == "visited" ? "selected" : "";}}>行ったよ！ Visited</option>
+                                <option value="wannavisit">行きたい！ Wannavisit</option>
+                                <option value="visited">行ったよ！ Visited</option>
                             </select>
 
                             <!--ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
@@ -128,7 +132,7 @@
                                 </div>
                             </div>
 
-                            <span class="rounded border px-2 py-1 text-sm text-gray-500">{{$post->categories->name}}</span>
+                            <span class="rounded border px-2 py-1 text-sm text-gray-500">{{$post->tag}}</span>
                         </div>
                         </div>
                     </div>

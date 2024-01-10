@@ -6,7 +6,6 @@ use App\Models\Post;
 use App\Models\Image;
 use App\Models\WannaVisit;
 use App\Models\Visited;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +22,7 @@ class PostController extends Controller
 
         // obtain requested values
         $search_body = $request->input('search_body');
-        $search_category = $request->input('search_category');
+        $search_tag = $request->input('search_tag');
         $search_selection = $request->input('search_selection');  // str:wannavisit or str:visited
         
         // search
@@ -56,29 +55,22 @@ class PostController extends Controller
             $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
-        if ($search_category) {
-            /*
+        if ($search_tag) {
             // transform full-space to half-space
-            $spaceConversion = mb_convert_kana($search_category, 's');
+            $spaceConversion = mb_convert_kana($search_tag, 's');
 
             // devide by space and array ex. ["Michael","Jordan"]
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
-      
-            foreach($wordArraySearched as $value) {
-                $query->where('category_id', 'like', '%'.$value.'%');
-            }
-            */
 
-            $query->where('category_id', '=', $search_category);
+            foreach($wordArraySearched as $value) {
+                $query->where('tag', 'like', '%'.$value.'%');
+            }
             
             $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
-        $categories = Category::all();
-
         return view('post.index')
-            ->with(['posts' => $posts])
-            ->with(['categories' => $categories]);
+            ->with(['posts' => $posts]);
     }
 
     /**
@@ -99,8 +91,8 @@ class PostController extends Controller
             'title' => 'required | max:100',
             'body' => 'max:10000',
             'image' => 'image',
+            'tag' => 'required',
             'link'=> 'required|unique:posts,link|starts_with:https://vrchat.com/home/world/wrld',
-            'category_id' => 'numeric',
         ]);
         $validated['user_id'] = auth()->id();
 
@@ -113,6 +105,14 @@ class PostController extends Controller
         
         // save
         $post = Post::create($validated);    
+        
+        // image storing
+        //$file_name = $request->file('image');
+        //$request->file('image')->storeAs('public/img', $file_name);
+        //$image = new Image();
+        //$image->name = $file_name;
+        //$image->path = 'storage/img/'.$file_name;
+        //$image->save();
 
         $request->session()->flash('mesage', '保存しました');
         return redirect()->route('post.index');
@@ -134,10 +134,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = Category::all();
-        return view('post.edit')
-            ->with(['post' => $post])
-            ->with(['categories' => $categories]);;
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -149,8 +146,8 @@ class PostController extends Controller
             'title' => 'required | max:100',
             'body' => 'max:10000',
             'image' => 'image',
+            'tag' => 'required',
             'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld',
-            'category_id' => 'numeric',
         ]);
 
         $validated['user_id'] = auth()->id();

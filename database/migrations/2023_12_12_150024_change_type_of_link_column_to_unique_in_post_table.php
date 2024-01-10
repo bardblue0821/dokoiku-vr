@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropUnique('posts_link_unique');
+            $table->dropUnique('link')->change();
         });
     }
 };
