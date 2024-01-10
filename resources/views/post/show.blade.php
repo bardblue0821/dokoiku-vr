@@ -193,7 +193,7 @@
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">ジャンル World type</span>
-                        <span class="ml-auto text-gray-900">{{$post->categories->name}}</span>
+                        <span class="ml-auto text-gray-900">{{$post->tag}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">記事作成日 Created at</span>
