@@ -32,16 +32,24 @@
                 </div-->
 
                 <div class="sm:col-span-1">
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ジャンル<br>World type</label>
-                    <select id="tag" name="tag" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring focus:border-blue-500 block w-full p-2.5">
-                        <option value="未設定 Undefined">未設定 Undefined</option>
+                    <label for="category_id" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">カテゴリー<br>World category</label>
+                    <select class="category_id" id="category_id" name="category_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}" @if($post->categories->name == $category->name) selected @endif>{{$category->name}}</option>
+                        @endforeach
+                            
+                        <!--option value="未設定 Undefined">未設定 Undefined</option>
                         <option value="景観 Outdoor">景観 Outdoor</option>
                         <option value="ハウス Indoor">ハウス Indoor</option>
                         <option value="ゲーム Game">ゲーム Game</option>
                         <option value="ホラー Horror">ホラー Horror</option>
-                        <option value="イベント/展示 Event/Display">イベント/展示 Event/Display</option>
-                        <option value="作業 Workplace">作業 Workplace</option>
+                        <option value="展示 Display">展示 Display</option>
+                        <option value="アバター Avator">アバター Avator</option>
+                        <option value="パーティ Celebration">パーティ Celebration</option>
+                        <option value="Vket">Vket</option>
+                        <option value="作業 Workplace">作業 Workplace</option-->
                     </select>
+                    <label for="category_id" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('category_id', $post->categories->name)}}</label>
                 </div>
 
                 <div class="sm:col-span-3">

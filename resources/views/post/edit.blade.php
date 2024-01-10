@@ -17,14 +17,14 @@
                 <div class="sm:col-span-3">
                     <label for="link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク (必須)<br>Link to the world description the official VRChat (Required)</label>
                     <input name="link" id='link' value="{{old('link', $post->link)}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('link', $post->link)}}</label>
+                    <label for="link" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('link', $post->link)}}</label>
                     <x-input-error :messages="$errors->get('link')" class="mt-2" />
                 </div>
 
                 <div class="sm:col-span-2">
                     <label for="title" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ワールド名<br>World name</label>
                     <input name="title" id='title' value="{{old('title', $post->title)}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('title', $post->title)}}</label>
+                    <label for="title" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('title', $post->title)}}</label>
                     <x-input-error :messages="$errors->get('title')" class="mt-2" />
                 </div>
 
@@ -35,23 +35,30 @@
                 </div-->
 
                 <div class="sm:col-span-1">
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">カテゴリー<br>World category</label>
-                    <select class="tag" id="tag" name="tag" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
-                        <option value="未設定 Undefined">未設定 Undefined</option>
+                    <label for="category_id" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">カテゴリー<br>World category</label>
+                    <select class="category_id" id="category_id" name="category_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}" @if($post->categories->name == $category->name) selected @endif>{{$category->name}}</option>
+                        @endforeach
+                            
+                        <!--option value="未設定 Undefined">未設定 Undefined</option>
                         <option value="景観 Outdoor">景観 Outdoor</option>
                         <option value="ハウス Indoor">ハウス Indoor</option>
                         <option value="ゲーム Game">ゲーム Game</option>
                         <option value="ホラー Horror">ホラー Horror</option>
-                        <option value="イベント/展示 Event/Display">イベント/展示 Event/Display</option>
-                        <option value="作業 Workplace">作業 Workplace</option>
+                        <option value="展示 Display">展示 Display</option>
+                        <option value="アバター Avator">アバター Avator</option>
+                        <option value="パーティ Celebration">パーティ Celebration</option>
+                        <option value="Vket">Vket</option>
+                        <option value="作業 Workplace">作業 Workplace</option-->
                     </select>
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('tag', $post->tag)}}</label>
+                    <label for="category_id" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('category_id', $post->categories->name)}}</label>
                 </div>
 
                 <div class="sm:col-span-3">
                     <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">何したい？などあれば (検索用)<br>Comment</label>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('body', $post->body)}}</label>
+                    <label for="body" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('body', $post->body)}}</label>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>
 
