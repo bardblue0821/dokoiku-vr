@@ -168,6 +168,24 @@
                             {{$world_data['heat']}}
                         </span>
                     </div>
+<<<<<<< HEAD
+=======
+
+                    <div class="flex border-t border-gray-200 py-2"></div>
+
+                    <div class="flex border-t border-gray-200 py-2">
+                        <span class="text-gray-500">現在の訪問者数 Occupants</span>
+                        <span class="ml-auto text-gray-900">{{$world_data['occupants']}}</span>
+                    </div>
+                    <div class="flex border-t border-gray-200 py-2">
+                        <span class="text-gray-500">現在のパブリック訪問者数 Public Occupants</span>
+                        <span class="ml-auto text-gray-900">{{$world_data['privateOccupants']}}</span>
+                    </div>
+                    <div class="flex border-t border-gray-200 py-2">
+                        <span class="text-gray-500">現在のプライベート訪問者数 Private Occupants</span>
+                        <span class="ml-auto text-gray-900">{{$world_data['publicOccupants']}}</span>
+                    </div>
+>>>>>>> d8689b9 (small: layout modification (section -> div))
                 </div>
 
                 <!-- right -->
