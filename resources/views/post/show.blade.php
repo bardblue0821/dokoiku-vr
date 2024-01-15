@@ -13,7 +13,7 @@
 <x-app-layout>
     <div class="bg-white pb-6 sm:pb-8 lg:pb-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-            <section class="min-h-96 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden bg-gray-100 py-16 shadow-lg md:py-20 xl:py-48">
+            <div class="min-h-96 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden bg-gray-100 py-16 shadow-lg md:py-20 xl:py-48">
                 <!-- image -->
                 <img alt="{{$post->title}}" src="{{asset($post->image)}}" loading="lazy"" class="absolute inset-0 h-full w-full object-cover object-center" />
 
@@ -85,9 +85,7 @@
                         </div>
                     </div>
                 </div>
-
-                
-            </section>
+            </div>
         </div>
     </div>
     <!-- hero - end -->
@@ -182,6 +180,7 @@
                         <span class="ml-auto text-gray-900">{{$world_data['publicOccupants']}}</span>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <!-- right -->
                 <div class="w-full px-4 lg:w-1/3">
@@ -251,6 +250,8 @@
                                 </a>
                             </button>
                         @endif
+=======
+>>>>>>> d8689b9 (small: layout modification (section -> div))
 
                         <button class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 mx-2 rounded inline-flex items-center"" onclick="window.open('{{$post->link}}') " rel="noopener noreferrer" target="_blank">VRChat サイトへ</button>
                     
@@ -280,10 +281,14 @@
             </div>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
     </div>
 =======
     </section>   
 >>>>>>> b496a88 (Revert "Revert "Reflect old() function to category in index/edit/create #7"")
+=======
+    </div> 
+>>>>>>> d8689b9 (small: layout modification (section -> div))
 </x-app-layout>
 
 
