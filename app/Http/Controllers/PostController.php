@@ -123,10 +123,29 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        // get from database
         $image = Image::first();
-        $wannavisit=WannaVisit::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
-        $visited=Visited::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
-        return view('post.show', compact('post', 'image', 'wannavisit', 'visited'));
+        $wannavisit = WannaVisit::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+        $visited = Visited::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+        
+        // get from VRChat server
+        $ch = curl_init(); // init curl session
+
+        $url_raw = $post->link;
+        $url_worldId = str_replace("https://vrchat.com/home/world/", "", $url_raw);
+        $url = "https://api.vrchat.cloud/api/1/worlds/".$url_worldId;
+        curl_setopt($ch, CURLOPT_URL, $url); // specify url
+        $userAgent = "Laravel/1.0 (bardblue0821@gmail.com)";
+        curl_setopt($ch, CURLOPT_USERAGENT, $userAgent); // specify user agent
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $res = curl_exec($ch); // get info from url
+        $world_data = json_decode($res, true);
+
+        curl_close($ch); // end session
+    
+
+        return view('post.show', compact('post', 'image', 'wannavisit', 'visited', 'world_data'));
     }
 
     /**
