@@ -11,7 +11,7 @@
 />
 
 <x-app-layout>
-    <div class="bg-white pb-6 sm:pb-8 lg:pb-12">
+    <section class="bg-white pb-6 sm:pb-8 lg:pb-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <section class="min-h-96 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden bg-gray-100 py-16 shadow-lg md:py-20 xl:py-48">
                 <!-- image -->
@@ -121,6 +121,10 @@
                         <span class="ml-auto text-gray-900">{{$world_data['capacity']}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
+                        <span class="text-gray-500">ジャンル World type</span>
+                        <span class="ml-auto text-gray-900">{{$post->categories->name}}</span>
+                    </div>
+                    <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">推奨人数 Recommended capacity</span>
                         <span class="ml-auto text-gray-900">{{$world_data['recommendedCapacity']}}</span>
                     </div>
@@ -169,6 +173,49 @@
 
                     <div class="flex border-t border-gray-200 py-2"></div>
 
+                    <!-- Link button -->
+                    <div class="flex py-4">                        
+                        @if($wannavisit)    
+                            <button class="bg-red-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                <img calss="px-4" src="{{asset('img/wannavisitbutton.png')}}" width="30px">
+                                <a href="{{ route('un_wannavisit', $post) }}" class="btn btn-success btn-sm">
+                                    <span class="badge">
+                                        行きたい！  {{ $post->wanna_visits->count() }}
+                                    </span>
+                                </a>
+                            </button>
+                            
+                            
+                        @else
+                            <button class="bg-gray-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                <img src="{{asset('img/un_wannavisitbutton.png')}}" width="30px">
+                                <a href="{{ route('wannavisit', $post) }}" class="btn btn-secondary btn-sm">
+                                    <span class="badge">
+                                        行きたい！  {{ $post->wanna_visits->count() }}
+                                    </span>
+                                </a>
+                            </button> 
+                        @endif
+
+                        @if($visited)    
+                            <button class="bg-orange-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mx-2 rounded inline-flex items-center">
+                                <img calss="px-4" src="{{asset('img/visitedbutton.png')}}" width="30px">
+                                <a href="{{ route('un_visited', $post) }}" class="btn btn-success btn-sm">
+                                    <span class="badge">
+                                        行ったよ！  {{ $post->visiteds->count() }}
+                                    </span>
+                                </a>
+                            </button>
+                        @else
+                            <button class="bg-gray-100 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mx-2 rounded inline-flex items-center">
+                                <img src="{{asset('img/un_visitedbutton.png')}}" width="30px">
+                                <a href="{{ route('visited', $post) }}" class="btn btn-secondary btn-sm">
+                                    <span class="badge">
+                                        行ったよ！  {{ $post->visiteds->count() }}
+                                    </span>
+                                </a>
+                            </button>
+                        @endif
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">現在の訪問者数 Occupants</span>
                         <span class="ml-auto text-gray-900">{{$world_data['occupants']}}</span>
@@ -206,7 +253,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section> 
 </x-app-layout>
 
 
