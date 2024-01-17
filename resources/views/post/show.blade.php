@@ -1,7 +1,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>{{$world_data['name']}}</title>
+    <title>Dokoiku VR - {{$world_data['name']}}</title>
   </head>
 </html>
 
@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="w-full px-4 lg:w-1/2">
-                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">投稿者コメント Comment</h2>
+                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">投稿者コメント Comment by {{$post->user->name}}</h2>
                     <p class="leading-relaxed mb-4">{{$post->body}}</p>
                 </div>
             </div>
