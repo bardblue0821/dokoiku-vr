@@ -133,6 +133,7 @@ class PostController extends Controller
 
         $validated['title'] = $world_data['name'];
         $validated['thumbnail'] = $world_data['thumbnailImageUrl'];
+        $validated['desc'] = $world_data['description'];
         
         // save
         $post = Post::create($validated);    
@@ -224,6 +225,7 @@ class PostController extends Controller
 
         $validated['title'] = $world_data['name'];
         $validated['thumbnail'] = $world_data['thumbnailImageUrl'];
+        $validated['desc'] = $world_data['description'];
         
         // update
         $post->update($validated);
