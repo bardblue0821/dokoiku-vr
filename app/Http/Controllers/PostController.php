@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Image;
 use App\Models\WannaVisit;
 use App\Models\Visited;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class PostController extends Controller
 
         // obtain requested values
         $search_body = $request->input('search_body');
-        $search_tag = $request->input('search_tag');
+        $search_category = $request->input('search_category');
         $search_selection = $request->input('search_selection');  // str:wannavisit or str:visited
         
         // search
@@ -55,22 +56,29 @@ class PostController extends Controller
             $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
-        if ($search_tag) {
+        if ($search_category) {
+            /*
             // transform full-space to half-space
-            $spaceConversion = mb_convert_kana($search_tag, 's');
+            $spaceConversion = mb_convert_kana($search_category, 's');
 
             // devide by space and array ex. ["Michael","Jordan"]
             $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
-
+      
             foreach($wordArraySearched as $value) {
-                $query->where('tag', 'like', '%'.$value.'%');
+                $query->where('category_id', 'like', '%'.$value.'%');
             }
+            */
+
+            $query->where('category_id', '=', $search_category);
             
             $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
+        $categories = Category::all();
+
         return view('post.index')
-            ->with(['posts' => $posts]);
+            ->with(['posts' => $posts])
+            ->with(['categories' => $categories]);
     }
 
     /**
@@ -78,7 +86,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        $categories = Category::all();
+        return view('post.create')
+            ->with(['categories' => $categories]);
     }
 
     /**
@@ -86,33 +96,47 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // basic info storing
+        // basic info storing to be validated
         $validated = $request->validate([
-            'title' => 'required | max:100',
+            // 'title' => 'required | max:100', //disabled by 0.1.0
             'body' => 'max:10000',
-            'image' => 'image',
-            'tag' => 'required',
-            'link'=> 'required|unique:posts,link|starts_with:https://vrchat.com/home/world/wrld',
+            // 'image' => 'image', // disabled by 0.1.0
+            'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld',
+            'category_id' => 'numeric',
         ]);
         $validated['user_id'] = auth()->id();
 
-        // image storing
+        // image storing // disabled by 0.1.0 
+        /*
         $file_name = $request->file('image');
         if($file_name) {
             $request->file('image')->storeAs('public/img', $file_name);
             $validated['image'] = 'storage/img/'.$file_name;
         }
+        */
+
+        // get title and thumbnail ural by API
+        $ch = curl_init(); // init curl session
+
+        $url_raw = $validated['link'];
+        $url_worldId = str_replace("https://vrchat.com/home/world/", "", $url_raw);
+        $url = "https://api.vrchat.cloud/api/1/worlds/".$url_worldId;
+        curl_setopt($ch, CURLOPT_URL, $url); // specify url
+        $userAgent = "Laravel/1.0 (bardblue0821@gmail.com)";
+        curl_setopt($ch, CURLOPT_USERAGENT, $userAgent); // specify user agent
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $res = curl_exec($ch); // get info from url
+        $world_data = json_decode($res, true);
+
+        curl_close($ch); // end session
+
+        $validated['title'] = $world_data['name'];
+        $validated['thumbnail'] = $world_data['thumbnailImageUrl'];
+        $validated['desc'] = $world_data['description'];
         
         // save
         $post = Post::create($validated);    
-        
-        // image storing
-        //$file_name = $request->file('image');
-        //$request->file('image')->storeAs('public/img', $file_name);
-        //$image = new Image();
-        //$image->name = $file_name;
-        //$image->path = 'storage/img/'.$file_name;
-        //$image->save();
 
         $request->session()->flash('mesage', '保存しました');
         return redirect()->route('post.index');
@@ -123,10 +147,29 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        // get from database
         $image = Image::first();
-        $wannavisit=WannaVisit::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
-        $visited=Visited::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
-        return view('post.show', compact('post', 'image', 'wannavisit', 'visited'));
+        $wannavisit = WannaVisit::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+        $visited = Visited::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+        
+        // get from VRChat server
+        $ch = curl_init(); // init curl session
+
+        $url_raw = $post->link;
+        $url_worldId = str_replace("https://vrchat.com/home/world/", "", $url_raw);
+        $url = "https://api.vrchat.cloud/api/1/worlds/".$url_worldId;
+        curl_setopt($ch, CURLOPT_URL, $url); // specify url
+        $userAgent = "Laravel/1.0 (bardblue0821@gmail.com)";
+        curl_setopt($ch, CURLOPT_USERAGENT, $userAgent); // specify user agent
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $res = curl_exec($ch); // get info from url
+        $world_data = json_decode($res, true);
+
+        curl_close($ch); // end session
+    
+
+        return view('post.show', compact('post', 'image', 'wannavisit', 'visited', 'world_data'));
     }
 
     /**
@@ -134,7 +177,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.edit', compact('post'));
+        $categories = Category::all();
+        return view('post.edit')
+            ->with(['post' => $post])
+            ->with(['categories' => $categories]);;
     }
 
     /**
@@ -142,23 +188,46 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        // basic info storing to be validated
         $validated = $request->validate([
-            'title' => 'required | max:100',
+            // 'title' => 'required | max:100', //disabled by 0.1.0
             'body' => 'max:10000',
-            'image' => 'image',
-            'tag' => 'required',
+            // 'image' => 'image', // disabled by 0.1.0
             'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld',
+            'category_id' => 'numeric',
         ]);
-
         $validated['user_id'] = auth()->id();
 
-        // image storing
+        // image storing // disabled by 0.1.0 
+        /*
         $file_name = $request->file('image');
         if($file_name) {
             $request->file('image')->storeAs('public/img', $file_name);
             $validated['image'] = 'storage/img/'.$file_name;
         }
+        */
 
+        // get title and thumbnail ural by API
+        $ch = curl_init(); // init curl session
+
+        $url_raw = $validated['link'];
+        $url_worldId = str_replace("https://vrchat.com/home/world/", "", $url_raw);
+        $url = "https://api.vrchat.cloud/api/1/worlds/".$url_worldId;
+        curl_setopt($ch, CURLOPT_URL, $url); // specify url
+        $userAgent = "Laravel/1.0 (bardblue0821@gmail.com)";
+        curl_setopt($ch, CURLOPT_USERAGENT, $userAgent); // specify user agent
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $res = curl_exec($ch); // get info from url
+        $world_data = json_decode($res, true);
+
+        curl_close($ch); // end session
+
+        $validated['title'] = $world_data['name'];
+        $validated['thumbnail'] = $world_data['thumbnailImageUrl'];
+        $validated['desc'] = $world_data['description'];
+        
+        // update
         $post->update($validated);
         $request->session()->flash('message', '更新しました');
         return redirect()->route('post.show', compact('post'));

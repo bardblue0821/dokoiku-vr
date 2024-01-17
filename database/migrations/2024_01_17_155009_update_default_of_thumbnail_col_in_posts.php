@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('link')->unique()->change();
+            $table->string('thumbnail')->default('storage/img/noimage.png')->change();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropUnique('posts_link_unique');
+            $table->string('thumbnail')->change();
         });
     }
 };

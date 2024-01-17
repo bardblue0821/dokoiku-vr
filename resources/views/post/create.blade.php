@@ -1,3 +1,15 @@
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dokoiku VR - Create Post</title>
+  </head>
+</html>
+
+<meta
+  name="post"
+  content="post"
+/>
+
 <x-app-layout>
     <div class="bg-white py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -5,7 +17,7 @@
             <div class="mb-10 md:mb-16">
                 <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}} さん、どこ行きたい？🙌</h2>
 
-                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please let me know which world you wanna visit!</p>
+                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please let me know where you wanna visit!</p>
             </div>
             <!-- text - end -->
 
@@ -19,11 +31,12 @@
                     <x-input-error :messages="$errors->get('link')" class="mt-2" />
                 </div>
 
-                <div class="sm:col-span-2">
+                <!-- disabled by 0.1.0 -->
+                <!--div class="sm:col-span-2" >
                     <label for="title" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ワールド名<br>World name</label>
                     <input name="title" id='title' value="{{old('title')}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('title')" class="mt-2" />
-                </div>
+                </div-->
 
                 <!--div class="sm:col-span-1">
                     <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ジャンル*<br>World type*</label>
@@ -32,22 +45,28 @@
                 </div-->
 
                 <div class="sm:col-span-1">
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ジャンル<br>World type</label>
-                    <select id="tag" name="tag" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring focus:border-blue-500 block w-full p-2.5">
-                        <option value="未設定 Undefined">未設定 Undefined</option>
+                    <label for="category_id" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">カテゴリー<br>World category</label>
+                    <select class="category_id" id="category_id" name="category_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                            
+                        <!--option value="未設定 Undefined">未設定 Undefined</option>
                         <option value="景観 Outdoor">景観 Outdoor</option>
                         <option value="ハウス Indoor">ハウス Indoor</option>
                         <option value="ゲーム Game">ゲーム Game</option>
                         <option value="ホラー Horror">ホラー Horror</option>
-                        <option value="イベント/展示 Event/Display">イベント/展示 Event/Display</option>
-                        <option value="作業 Workplace">作業 Workplace</option>
+                        <option value="展示 Display">展示 Display</option>
+                        <option value="アバター Avator">アバター Avator</option>
+                        <option value="パーティ Celebration">パーティ Celebration</option>
+                        <option value="Vket">Vket</option>
+                        <option value="作業 Workplace">作業 Workplace</option-->
                     </select>
                 </div>
 
                 <div class="sm:col-span-3">
                     <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">何したい？などあれば (検索用)<br>Comment</label>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
-                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">{{old('body')}}</label>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>
 
@@ -57,15 +76,15 @@
                     <input id="image" type="file" name="image">
                 </div-->
 
-                <!-- image upload -->
-                <div class="sm:col-span-3">
+                <!-- image upload -- disabled by 0.1.0-->
+                <!--div class="sm:col-span-3">
                     <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像あれば！</label>
                     <input type="file" name="image">                   
-                </div>
+                </div-->
                 
                 
                 <div class="flex items-center justify-between sm:col-span-3 mx-auto">
-                    <x-primary-button class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">送信 Send</x-primary-button>
+                    <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-teal-700 md:text-base">送信 Send</x-primary-button>
 
                     <!--span class="text-sm text-gray-500">*必須項目 Required</span-->
                 </div>

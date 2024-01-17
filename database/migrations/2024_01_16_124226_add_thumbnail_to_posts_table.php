@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('link')->unique()->change();
+            // create column
+            $table->string('thumbnail')->nullable();
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropUnique('posts_link_unique');
+            // delete column
+            $table->dropColumn('thumbnail');
         });
     }
 };

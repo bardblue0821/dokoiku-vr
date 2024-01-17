@@ -6,6 +6,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\WannaVisitController;
 use App\Http\Controllers\VisitedController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,12 @@ use App\Http\Controllers\VisitedController;
 | be assigned to the "web" middleware group. Make something great!
 |*/
 
+Route::get('/', [AboutController::class, 'index'])->name('about.index');
+
+/* to route login
 Route::get('/', function () {
-    return view('auth/login');
-});
+    return view('about.index');
+}); */
 
 //Route::get('/dashboard', function () {
 //  return view('dashboard');
@@ -36,13 +40,15 @@ Route::resource('/post', PostController::class)
 ->middleware(['auth']);
 
 // routing to like/unlike function (wanna visit button)
-Route::get('/post/wannavisit/{post}', [WannaVisitController::class, 'wannavisit'])->name('wannavisit');
-Route::get('/post/un_wannavisit/{post}', [WannaVisitController::class, 'un_wannavisit'])->name('un_wannavisit');
+Route::get('/post/wannavisit/{post}', [WannaVisitController::class, 'wannavisit'])->middleware(['auth'])->name('wannavisit');
+Route::get('/post/un_wannavisit/{post}', [WannaVisitController::class, 'un_wannavisit'])->middleware(['auth'])->name('un_wannavisit');
 
 // routing to like/unlike function (visited button)
-Route::get('/post/visited/{post}', [VisitedController::class, 'visited'])->name('visited');
-Route::get('/post/un_visited/{post}', [VisitedController::class, 'un_visited'])->name('un_visited');
+Route::get('/post/visited/{post}', [VisitedController::class, 'visited'])->middleware(['auth'])->name('visited');
+Route::get('/post/un_visited/{post}', [VisitedController::class, 'un_visited'])->middleware(['auth'])->name('un_visited');
 
+// routing to about me
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
 
 require __DIR__.'/auth.php';

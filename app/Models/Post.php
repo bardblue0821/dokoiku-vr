@@ -15,7 +15,9 @@ class Post extends Model
         'user_id',
         'image',
         'link',
-        'tag',
+        'category_id',
+        'thumbnail',
+        'desc',
     ];
 
     public function user() {
@@ -28,5 +30,9 @@ class Post extends Model
 
     public function visiteds() {
         return $this->hasMany(Visited::class);
+    }
+
+    public function categories() {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

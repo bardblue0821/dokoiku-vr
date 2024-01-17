@@ -9,20 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('link')->unique()->change();
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropUnique('posts_link_unique');
+            $table->dropForeign('posts_category_id_foreign');
         });
     }
 };
