@@ -173,6 +173,7 @@
                         <span class="ml-auto text-gray-900">{{$world_data['publicOccupants']}}</span>
                     </div>
                 </div>
+                
                 <!-- right -->
                 <div class="w-full px-4 lg:w-1/3">
                     <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">記事情報 Post info</h2>
@@ -196,7 +197,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 </x-app-layout>
 
 
