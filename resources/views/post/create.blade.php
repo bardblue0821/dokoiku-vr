@@ -5,7 +5,7 @@
             <div class="mb-10 md:mb-16">
                 <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}} さん、どこ行きたい？🙌</h2>
 
-                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please let me know which world you wanna visit!</p>
+                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please let me know where you wanna visit!</p>
             </div>
             <!-- text - end -->
 
@@ -19,11 +19,12 @@
                     <x-input-error :messages="$errors->get('link')" class="mt-2" />
                 </div>
 
-                <div class="sm:col-span-2">
+                <!-- disabled by 0.1.0 -->
+                <!--div class="sm:col-span-2" >
                     <label for="title" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ワールド名<br>World name</label>
                     <input name="title" id='title' value="{{old('title')}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('title')" class="mt-2" />
-                </div>
+                </div-->
 
                 <!--div class="sm:col-span-1">
                     <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ジャンル*<br>World type*</label>
@@ -63,15 +64,15 @@
                     <input id="image" type="file" name="image">
                 </div-->
 
-                <!-- image upload -->
-                <div class="sm:col-span-3">
+                <!-- image upload -- disabled by 0.1.0-->
+                <!--div class="sm:col-span-3">
                     <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像あれば！</label>
                     <input type="file" name="image">                   
-                </div>
+                </div-->
                 
                 
                 <div class="flex items-center justify-between sm:col-span-3 mx-auto">
-                    <x-primary-button class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">送信 Send</x-primary-button>
+                    <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-teal-700 md:text-base">送信 Send</x-primary-button>
 
                     <!--span class="text-sm text-gray-500">*必須項目 Required</span-->
                 </div>
