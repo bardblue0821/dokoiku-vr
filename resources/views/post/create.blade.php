@@ -35,7 +35,7 @@
                     <label for="category_id" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">カテゴリー<br>World category</label>
                     <select class="category_id" id="category_id" name="category_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
                         @foreach ($categories as $category)
-                            <option value="{{$category->id}}" @if($post->categories->name == $category->name) selected @endif>{{$category->name}}</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                             
                         <!--option value="未設定 Undefined">未設定 Undefined</option>
@@ -49,13 +49,11 @@
                         <option value="Vket">Vket</option>
                         <option value="作業 Workplace">作業 Workplace</option-->
                     </select>
-                    <label for="category_id" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('category_id', $post->categories->name)}}</label>
                 </div>
 
                 <div class="sm:col-span-3">
                     <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">何したい？などあれば (検索用)<br>Comment</label>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
-                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">{{old('body')}}</label>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>
 
