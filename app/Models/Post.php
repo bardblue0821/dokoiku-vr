@@ -17,6 +17,7 @@ class Post extends Model
         'link',
         'category_id',
         'thumbnail',
+        'desc',
     ];
 
     public function user() {

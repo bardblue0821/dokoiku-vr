@@ -114,7 +114,7 @@
                             <a href="{{route('post.show', $post)}}" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">{{\Illuminate\Support\Str::limit($post->title, 100, '...')}}</a>
                         </h2>
 
-                        <p class="mb-8 text-gray-500">{{\Illuminate\Support\Str::limit($post->body, 100, '...')}}</p>
+                        <p class="mb-8 text-gray-500">{{\Illuminate\Support\Str::limit($post->desc, 100, '...')}}</p>
 
                         <div class="mt-auto flex items-end justify-between">
                             <div class="flex items-center gap-2">
