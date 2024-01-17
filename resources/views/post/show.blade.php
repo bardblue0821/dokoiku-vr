@@ -168,7 +168,7 @@
                         <span class="text-gray-500">現在のパブリック訪問者数 Public Occupants</span>
                         <span class="ml-auto text-gray-900">{{$world_data['privateOccupants']}}</span>
                     </div>
-                    <div class="flex border-t border-gray-200 py-2">
+                    <div class="flex border-t border-b border-gray-200 py-2">
                         <span class="text-gray-500">現在のプライベート訪問者数 Private Occupants</span>
                         <span class="ml-auto text-gray-900">{{$world_data['publicOccupants']}}</span>
                     </div>
