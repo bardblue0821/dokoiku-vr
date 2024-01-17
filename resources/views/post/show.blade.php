@@ -15,7 +15,7 @@
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <div class="min-h-96 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden bg-gray-100 py-16 shadow-lg md:py-20 xl:py-48">
                 <!-- image -->
-                <img alt="{{$post->title}}" src="{{asset($post->image)}}" loading="lazy"" class="absolute inset-0 h-full w-full object-cover object-center" />
+                <img alt="{{$post->title}}" src="{{$world_data['imageUrl']}}" loading="lazy" class="absolute inset-0 h-full w-full object-cover object-center" />
 
                 <!-- overlay-->
                 <div class="absolute inset-0 bg-gray-400 mix-blend-multiply"></div>
@@ -88,8 +88,8 @@
             </div>
         </div>
     </div>
-    <!-- hero - end -->
 
+    <!-- information -->
     <div class="bg-white pb-6 sm:pb-8 lg:pb-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">       
             <div class="flex flex-wrap">
@@ -111,9 +111,8 @@
             <div class="flex flex-wrap">
                 <!-- left -->
                 <div class="w-full px-4 lg:w-1/3">
-                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">情報 Info</h2>
+                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">情報 Info</h2>
 
-                    
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">定員 Capacity</span>
                         <span class="ml-auto text-gray-900">{{$world_data['capacity']}}</span>
@@ -122,9 +121,6 @@
                         <span class="text-gray-500">推奨人数 Recommended capacity</span>
                         <span class="ml-auto text-gray-900">{{$world_data['recommendedCapacity']}}</span>
                     </div>
-
-                    <div class="flex border-t border-gray-200 py-2"></div>
-                    
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">ワールド作成者 Created by</span>
                         <span class="ml-auto text-gray-900">{{$world_data['authorName']}}</span>
@@ -137,7 +133,7 @@
                         <span class="text-gray-500">ワールド更新日 Updated at</span>
                         <span class="ml-auto text-gray-900">{{$world_data['updated_at']}}</span>
                     </div>
-                    <div class="flex border-t border-gray-200 py-2">
+                    <div class="flex border-t border-b border-gray-200 py-2">
                         <span class="text-gray-500">ラボ公開日 Lab Publication Date</span>
                         <span class="ml-auto text-gray-900">{{$world_data['labsPublicationDate']}}</span>
                     </div>
@@ -145,7 +141,7 @@
 
                 <!-- center -->
                 <div class="w-full px-4 lg:w-1/3">
-                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">訪問情報 Stat</h2>
+                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">訪問情報 Stat</h2>
 
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">総訪問者数 Visits</span>
@@ -164,9 +160,6 @@
                             {{$world_data['heat']}}
                         </span>
                     </div>
-
-                    <div class="flex border-t border-gray-200 py-2"></div>
-
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">現在の訪問者数 Occupants</span>
                         <span class="ml-auto text-gray-900">{{$world_data['occupants']}}</span>
@@ -175,7 +168,7 @@
                         <span class="text-gray-500">現在のパブリック訪問者数 Public Occupants</span>
                         <span class="ml-auto text-gray-900">{{$world_data['privateOccupants']}}</span>
                     </div>
-                    <div class="flex border-t border-gray-200 py-2">
+                    <div class="flex border-t border-b border-gray-200 py-2">
                         <span class="text-gray-500">現在のプライベート訪問者数 Private Occupants</span>
                         <span class="ml-auto text-gray-900">{{$world_data['publicOccupants']}}</span>
                     </div>
@@ -184,7 +177,7 @@
 
                 <!-- right -->
                 <div class="w-full px-4 lg:w-1/3">
-                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">記事情報 Post info</h2>
+                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">記事情報 Post info</h2>
 
                     <div class="flex border-t border-gray-200 py-2">
                         <span class="text-gray-500">投稿者 Posted by</span>
@@ -198,8 +191,12 @@
                         <span class="text-gray-500">記事作成日 Created at</span>
                         <span class="ml-auto text-gray-900">{{$post->created_at}}</span>
                     </div>
+<<<<<<< HEAD
                     <div class="flex border-t border-gray-200 py-2">
 <<<<<<< HEAD
+=======
+                    <div class="flex border-t border-b border-gray-200 py-2">
+>>>>>>> 91ac52e (Create migration file to make column for thumbnail link)
                         <span class="text-gray-500">記事編集日 Updated at</span>
                         <span class="ml-auto text-gray-900">{{$post->updated_at}}</span>
 =======
