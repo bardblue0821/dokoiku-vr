@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         //$posts = Post::all(); // no pagination
-        $posts = Post::orderBy('created_at','desc')->paginate(24)->withQueryString();
+        $posts = Post::orderBy('created_at','desc')->paginate(18);
 
         // obtain requested values
         $search_body = $request->input('search_body');
@@ -34,12 +34,12 @@ class PostController extends Controller
             $user_id = Auth::id();
             $posts = Post::whereHas('wanna_visits', function($query) use($request){
                 $query->where('user_id', Auth::id());
-            })->orderBy('created_at', 'desc')->paginate(24)->withQueryString();
+            })->orderBy('created_at', 'desc')->paginate(20);
         } elseif ($search_selection == 'visited') {
             $user_id = Auth::id();
             $posts = Post::whereHas('visiteds', function($query) use($request){
                 $query->where('user_id', Auth::id());
-            })->orderBy('created_at', 'desc')->paginate(24)->withQueryString();
+            })->orderBy('created_at', 'desc')->paginate(20);
         }
         
         if ($search_body) {
@@ -53,7 +53,7 @@ class PostController extends Controller
                 $query->where(DB::raw("CONCAT(title, ' ', body)"), 'like', '%'.$value.'%');
             }
             
-            $posts = $query->orderBy('created_at', 'desc')->paginate(24)->withQueryString();
+            $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
         if ($search_category) {
@@ -71,7 +71,7 @@ class PostController extends Controller
 
             $query->where('category_id', '=', $search_category);
             
-            $posts = $query->orderBy('created_at', 'desc')->paginate(24)->withQueryString();
+            $posts = $query->orderBy('created_at', 'desc')->paginate(20);
         }
 
         $categories = Category::all();
