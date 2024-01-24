@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\WannaVisitController;
 use App\Http\Controllers\VisitedController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\TermOfUseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,9 @@ Route::get('/post/un_visited/{post}', [VisitedController::class, 'un_visited'])-
 
 // routing to about me
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+// routing to term of use
+Route::get('/term_of_use', [TermOfUseController::class, 'index'])->name('term_of_use.index');
 
 
 require __DIR__.'/auth.php';
