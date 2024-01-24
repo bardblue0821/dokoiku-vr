@@ -1,13 +1,13 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>Dokoiku VR - About</title>
+    <title>Dokoiku VR - Term of use</title>
   </head>
 </html>
 
 <meta
-  name="about"
-  content="about"
+  name="Term of use"
+  content="term of use"
 />
 
 <!--https://flowrift.com/c/full-page/6tdav?view=preview-->
