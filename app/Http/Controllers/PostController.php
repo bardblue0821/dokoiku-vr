@@ -101,7 +101,7 @@ class PostController extends Controller
             // 'title' => 'required | max:100', //disabled by 0.1.0
             'body' => 'max:10000',
             // 'image' => 'image', // disabled by 0.1.0
-            'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld',
+            'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld|unique:posts,link',
             'category_id' => 'numeric',
         ]);
         $validated['user_id'] = auth()->id();
