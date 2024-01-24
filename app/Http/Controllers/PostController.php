@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         //$posts = Post::all(); // no pagination
-        $posts = Post::orderBy('created_at','desc')->paginate(18);
+        $posts = Post::orderBy('created_at','desc')->paginate(24)->withQueryString();
 
         // obtain requested values
         $search_body = $request->input('search_body');
@@ -34,12 +34,12 @@ class PostController extends Controller
             $user_id = Auth::id();
             $posts = Post::whereHas('wanna_visits', function($query) use($request){
                 $query->where('user_id', Auth::id());
-            })->orderBy('created_at', 'desc')->paginate(20);
+            })->orderBy('created_at', 'desc')->paginate(24)->withQueryString();
         } elseif ($search_selection == 'visited') {
             $user_id = Auth::id();
             $posts = Post::whereHas('visiteds', function($query) use($request){
                 $query->where('user_id', Auth::id());
-            })->orderBy('created_at', 'desc')->paginate(20);
+            })->orderBy('created_at', 'desc')->paginate(24)->withQueryString();
         }
         
         if ($search_body) {
@@ -53,7 +53,7 @@ class PostController extends Controller
                 $query->where(DB::raw("CONCAT(title, ' ', body)"), 'like', '%'.$value.'%');
             }
             
-            $posts = $query->orderBy('created_at', 'desc')->paginate(20);
+            $posts = $query->orderBy('created_at', 'desc')->paginate(24)->withQueryString();
         }
 
         if ($search_category) {
@@ -71,7 +71,7 @@ class PostController extends Controller
 
             $query->where('category_id', '=', $search_category);
             
-            $posts = $query->orderBy('created_at', 'desc')->paginate(20);
+            $posts = $query->orderBy('created_at', 'desc')->paginate(24)->withQueryString();
         }
 
         $categories = Category::all();
@@ -101,7 +101,7 @@ class PostController extends Controller
             // 'title' => 'required | max:100', //disabled by 0.1.0
             'body' => 'max:10000',
             // 'image' => 'image', // disabled by 0.1.0
-            'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld',
+            'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld|unique:posts,link',
             'category_id' => 'numeric',
         ]);
         $validated['user_id'] = auth()->id();
