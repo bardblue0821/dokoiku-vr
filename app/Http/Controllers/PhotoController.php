@@ -12,20 +12,38 @@ class PhotoController extends Controller
     }
 
     public function store(Request $request) {
+        // validation
         $validated = $request->validate([
-            'body'  => 'required | max:400',
+            'body' => 'max:400',
+            'world_link' => 'nullable|starts_with:https://vrchat.com/home/world/wrld|unique:posts,link',
+            'link1' => 'image',
+            'link2' => 'image',
+            'link3' => 'image',
+            'link4' => 'image',
+            'link5' => 'image',
+            'link6' => 'image',
+            'link7' => 'image',
+            'link8' => 'image',
+            'link9' => 'image',
         ]);
-
         $validated['user_id'] = auth()->id();
         
-        $photo = Photo::create($validated);
+        // store photo
+        $file_name = $request->file('link1');
+        if($file_name) {
+            $request->file('link1')->storeAs('public/img', $file_name);
+            $validated['link1'] = 'storage/img/'.$file_name;
+        }
 
-        return back() -> with('message', '保存しました');
+        // inserting
+        $photo = Photo::create($validated);
+        
+        return redirect('/photo')->with('message', '保存しました');
     }
 
     public function index() {
-        $photo = Photo::with('user')->orderBy('created_at', 'desc')->get();
-        return view('photo.index', compact('photo'));
+        $photos = Photo::orderBy('created_at', 'desc')->get();
+        return view('photo.index', compact('photos'));
     }
 
     public function show($id) {
