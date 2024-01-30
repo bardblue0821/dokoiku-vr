@@ -47,6 +47,31 @@
                 </div>
 
                 <div class="sm:col-span-3">
+                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像5</label>
+                    <input type="file" name="link5">                   
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像6</label>
+                    <input type="file" name="link6">                   
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像7</label>
+                    <input type="file" name="link7">                   
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像8</label>
+                    <input type="file" name="link8">                   
+                </div>
+
+                <div class="sm:col-span-3">
+                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像9</label>
+                    <input type="file" name="link9">                   
+                </div>
+
+                <div class="sm:col-span-3">
                     <label for="world_link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク (必須)<br>Link to the world description the official VRChat (Required)</label>
                     <input name="world_link" id='world_link' value="{{old('world_link')}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('world_link')" class="mt-2" />

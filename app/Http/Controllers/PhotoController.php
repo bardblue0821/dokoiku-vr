@@ -29,12 +29,14 @@ class PhotoController extends Controller
         $validated['user_id'] = auth()->id();
         
         // store photo
-        $file_name = $request->file('link1');
-        if($file_name) {
-            $request->file('link1')->storeAs('public/img', $file_name);
-            $validated['link1'] = 'storage/img/'.$file_name;
+        $photo_links = ['link1', 'link2', 'link3', 'link4', 'link5', 'link6', 'link7', 'link8', 'link9'];
+        foreach($photo_links as $photo_link) {
+            $file_name = $request->file($photo_link);
+            if($file_name) {
+                $request->file($photo_link)->storeAs('public/img', $file_name);
+                $validated[$photo_link] = 'storage/img/'.$file_name;
+            }
         }
-
         // inserting
         $photo = Photo::create($validated);
         
