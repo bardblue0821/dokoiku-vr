@@ -20,6 +20,9 @@
                         どこいきたい？<br>Create post
                     </x-nav-link>
                     @endauth
+                    <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
+                        どこいった？<br>Photos
+                    </x-nav-link>
                 </div>
             </div>
 

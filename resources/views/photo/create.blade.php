@@ -72,13 +72,13 @@
                 </div>
 
                 <div class="sm:col-span-3">
-                    <label for="world_link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク (必須)<br>Link to the world description the official VRChat (Required)</label>
+                    <label for="world_link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク<br>Link to the world description the official VRChat</label>
                     <input name="world_link" id='world_link' value="{{old('world_link')}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('world_link')" class="mt-2" />
                 </div>
 
                 <div class="sm:col-span-3">
-                    <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">何したい？などあれば (検索用)<br>Comment</label>
+                    <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">どうだった？<br>Comment</label>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>

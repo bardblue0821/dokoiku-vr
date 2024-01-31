@@ -15,7 +15,7 @@ class PhotoController extends Controller
         // validation
         $validated = $request->validate([
             'body' => 'max:400',
-            'world_link' => 'nullable|starts_with:https://vrchat.com/home/world/wrld|unique:posts,link',
+            'world_link' => 'nullable|starts_with:https://vrchat.com/home/world/wrld',
             'link1' => 'image',
             'link2' => 'image',
             'link3' => 'image',
@@ -29,22 +29,33 @@ class PhotoController extends Controller
         $validated['user_id'] = auth()->id();
         
         // store photo
-        $photo_links = ['link1', 'link2', 'link3', 'link4', 'link5', 'link6', 'link7', 'link8', 'link9'];
-        foreach($photo_links as $photo_link) {
-            $file_name = $request->file($photo_link);
+        $count = 0;
+        foreach(range(1,9) as $i) {
+            $file_name = $request->file('link'.$i);
             if($file_name) {
-                $request->file($photo_link)->storeAs('public/img', $file_name);
-                $validated[$photo_link] = 'storage/img/'.$file_name;
+                $file_name->storeAs('public/img', $file_name);
+                $validated['link'.$i] = 'storage/img/'.$file_name;
+
+                $size = getimagesize($file_name);
+                //dd($size[0]);
+                $validated['size'.$i.'x'] = $size[0];
+                $validated['size'.$i.'y'] = $size[1];
+
+                $count++;
             }
         }
+        $validated['number'] = $count;
+
+        // store photo size
+
         // inserting
         $photo = Photo::create($validated);
         
-        return redirect('/photo')->with('message', '保存しました');
+        return redirect('/photo')->with('message', '');
     }
 
     public function index() {
-        $photos = Photo::orderBy('created_at', 'desc')->get();
+        $photos = Photo::orderBy('created_at', 'desc')->paginate(6)->withQueryString();;
         return view('photo.index', compact('photos'));
     }
 
