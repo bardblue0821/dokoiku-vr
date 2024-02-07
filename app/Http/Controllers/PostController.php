@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\WannaVisit;
 use App\Models\Visited;
 use App\Models\Category;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -167,9 +168,11 @@ class PostController extends Controller
         curl_close($ch); // end session
      
         // get related photos that were posted before /////////////
+        $query = Photo::query();
+        $query->where('world_link', $url_raw);
+        $photos = $query->get();
 
-
-        return view('post.show', compact('post', 'wannavisit', 'visited', 'world_data'));
+        return view('post.show', compact('post', 'wannavisit', 'visited', 'world_data', 'photos'));
     }
 
     /**

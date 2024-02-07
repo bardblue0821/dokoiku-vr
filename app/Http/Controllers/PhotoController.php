@@ -28,7 +28,7 @@ class PhotoController extends Controller
         ]);
         $validated['user_id'] = auth()->id();
         
-        // store photo
+        // store photos
         $count = 0;
         foreach(range(1,9) as $i) {
             $file_name = $request->file('link'.$i);
@@ -37,18 +37,17 @@ class PhotoController extends Controller
                 $validated['link'.$i] = 'storage/img/'.$file_name;
 
                 $size = getimagesize($file_name);
-                //dd($size[0]);
+                // store photo size
                 $validated['size'.$i.'x'] = $size[0];
                 $validated['size'.$i.'y'] = $size[1];
 
                 $count++;
             }
         }
+        // num of photos
         $validated['number'] = $count;
 
-        // store photo size
-
-        // inserting
+        // inserting into DB
         $photo = Photo::create($validated);
         
         return redirect('/photo')->with('message', '');

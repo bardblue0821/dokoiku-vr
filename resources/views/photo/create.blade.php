@@ -156,7 +156,7 @@
 
                 <div class="mb-10">
                     <p class="text-xl font-bold text-teal-500">投稿文 <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-2 text-base text-gray-600">Body; How was it? (Optional)</p>
+                    <p class="mb-2 text-base text-gray-600">Comment; How was it? (Optional)</p>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>
@@ -168,8 +168,6 @@
                 <div class="">
                     <p class="text-sm text-gray-500 "><a href="{{route('term_of_use.index')}}" class="text-teal-500">利用規約<a> 確認してね</p>
                 </div>
-
-                
             </form>
             <!-- form - end -->
         </div>
