@@ -50,8 +50,7 @@
             {{$photos->onEachSide(5)->links()}}
         </div>
 
-        <div class="mx-auto max-w-screen-2xl px-4 md:px-8
-                    grid gap-5 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8 grid gap-5 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
             @foreach($photos as $photo)
                 <div class="flex-col bg-white rounded-lg border-2 my-2 p-2 ">
                     <div class="text-teal-500 text-2xl font-bold">  <!-- user name -->
