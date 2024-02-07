@@ -301,6 +301,14 @@
                     @isset($photo->world_link)  <!-- world button -->
                         <button class="bg-teal-500 hover:bg-teal-600 text-white font-bold my-2 py-2 px-4 rounded inline-flex items-center" onclick="window.open('{{$photo->world_link}}') " rel="noopener noreferrer" target="_blank">VRChat サイトへ</button>
                     @endisset
+                    
+                    @if (Auth::user()->id == $photo->user_id)
+                        <form method="post" onsubmit="return confirm('本当に削除しますか？')" action="{{route('photo.destroy', $photo)}}" class="flex-2">
+                            @csrf
+                            @method('delete')
+                            <button class="flex text-white bg-red-700 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded">削除 delete</button>    
+                        </form>
+                    @endif
                 </div>  
             @endforeach
         </div>

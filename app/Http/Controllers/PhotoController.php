@@ -64,24 +64,14 @@ class PhotoController extends Controller
     }
 
     public function edit(Post $photo) {
-        return view('photo.edit', compact('photo'));
     }
 
     public function update(Request $request, Post $post) {
-        $validated = $request->validate([
-            'body'  => 'required | max:400',
-        ]);
-
-        $validated['user_id'] = auth()->id();
-        
-        $photo->update($validated);
-
-        return back() -> with('message', '更新しました');
     }
 
     public function destroy(Request $request, Photo $photo) {
         $photo->delete();
         $request->session()->flash('message', '削除しました');
-        return redirect('post');
+        return back();
     }
 }
