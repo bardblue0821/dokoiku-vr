@@ -116,32 +116,67 @@
             <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
                 @foreach($posts as $post)
                 <!-- article - start -->
-                    <div class="flex flex-col overflow-hidden rounded-lg border bg-white">
-                        <a href="{{route('post.show', $post)}}" class="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
-                            <img src='{{$post->thumbnail}}' loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
-                        </a>
+                    <div class="flex flex-col relative overflow-hidden rounded-lg border bg-white">
+                        <div class="relative">
+                            <a href="{{route('post.show', $post)}}" class="group relative block h-48 overflow-hidden bg-gray-100 md:h-64">
+                                <img src='{{$post->thumbnail}}' loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+                            </a>
+                            <div class="absolute bottom-0 right-0 mb-2 flex ">
+                                @if($post->wanna_visits->count())    
+                                    <a href="{{ route('un_wannavisit', $post) }}" class="flex btn btn-success btn-sm">
+                                        <button class="bg-red-100 hover:bg-red-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center bg-opacity-80">
+                                            <img calss="px-4" src="{{asset('img/wannavisitbutton.png')}}" width="20px">
+                                            <span class="badge"> {{ $post->wanna_visits->count() }}</span>    
+                                        </button>
+                                    </a>
+                                @else
+                                    <a href="{{ route('wannavisit', $post) }}" class="flex btn btn-secondary btn-sm">
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center bg-opacity-80">
+                                            <img src="{{asset('img/un_wannavisitbutton.png')}}" width="20px">
+                                            <span class="badge"> {{ $post->wanna_visits->count() }}</span>
+                                        </button>
+                                    </a>
+                                @endif
+
+                                @if($post->visiteds->count())    
+                                    <a href="{{ route('un_visited', $post) }}" class="flex btn btn-success btn-sm">
+                                        <button class="bg-orange-100 hover:bg-orange-200 text-gray-800 font-bold py-2 px-4 mx-2 rounded inline-flex items-center bg-opacity-80">
+                                            <img calss="px-4" src="{{asset('img/visitedbutton.png')}}" width="20px">
+                                            <span class="badge"> {{ $post->visiteds->count() }}</span>
+                                        </button>
+                                    </a>
+                                @else
+                                    <a href="{{ route('visited', $post) }}" class="flex btn btn-secondary btn-sm">
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 mx-2 rounded inline-flex items-center bg-opacity-80">
+                                            <img src="{{asset('img/un_visitedbutton.png')}}" width="20px">
+                                            <span class="badge"> {{ $post->visiteds->count() }}</span>
+                                        </button>
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="flex flex-1 flex-col p-4 sm:p-6">
                             <h2 class="mb-2 text-lg font-semibold text-gray-800">
                             <a href="{{route('post.show', $post)}}" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">{{\Illuminate\Support\Str::limit($post->title, 100, '...')}}</a>
-                        </h2>
+                            </h2>
 
-                        <p class="mb-8 text-gray-500">{{\Illuminate\Support\Str::limit($post->desc, 100, '...')}}</p>
+                            <p class="mb-8 text-gray-500">{{\Illuminate\Support\Str::limit($post->desc, 100, '...')}}</p>
 
-                        <div class="mt-auto flex items-end justify-between">
-                            <div class="flex items-center gap-2">
-                                <div class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                                    <img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
+                            <div class="mt-auto flex items-end justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-100">
+                                        <img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
+                                    </div>
+
+                                    <div>
+                                        <span class="block text-indigo-500">{{$post->user->name??'Unknown'}}</span>
+                                        <span class="block text-sm text-gray-400">{{$post->created_at}}</span>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <span class="block text-indigo-500">{{$post->user->name??'Unknown'}}</span>
-                                    <span class="block text-sm text-gray-400">{{$post->created_at}}</span>
-                                </div>
+                                <span class="rounded border px-2 py-1 text-sm text-gray-500">{{$post->categories->name}}</span>
                             </div>
-
-                            <span class="rounded border px-2 py-1 text-sm text-gray-500">{{$post->categories->name}}</span>
-                        </div>
                         </div>
                     </div>
                 <!-- article - end -->
