@@ -42,6 +42,8 @@
                         <input type="file" name="link8" id="icon8" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
                         <input type="file" name="link9" id="icon9" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
                     </div>
+
+                    <p class="mb-2 text-sm text-gray-500 ">プレビュー</p>
                     <div class="grid grid-cols-3 gap-1">
                         <img id="icon_img_prv1" class="h-25 w-25" src="">
                         <img id="icon_img_prv2" class="h-25 w-25" src="">
