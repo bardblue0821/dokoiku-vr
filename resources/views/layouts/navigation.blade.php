@@ -13,15 +13,15 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                 
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                        どこいく？<br>Worlds
+                        ワールド一覧<br>Worlds
                     </x-nav-link>
                     @auth
                     <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                        どこいきたい？<br>Create post
+                        ワールド投稿<br>Share World
                     </x-nav-link>
                     @endauth
                     <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
-                        どこいった？<br>Photos
+                        写真一覧・投稿<br>Photos
                     </x-nav-link>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                                 <div>{{ Auth::user()->name }}</div>
                             @endauth
                             @guest
-                                <div>新規登録・ログイン<br>Register / Login</div>
+                                <div>ログイン<br>Login</div>
                             @endguest
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -65,7 +65,6 @@
                         @endauth
 
                         @guest
-                            <x-responsive-nav-link :href="route('register')">新規登録<br>Register</x-responsive-nav-link>
                             <x-responsive-nav-link :href="route('login')">ログイン<br>Login</x-responsive-nav-link>
                         @endguest
                     </x-slot>
@@ -88,13 +87,16 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                どこいく？<br>Worlds
+                ワールド一覧 <tb> Worlds
             </x-responsive-nav-link>
             @auth
             <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                どこいきたい？<br>Create post
+                ワールド投稿 <tb> Share World
             </x-responsive-nav-link>
             @endauth
+            <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
+                写真投稿・一覧 <tb> Photos
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -123,7 +125,6 @@
                 </div>
             @endauth
             @guest
-                <x-responsive-nav-link :href="route('register')">新規登録<br>Register</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('login')">ログイン<br>Login</x-responsive-nav-link>
             @endguest
         </div>
