@@ -44,9 +44,9 @@
             <div class="flex flex-col items-center border-t pt-6">
                 <!-- nav - start -->
                 <nav class="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start md:gap-6">
-                    <a href="{{route('about.index')}}" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">About</a>
-                    <a href="https://github.com/bardblue0821/test-project2" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">Github</a>
-                    <a href="{{route('term_of_use.index')}}" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">Term of use</a>
+                    <a href="{{route('about.index')}}" class="text-gray-500 transition duration-100 hover:text-teal-500 active:text-teal-600">About</a>
+                    <a href="https://github.com/bardblue0821/test-project2" class="text-gray-500 transition duration-100 hover:text-teal-500 active:text-teal-600">Github</a>
+                    <a href="{{route('term_of_use.index')}}" class="text-gray-500 transition duration-100 hover:text-teal-500 active:text-teal-600">Term of use</a>
                 </nav>
                 <!-- nav - end -->
 
