@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Image;
 use App\Models\WannaVisit;
 use App\Models\Visited;
 use App\Models\Category;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -147,12 +147,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // get from database
-        $image = Image::first();
+        // get from database ////////////////
         $wannavisit = WannaVisit::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
         $visited = Visited::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
         
-        // get from VRChat server
+        // get from VRChat server ///////////
         $ch = curl_init(); // init curl session
 
         $url_raw = $post->link;
@@ -167,9 +166,13 @@ class PostController extends Controller
         $world_data = json_decode($res, true);
 
         curl_close($ch); // end session
-    
+     
+        // get related photos that were posted before /////////////
+        $query = Photo::query();
+        $query->where('world_link', $url_raw);
+        $photos = $query->get();
 
-        return view('post.show', compact('post', 'image', 'wannavisit', 'visited', 'world_data'));
+        return view('post.show', compact('post', 'wannavisit', 'visited', 'world_data', 'photos'));
     }
 
     /**

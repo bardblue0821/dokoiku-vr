@@ -8,9 +8,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 
-
-
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -57,6 +54,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function visiteds() {
         return $this->hasMany(Visited::class);
+    }
+
+    public function photos() {
+        return $this->hasMany(Photo::class);
     }
 }
 
