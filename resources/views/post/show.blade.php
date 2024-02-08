@@ -26,10 +26,10 @@
                 <img alt="{{$post->title}}" src="{{$world_data['imageUrl']}}" loading="lazy" class="absolute inset-0 h-full w-full object-cover object-center" />
 
                 <!-- overlay-->
-                <div class="absolute inset-0 bg-gray-400 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gray-600 mix-blend-multiply"></div>
 
                 <!-- text -->
-                <div class="relative flex flex-col items-center p-4 sm:max-w-xl">
+                <div class="relative flex flex-col items-center">
                     <p class="mb-4 text-center text-lg text-white sm:text-xl md:mb-8">{{$world_data['authorName']}}</p>
                     <h1 class="mb-4 text-center text-4xl font-bold text-white sm:text-5xl md:mb-6 md:text-6xl">{{$world_data['name']}}</h1>
                     <div class="flex mb-4">
