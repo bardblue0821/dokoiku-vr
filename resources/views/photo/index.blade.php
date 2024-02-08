@@ -32,18 +32,20 @@
 
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
-                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}}さん、いい写真が撮れた？🖼<br></h2>
+                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}}さん、いい写真撮れた？🖼<br></h2>
                 <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Let us share photos!</p>
             </div>
 
             <!-- post button -->
-            <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold my-2 py-2 px-4 rounded inline-flex items-center">
-                <a href="{{ route('photo.create') }}" class="btn btn-secondary btn-sm">
-                    <span class="badge">
-                        投稿する Post
-                    </span>
-                </a>
-            </button>
+            <div class="flex justify-center">
+                <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold my-2 py-5 px-5 rounded inline-flex items-center">
+                    <a href="{{ route('photo.create') }}" class="btn btn-secondary btn-sm">
+                        <span class="badge">
+                            投稿する Post
+                        </span>
+                    </a>
+                </button>
+            </div>
         </div>
 
         <div class='mx-auto max-w-screen-2xl px-4 md:px-8 py-4'>
@@ -298,15 +300,18 @@
 
                         
                     </div>
-                    @isset($photo->world_link)  <!-- world button -->
-                        <button class="bg-teal-500 hover:bg-teal-600 text-white font-bold my-2 py-2 px-4 rounded inline-flex items-center" onclick="window.open('{{$photo->world_link}}') " rel="noopener noreferrer" target="_blank">VRChat サイトへ</button>
-                    @endisset
-                    
+
+                    <div class="flex justify-center">
+                        @isset($photo->world_link)  <!-- world button -->
+                            <button class="bg-teal-500 hover:bg-teal-600 text-white font-bold my-2 py-2 px-4 rounded inline-flex items-center" onclick="window.open('{{$photo->world_link}}') " rel="noopener noreferrer" target="_blank">VRChat サイトへ</button>
+                        @endisset
+                    </div>
+                        
                     @if (Auth::user()->id == $photo->user_id)
                         <form method="post" onsubmit="return confirm('本当に削除しますか？')" action="{{route('photo.destroy', $photo)}}" class="flex-2">
                             @csrf
                             @method('delete')
-                            <button class="flex text-xs text-white bg-red-700 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded">削除 delete</button>    
+                            <button class="flex text-xs text-white bg-red-700 border-0 my-2 py-2 px-2 focus:outline-none hover:bg-red-600 rounded">削除 delete</button>    
                         </form>
                     @endif
                 </div>  

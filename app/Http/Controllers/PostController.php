@@ -74,6 +74,76 @@ class PostController extends Controller
             $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
         }
 
+        if ($request->ichioshi == 1) {
+            $query->where('ichioshi', $request->input('ichioshi'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->quest == 1) {
+            $query->where('quest', $request->input('quest'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->pen == 1) {
+            $query->where('pen', $request->input('pen'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->bed == 1) {
+            $query->where('bed', $request->input('bed'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->vid == 1) {
+            $query->where('vid', $request->input('vid'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->jlog == 1) {
+            $query->where('jlog', $request->input('jlog'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->imgpad == 1) {
+            $query->where('imgpad', $request->input('imgpad'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->heavy == 1) {
+            $query->where('heavy', $request->input('heavy'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->hardtojoin == 1) {
+            $query->where('hardtojoin', $request->input('hardtojoin'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->jumpscare == 1) {
+            $query->where('jumpscare', $request->input('jumpscare'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+        
+        if ($request->violence == 1) {
+            $query->where('violence', $request->input('violence'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+        
+        if ($request->sexual == 1) {
+            $query->where('sexual', $request->input('sexual'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        // sort
+        if ($request->order_by == 'n_wanna_visit') {
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+        
+        if ($request->order_by == 'n_visited') {
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        // get category table
         $categories = Category::all();
 
         return view('post.index')
@@ -98,22 +168,23 @@ class PostController extends Controller
     {
         // basic info storing to be validated
         $validated = $request->validate([
-            // 'title' => 'required | max:100', //disabled by 0.1.0
             'body' => 'max:10000',
-            // 'image' => 'image', // disabled by 0.1.0
             'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld|unique:posts,link',
             'category_id' => 'numeric',
+            'ichioshi' => 'boolean',
+            'quest' => 'boolean',
+            'pen' => 'boolean',
+            'bed' => 'boolean',
+            'vid' => 'boolean',
+            'jlog' => 'boolean',
+            'imgpad' => 'boolean',
+            'heavy' => 'boolean',
+            'hardtojoin' => 'boolean',
+            'jumpscare' => 'boolean',
+            'violence' => 'boolean',
+            'sexual' => 'boolean',
         ]);
         $validated['user_id'] = auth()->id();
-
-        // image storing // disabled by 0.1.0 
-        /*
-        $file_name = $request->file('image');
-        if($file_name) {
-            $request->file('image')->storeAs('public/img', $file_name);
-            $validated['image'] = 'storage/img/'.$file_name;
-        }
-        */
 
         // get title and thumbnail ural by API
         $ch = curl_init(); // init curl session
@@ -193,43 +264,23 @@ class PostController extends Controller
     {
         // basic info storing to be validated
         $validated = $request->validate([
-            // 'title' => 'required | max:100', //disabled by 0.1.0
             'body' => 'max:10000',
-            // 'image' => 'image', // disabled by 0.1.0
-            'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld',
             'category_id' => 'numeric',
+            'ichioshi' => 'boolean',
+            'quest' => 'boolean',
+            'pen' => 'boolean',
+            'bed' => 'boolean',
+            'vid' => 'boolean',
+            'jlog' => 'boolean',
+            'imgpad' => 'boolean',
+            'heavy' => 'boolean',
+            'hardtojoin' => 'boolean',
+            'jumpscare' => 'boolean',
+            'violence' => 'boolean',
+            'sexual' => 'boolean',
         ]);
         $validated['user_id'] = auth()->id();
 
-        // image storing // disabled by 0.1.0 
-        /*
-        $file_name = $request->file('image');
-        if($file_name) {
-            $request->file('image')->storeAs('public/img', $file_name);
-            $validated['image'] = 'storage/img/'.$file_name;
-        }
-        */
-
-        // get title and thumbnail ural by API
-        $ch = curl_init(); // init curl session
-
-        $url_raw = $validated['link'];
-        $url_worldId = str_replace("https://vrchat.com/home/world/", "", $url_raw);
-        $url = "https://api.vrchat.cloud/api/1/worlds/".$url_worldId;
-        curl_setopt($ch, CURLOPT_URL, $url); // specify url
-        $userAgent = "Laravel/1.0 (bardblue0821@gmail.com)";
-        curl_setopt($ch, CURLOPT_USERAGENT, $userAgent); // specify user agent
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $res = curl_exec($ch); // get info from url
-        $world_data = json_decode($res, true);
-
-        curl_close($ch); // end session
-
-        $validated['title'] = $world_data['name'];
-        $validated['thumbnail'] = $world_data['thumbnailImageUrl'];
-        $validated['desc'] = $world_data['description'];
-        
         // update
         $post->update($validated);
         $request->session()->flash('message', '更新しました');

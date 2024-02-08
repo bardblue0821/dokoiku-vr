@@ -19,7 +19,6 @@
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
                 <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">編集画面⌨️</h2>
-
                 <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please edit the section you want to edit and press the send button.</p>
             </div>
             <!-- text - end -->
@@ -30,63 +29,69 @@
                 @csrf
                 @method('patch')
                 <div class="sm:col-span-3">
-                    <label for="link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク (必須)<br>Link to the world description the official VRChat (Required)</label>
-                    <input name="link" id='link' value="{{old('link', $post->link)}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                    <label for="link" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('link', $post->link)}}</label>
-                    <x-input-error :messages="$errors->get('link')" class="mt-2" />
+                    <p class="text-xl font-bold text-teal-500">VRChat サイトの URL <span class="text-base text-orange-400">(必須)</span></p>
+                    <p class="mb-1 text-base text-gray-500">World URL (Required)</p>
+                    <p class="text-base text-gray-500">{{old('link', $post->link)}}</p>
                 </div>
 
-                <!-- div class="sm:col-span-2"-- disabled by 0.1.0>
-                    <label for="title" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ワールド名<br>World name</label>
-                    <input name="title" id='title' value="{{old('title', $post->title)}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                    <label for="title" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('title', $post->title)}}</label>
-                    <x-input-error :messages="$errors->get('title')" class="mt-2" />
-                </div-->
-
-                <!--div class="sm:col-span-1">
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ジャンル*<br>World type*</label>
-                    <input name="tag" id='tag' value="{{old('tag')}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                    <x-input-error :messages="$errors->get('tag')" class="mt-2" />
-                </div-->
-
                 <div class="sm:col-span-1">
-                    <label for="category_id" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">カテゴリー<br>World category</label>
+                    <p class="text-xl font-bold text-teal-500">カテゴリー <span class="text-base text-gray-400">(任意)</span></p>
+                    <p class="mb-2 text-base text-gray-500">Category (Optional)</p>
                     <select class="category_id" id="category_id" name="category_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}" @if($post->categories->name == $category->name) selected @endif>{{$category->name}}</option>
                         @endforeach
-                            
-                        <!--option value="未設定 Undefined">未設定 Undefined</option>
-                        <option value="景観 Outdoor">景観 Outdoor</option>
-                        <option value="ハウス Indoor">ハウス Indoor</option>
-                        <option value="ゲーム Game">ゲーム Game</option>
-                        <option value="ホラー Horror">ホラー Horror</option>
-                        <option value="展示 Display">展示 Display</option>
-                        <option value="アバター Avator">アバター Avator</option>
-                        <option value="パーティ Celebration">パーティ Celebration</option>
-                        <option value="Vket">Vket</option>
-                        <option value="作業 Workplace">作業 Workplace</option-->
                     </select>
                     <label for="category_id" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('category_id', $post->categories->name)}}</label>
                 </div>
+                
 
                 <div class="sm:col-span-3">
-                    <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">何したい？などあれば (検索用)<br>Comment</label>
+                    <p class="text-xl font-bold text-teal-500">情報 <span class="text-base text-gray-400">(任意)</span></p>
+                    <p class="mb-2 text-base text-gray-500">Information (Optional)</p>
+                    <div class="mb-1">
+                        <input type="checkbox" id="ichioshi" name="ichioshi" value="1" {{old('ichioshi', $post->ichioshi) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="ichioshi">イチ押し✨</label>
+                        <input type="checkbox" id="quest" name="quest" value="1" {{old('quest', $post->quest) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="quest">クエスト対応</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="checkbox" id="pen" name="pen" value="1"       {{old('pen', $post->pen) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="pen">ペン</label>
+                        <input type="checkbox" id="bed" name="bed" value="1"       {{old('bed', $post->bed) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="bed">ベッド</label>
+                        <input type="checkbox" id="vid" name="vid" value="1"       {{old('vid', $post->vid) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="vid">ビデオ</label>
+                        <input type="checkbox" id="jlog" name="jlog" value="1"     {{old('jlog', $post->jlog) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="jlog">ジョインログ</label>
+                        <input type="checkbox" id="imgpad" name="imgpad" value="1" {{old('imgpad', $post->imgpad) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="imgpad">イメージパッド</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="heavy" name="heavy" value="1" {{old('heavy', $post->heavy) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="heavy">高負荷</label>
+                        <input type="checkbox" id="hardtojoin" name="hardtojoin" value="1" {{old('hardtojoin', $post->hardtojoin) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="hardtojoin">合流難しい</label>
+                        <input type="checkbox" id="jumpscare" name="jumpscare" value="1" {{old('jumpscare', $post->jumpscare) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="jumpscare">ジャンプスケア</label>
+                        <input type="checkbox" id="violence" name="violence" value="1" {{old('violence', $post->violence) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="violence">暴力表現</label>
+                        <input type="checkbox" id="sexual" name="sexual" value="1" {{old('sexual', $post->sexual) ? "checked" : ""}}/>
+                        <label class="mr-2 text-gray-700" for="sexual">性的表現</label>
+                    </div>
+                </div>
+
+                <div class="sm:col-span-3">
+                    <p class="text-xl font-bold text-teal-500">投稿者コメント <span class="text-base text-gray-400">(任意)</span></p>
+                    <p class="mb-1 text-base text-gray-500">Comment (Optional)</p>
+                    <p class="mb-2 text-sm text-gray-500 ">👍一覧ページで内容を検索できます</p>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
                     <label for="body" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('body', $post->body)}}</label>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>
-
-                <!-- image upload -- disabled by 0.1.0>
-                <div class="sm:col-span-3">
-                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像あれば！</label>
-                    <input type="file" name="image">                   
-                </div-->
                 
                 <div class="flex items-center justify-between sm:col-span-3 mx-auto">
                     <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-indigo-teal md:text-base">送信 Send</x-primary-button>
-
-                    <!--span class="text-sm text-gray-500">*必須項目 Required</span-->
                 </div>
 
             </form>

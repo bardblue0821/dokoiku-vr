@@ -13,15 +13,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                 
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                        ワールド一覧<br>Worlds
+                        ワールド<br>Worlds
                     </x-nav-link>
-                    @auth
-                    <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                        ワールド投稿<br>Share World
-                    </x-nav-link>
-                    @endauth
                     <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
-                        写真一覧・投稿<br>Photos
+                        写真<br>Photos
                     </x-nav-link>
                 </div>
             </div>
@@ -87,7 +82,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                ワールド一覧 <tb> Worlds
+                ワールド <tb> Worlds
             </x-responsive-nav-link>
             @auth
             <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
@@ -95,7 +90,7 @@
             </x-responsive-nav-link>
             @endauth
             <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                写真投稿・一覧 <tb> Photos
+                写真 <tb> Photos
             </x-responsive-nav-link>
         </div>
 

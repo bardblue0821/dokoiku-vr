@@ -26,67 +26,69 @@
             <form method='post' action="{{route('post.store')}}" enctype='multipart/form-data' class="mx-auto grid max-w-screen-md gap-8 sm:grid-cols-3">    
                 @csrf
                 <div class="sm:col-span-3">
-                    <label for="link" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">VRChat のリンク (必須)<br>Link to the world description the official VRChat (Required)</label>
+                    <p class="text-xl font-bold text-teal-500">VRChat サイトの URL <span class="text-base text-orange-400">(必須)</span></p>
+                    <p class="mb-1 text-base text-gray-500">World URL (Required)</p>
+                    <p class="mb-2 text-sm text-gray-500 ">🙅‍♂️制作者があなた以外のプライベートワールドは投稿しないでください</p>
                     <input name="link" id='link' value="{{old('link')}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('link')" class="mt-2" />
                 </div>
 
-                <!-- disabled by 0.1.0 -->
-                <!--div class="sm:col-span-2" >
-                    <label for="title" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ワールド名<br>World name</label>
-                    <input name="title" id='title' value="{{old('title')}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                    <x-input-error :messages="$errors->get('title')" class="mt-2" />
-                </div-->
-
-                <!--div class="sm:col-span-1">
-                    <label for="tag" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">ジャンル*<br>World type*</label>
-                    <input name="tag" id='tag' value="{{old('tag')}}" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-                    <x-input-error :messages="$errors->get('tag')" class="mt-2" />
-                </div-->
-
                 <div class="sm:col-span-1">
-                    <label for="category_id" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">カテゴリー<br>World category</label>
+                    <p class="text-xl font-bold text-teal-500">カテゴリー <span class="text-base text-gray-400">(任意)</span></p>
+                    <p class="mb-2 text-base text-gray-500">Category (Optional)</p>
                     <select class="category_id" id="category_id" name="category_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
-                            
-                        <!--option value="未設定 Undefined">未設定 Undefined</option>
-                        <option value="景観 Outdoor">景観 Outdoor</option>
-                        <option value="ハウス Indoor">ハウス Indoor</option>
-                        <option value="ゲーム Game">ゲーム Game</option>
-                        <option value="ホラー Horror">ホラー Horror</option>
-                        <option value="展示 Display">展示 Display</option>
-                        <option value="アバター Avator">アバター Avator</option>
-                        <option value="パーティ Celebration">パーティ Celebration</option>
-                        <option value="Vket">Vket</option>
-                        <option value="作業 Workplace">作業 Workplace</option-->
                     </select>
                 </div>
 
                 <div class="sm:col-span-3">
-                    <label for="body" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">何したい？などあれば (検索用)<br>Comment</label>
-                    <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
-                    <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                    <p class="text-xl font-bold text-teal-500">情報 <span class="text-base text-gray-400">(任意)</span></p>
+                    <p class="mb-2 text-base text-gray-500">Information (Optional)</p>
+                    <div class="mb-1">
+                        <input type="checkbox" id="ichioshi" name="ichioshi" value="1"/>
+                        <label class="mr-2 text-gray-700" for="ichioshi">イチ押し✨</label>
+                        <input type="checkbox" id="quest" name="quest" value="1"/>
+                        <label class="mr-2 text-gray-700" for="quest">クエスト対応</label>
+                    </div>
+                    <div class="mb-1">
+                        <input type="checkbox" id="pen" name="pen" value="1"/>
+                        <label class="mr-2 text-gray-700" for="pen">ペン</label>
+                        <input type="checkbox" id="bed" name="bed" value="1"/>
+                        <label class="mr-2 text-gray-700" for="bed">ベッド</label>
+                        <input type="checkbox" id="vid" name="vid" value="1"/>
+                        <label class="mr-2 text-gray-700" for="vid">ビデオ</label>
+                        <input type="checkbox" id="jlog" name="jlog" value="1"/>
+                        <label class="mr-2 text-gray-700" for="jlog">ジョインログ</label>
+                        <input type="checkbox" id="imgpad" name="imgpad" value="1"/>
+                        <label class="mr-2 text-gray-700" for="imgpad">イメージパッド</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="heavy" name="heavy" value="1"/>
+                        <label class="mr-2 text-gray-700" for="heavy">高負荷</label>
+                        <input type="checkbox" id="hardtojoin" name="hardtojoin" value="1"/>
+                        <label class="mr-2 text-gray-700" for="hardtojoin">合流難しい</label>
+                        <input type="checkbox" id="jumpscare" name="jumpscare" value="1"/>
+                        <label class="mr-2 text-gray-700" for="jumpscare">ジャンプスケア</label>
+                        <input type="checkbox" id="violence" name="violence" value="1"/>
+                        <label class="mr-2 text-gray-700" for="violence">暴力表現</label>
+                        <input type="checkbox" id="sexual" name="sexual" value="1"/>
+                        <label class="mr-2 text-gray-700" for="sexual">性的表現</label>
+                    </div>
                 </div>
 
-                <!--div class="sm:col-span-3">
-                    <x-input-error :messages="$errors->get('image')" class="mt-2" />
-                    <label for='image' class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像があればぜひ → </label>
-                    <input id="image" type="file" name="image">
-                </div-->
-
-                <!-- image upload -- disabled by 0.1.0-->
-                <!--div class="sm:col-span-3">
-                    <label class="mb-2 inline-block text-sm text-gray-800 sm:text-base">画像あれば！</label>
-                    <input type="file" name="image">                   
-                </div-->
-                
+                <div class="sm:col-span-3">
+                    <p class="text-xl font-bold text-teal-500">投稿者コメント <span class="text-base text-gray-400">(任意)</span></p>
+                    <p class="mb-1 text-base text-gray-500">Comment (Optional)</p>
+                    <p class="mb-2 text-sm text-gray-500 ">👍一覧ページで内容を検索できます</p>
+                    
+                    <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
+                    <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                </div>                
                 
                 <div class="flex items-center justify-between sm:col-span-3 mx-auto">
                     <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-teal-700 md:text-base">送信 Send</x-primary-button>
-
-                    <!--span class="text-sm text-gray-500">*必須項目 Required</span-->
                 </div>
 
                 

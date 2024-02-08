@@ -15,9 +15,9 @@
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
-                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}} さん、いい写真取れた？📸</h2>
+                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}} さん、写真を共有しよう！📸</h2>
 
-                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please let me know where you visited!</p>
+                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Let us share your photo!</p>
             </div>
             <!-- text - end -->
 
@@ -32,15 +32,15 @@
                     <p class="mb-2 text-sm text-gray-500 ">👍みどりのエリアにドラッグ・アンド・ドロップできます</p>
                     
                     <div class="grid grid-cols-3 gap-1 mb-10">
-                        <input type="file" name="link1" id="icon1" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
-                        <input type="file" name="link2" id="icon2" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
-                        <input type="file" name="link3" id="icon3" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
-                        <input type="file" name="link4" id="icon4" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
-                        <input type="file" name="link5" id="icon5" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
-                        <input type="file" name="link6" id="icon6" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
-                        <input type="file" name="link7" id="icon7" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
-                        <input type="file" name="link8" id="icon8" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
-                        <input type="file" name="link9" id="icon9" class="bg-teal-100 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link1" id="icon1" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link2" id="icon2" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link3" id="icon3" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link4" id="icon4" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link5" id="icon5" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link6" id="icon6" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link7" id="icon7" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link8" id="icon8" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
+                        <input type="file" name="link9" id="icon9" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
                     </div>
 
                     <p class="mb-2 text-sm text-gray-500 ">プレビュー</p>
@@ -161,11 +161,11 @@
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>
 
-                <div class="items-center mx-auto mb-2">
+                <div class="flex justify-center mx-auto mb-2">
                     <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-teal-700 md:text-base">送信 Send</x-primary-button>
                 </div>
                 
-                <div class="">
+                <div class="flex justify-center mx-auto">
                     <p class="text-sm text-gray-500 "><a href="{{route('term_of_use.index')}}" class="text-teal-500">利用規約<a> 確認してね</p>
                 </div>
             </form>
