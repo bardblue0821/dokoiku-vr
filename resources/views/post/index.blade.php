@@ -55,7 +55,6 @@
                                 <option value="visited" {{request()->search_selection == "visited" ? "selected" : "";}}>行ったよ！ Visited</option>
                             </select>
                         </div> 
-
                     </div>
 
                     <div class="flex mb-4 mx-auto justify-center md:flex md:items-center">
@@ -88,6 +87,21 @@
                         <input type="checkbox" id="sexual" name="sexual" value="1" {{request()->sexsual == 1 ? "checked" : ""}}/>
                         <label class="ml-1 mr-2 text-gray-700" for="sexual">性的表現</label>
                     </div>
+
+                    
+                    <!-- <div class="flex mb-8">
+                        <div class="flex mx-auto justify-center md:flex md:items-center">
+                            <label class="text-gray-500 font-bold md:text-right ml-4 mb-1 md:mb-0 pr-4" for="inline-full-name">
+                                結果表示順<br>Order by
+                            </label>
+                        
+                            <select class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="order_by" name="order_by">
+                                <option value=""></option>
+                                <option value="n_wannavisit" {{request()->order_by == "n_wannavisit" ? "selected" : "";}}>行きたい数順</option>
+                                <option value="n_visited" {{request()->order_by == "n_visited" ? "selected" : "";}}>行ったよ数順</option>
+                            </select>
+                        </div> 
+                    </div-->
 
                     <div class="flex mb-4">
                         <div class="mx-auto items-center md:flex md:items-center">

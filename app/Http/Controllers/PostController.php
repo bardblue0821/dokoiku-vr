@@ -133,6 +133,16 @@ class PostController extends Controller
             $query->where('sexual', $request->input('sexual'));
             $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
         }
+
+        // sort
+        if ($request->order_by == 'n_wanna_visit') {
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+        
+        if ($request->order_by == 'n_visited') {
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
         // get category table
         $categories = Category::all();
 
