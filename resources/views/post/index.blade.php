@@ -29,7 +29,7 @@
             <div class="mb-10 md:mb-16">
                 <form class="" method="GET" action="{{ route('post.index') }}">
                     <div class="flex mb-8">
-                        <div class="mx-auto items-center md:flex md:items-center">
+                        <div class="flex mx-auto justify-center md:flex md:items-center">
                             <label class="text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
                                 ワールド名<br>Name
                             </label>
@@ -54,59 +54,62 @@
                                 <option value="wannavisit" {{request()->search_selection == "wannavisit" ? "selected" : "";}}>行きたい！ Wannavisit</option>
                                 <option value="visited" {{request()->search_selection == "visited" ? "selected" : "";}}>行ったよ！ Visited</option>
                             </select>
-
-                            <!--ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                                    <div class="flex items-center ps-3">
-                                        <input id="wannavisit" type="checkbox" value=1 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                        <label for="wannavisit" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">行きたい！ Wanna visit</label>
-                                    </div>
-                                </li>
-                                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                                    <div class="flex items-center ps-3">
-                                        <input id="visited" type="checkbox" value=1 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                        <label for="visited" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">行ったよ！ Visited</label>
-                                    </div>
-                                </li>
-                            </ul-->     
                         </div> 
+
                     </div>
 
-                    <div class="flex">
+                    <div class="flex mb-4 mx-auto justify-center md:flex md:items-center">
+                        <input type="checkbox" id="ichioshi" name="ichioshi" value="1" {{request()->ichioshi == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="ichioshi">イチ押し✨</label>
+                        <input type="checkbox" id="quest" name="quest" value="1" {{request()->quest == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="quest">クエスト対応</label>
+                    </div>
+                    <div class="flex mb-4 mx-auto justify-center md:flex md:items-center">
+                        <input type="checkbox" id="pen" name="pen" value="1" {{request()->pen == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="pen">ペン</label>
+                        <input type="checkbox" id="bed" name="bed" value="1" {{request()->bed == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="bed">ベッド</label>
+                        <input type="checkbox" id="vid" name="vid" value="1" {{request()->vid == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="vid">ビデオ</label>
+                        <input type="checkbox" id="jlog" name="jlog" value="1" {{request()->jlog == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="jlog">ジョインログ</label>
+                        <input type="checkbox" id="imgpad" name="imgpad" value="1" {{request()->imgpad == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="imgpad">イメージパッド</label>
+                    </div>
+                    <div class="flex mb-8 mx-auto justify-center md:flex md:items-center">
+                        <input type="checkbox" id="heavy" name="heavy" value="1" {{request()->heavy == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="heavy">高負荷</label>
+                        <input type="checkbox" id="hardtojoin" name="hardtojoin" value="1" {{request()->hardtojoin == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="hardtojoin">合流難しい</label>
+                        <input type="checkbox" id="jumpscare" name="jumpscare" value="1" {{request()->jumpscare == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="jumpscare">ジャンプスケア</label>
+                        <input type="checkbox" id="violence" name="violence" value="1" {{request()->violence == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="violence">暴力表現</label>
+                        <input type="checkbox" id="sexual" name="sexual" value="1" {{request()->sexsual == 1 ? "checked" : ""}}/>
+                        <label class="ml-1 mr-2 text-gray-700" for="sexual">性的表現</label>
+                    </div>
+
+                    <div class="flex mb-4">
                         <div class="mx-auto items-center md:flex md:items-center">
-                            
                             <button class="mx-4 bg-teal-500 hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                                 検索 Search
                             </button>
-                            <button class="mx-4 bg-gray-400 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                                <a href="{{ route('post.index') }}">
+                            <a href="{{ route('post.index') }}">
+                                <button class="mx-4 bg-gray-400 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
                                     クリア Cancel
-                                </a>
-                            </button>
-                            
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </form>
 
-               
-
-
-
-                <!--form method="GET" action="{{ route('post.index') }}" class="w-full max-w-sm mx-auto">
-                    <div class="flex items-center border-b border-teal-500 py-2">
-                        <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="search_body" name="search_body" placeholder="検索ワード Query" aria-label="Full name" value="@if (isset($search_word)) {{ $search_word }} @endif">
-                        <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
-                            検索<br>Search
+                <div class="flex justify-center">
+                    <a href="{{ route('post.create') }}"">
+                        <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold mx-4 my-2 py-2 px-5 rounded inline-flex items-center">
+                            投稿する Post
                         </button>
-                        <button class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
-                            <a href="{{ route('post.index') }}">
-                                クリア<br>Cancel
-                            </a>
-                        </button>
-                    </div>
-                </form-->
-
-                
+                    </a>
+                </div>
             </div>
             <!-- Search form end -->
 

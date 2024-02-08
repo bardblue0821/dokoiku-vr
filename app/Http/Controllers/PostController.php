@@ -74,6 +74,66 @@ class PostController extends Controller
             $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
         }
 
+        if ($request->ichioshi == 1) {
+            $query->where('ichioshi', $request->input('ichioshi'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->quest == 1) {
+            $query->where('quest', $request->input('quest'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->pen == 1) {
+            $query->where('pen', $request->input('pen'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->bed == 1) {
+            $query->where('bed', $request->input('bed'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->vid == 1) {
+            $query->where('vid', $request->input('vid'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->jlog == 1) {
+            $query->where('jlog', $request->input('jlog'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->imgpad == 1) {
+            $query->where('imgpad', $request->input('imgpad'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->heavy == 1) {
+            $query->where('heavy', $request->input('heavy'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->hardtojoin == 1) {
+            $query->where('hardtojoin', $request->input('hardtojoin'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+
+        if ($request->jumpscare == 1) {
+            $query->where('jumpscare', $request->input('jumpscare'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+        
+        if ($request->violence == 1) {
+            $query->where('violence', $request->input('violence'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+        
+        if ($request->sexual == 1) {
+            $query->where('sexual', $request->input('sexual'));
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12)->withQueryString();
+        }
+        // get category table
         $categories = Category::all();
 
         return view('post.index')
