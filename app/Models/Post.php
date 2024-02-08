@@ -18,6 +18,18 @@ class Post extends Model
         'category_id',
         'thumbnail',
         'desc',
+        'ichioshi',
+        'quest',
+        'pen',
+        'bed',
+        'vid',
+        'jlog',
+        'imgpad',
+        'heavy',
+        'hardtojoin',
+        'jumpscare',
+        'violence',
+        'sexual',
     ];
 
     public function user() {

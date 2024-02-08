@@ -31,7 +31,23 @@
                 <!-- text -->
                 <div class="relative flex flex-col items-center p-4 sm:max-w-xl">
                     <p class="mb-4 text-center text-lg text-white sm:text-xl md:mb-8">{{$world_data['authorName']}}</p>
-                    <h1 class="mb-8 text-center text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-6xl">{{$world_data['name']}}</h1>
+                    <h1 class="mb-4 text-center text-4xl font-bold text-white sm:text-5xl md:mb-6 md:text-6xl">{{$world_data['name']}}</h1>
+                    <div class="flex mb-4">
+                        @if($post->ichioshi)  <img class="h-6 mr-3" src="{{asset('img/icon/ichioshi.svg')}}"   alt="投稿者イチ押し！">@endif
+                        @if($post->quest)     <img class="h-6 mr-3" src="{{asset('img/icon/quest.svg')}}"      alt="クエスト対応">@endif
+                        @if($post->pen)       <img class="h-6 mr-3" src="{{asset('img/icon/pen.svg')}}"        alt="ペンあり">@endif
+                        @if($post->bed)       <img class="h-6 mr-3" src="{{asset('img/icon/bed.svg')}}"        alt="ベッドあり">@endif
+                        @if($post->vid)       <img class="h-6 mr-3" src="{{asset('img/icon/vid.svg')}}"        alt="ビデオプレイヤーあり">@endif
+                        @if($post->jlog)      <img class="h-6 mr-3" src="{{asset('img/icon/jlog.svg')}}"       alt="ジョインログあり">@endif
+                        @if($post->imgpad)    <img class="h-6 mr-3" src="{{asset('img/icon/imgpad.svg')}}"     alt="イメージパッドあり">@endif
+                    </div>
+                    <div class="flex mb-4">
+                        @if($post->heavy)     <img class="h-6 mr-3" src="{{asset('img/icon/heavy.svg')}}"      alt="高負荷">@endif
+                        @if($post->hardtojoin)<img class="h-6 mr-3" src="{{asset('img/icon/hardtojoin.svg')}}" alt="合流難しい">@endif
+                        @if($post->jumpscare) <img class="h-6 mr-3" src="{{asset('img/icon/jumpscare.svg')}}"  alt="ジャンプスケア">@endif
+                        @if($post->violence)  <img class="h-6 mr-3" src="{{asset('img/icon/violence.svg')}}"   alt="暴力表現">@endif
+                        @if($post->sexual)    <img class="h-6 mr-3" src="{{asset('img/icon/sexual.svg')}}"     alt="性的表現">@endif
+                    </div>
 
                     <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
                         <!-- Link button -->
@@ -39,14 +55,14 @@
                             @if($wannavisit)    
                                 <a href="{{ route('un_wannavisit', $post) }}" class="btn btn-success btn-sm">
                                     <button class="text-sm border-2 border-red-500 bg-red-800 hover:bg-red-800 bg-opacity-70 text-white font-bold py-1 px-3 rounded inline-flex items-center">
-                                        <img calss="px-4" src="{{asset('img/wannavisitbutton.png')}}" width="20px">
+                                        <img class="mr-2" src="{{asset('img/wannavisitbutton.png')}}" width="20px">
                                         <span class="badge">行きたい！  {{ $post->wanna_visits->count() }}</span>
                                     </button>
                                 </a>
                             @else
                                 <a href="{{ route('wannavisit', $post) }}" class="btn btn-secondary btn-sm">
                                     <button class="text-sm border-2 border-gray-300 bg-gray-600 hover:bg-gray-400 bg-opacity-70 text-white font-bold py-1 px-3 rounded inline-flex items-center">
-                                        <img src="{{asset('img/un_wannavisitbutton.png')}}" width="20px">
+                                        <img class="mr-2" src="{{asset('img/un_wannavisitbutton.png')}}" width="20px">
                                         <span class="badge">行きたい！  {{ $post->wanna_visits->count() }}</span>
                                     </button>
                                 </a>
@@ -55,15 +71,15 @@
                             @if($visited)    
                                 <a href="{{ route('un_visited', $post) }}" class="btn btn-success btn-sm">
                                     <button class="ml-2 text-sm border-2 border-orange-300 bg-orange-600 hover:bg-orange-600 bg-opacity-70 text-white font-bold py-1 px-3 rounded inline-flex items-center">
-                                        <img calss="px-4" src="{{asset('img/visitedbutton.png')}}" width="20px">
+                                        <img class="mr-2" src="{{asset('img/visitedbutton.png')}}" width="20px">
                                         <span class="badge">行ったよ！  {{ $post->visiteds->count() }}</span>
                                     </button>
                                 </a>
                             @else
                                 <a href="{{ route('visited', $post) }}" class="btn btn-secondary btn-sm">
                                     <button class="ml-2 text-sm border-2 border-gray-300 bg-gray-600 hover:bg-gray-400 bg-opacity-70 text-white font-bold py-1 px-3 rounded inline-flex items-center">
-                                    <img src="{{asset('img/un_visitedbutton.png')}}" width="20px">
-                                    <span class="badge">行ったよ！  {{ $post->visiteds->count() }}</span>
+                                        <img class="mr-2" src="{{asset('img/un_visitedbutton.png')}}" width="20px">
+                                        <span class="badge">行ったよ！  {{ $post->visiteds->count() }}</span>
                                     </button>
                                 </a>
                             @endif

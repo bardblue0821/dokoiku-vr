@@ -98,22 +98,23 @@ class PostController extends Controller
     {
         // basic info storing to be validated
         $validated = $request->validate([
-            // 'title' => 'required | max:100', //disabled by 0.1.0
             'body' => 'max:10000',
-            // 'image' => 'image', // disabled by 0.1.0
             'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld|unique:posts,link',
             'category_id' => 'numeric',
+            'ichioshi' => 'boolean',
+            'quest' => 'boolean',
+            'pen' => 'boolean',
+            'bed' => 'boolean',
+            'vid' => 'boolean',
+            'jlog' => 'boolean',
+            'imgpad' => 'boolean',
+            'heavy' => 'boolean',
+            'hardtojoin' => 'boolean',
+            'jumpscare' => 'boolean',
+            'violence' => 'boolean',
+            'sexual' => 'boolean',
         ]);
         $validated['user_id'] = auth()->id();
-
-        // image storing // disabled by 0.1.0 
-        /*
-        $file_name = $request->file('image');
-        if($file_name) {
-            $request->file('image')->storeAs('public/img', $file_name);
-            $validated['image'] = 'storage/img/'.$file_name;
-        }
-        */
 
         // get title and thumbnail ural by API
         $ch = curl_init(); // init curl session
@@ -193,43 +194,23 @@ class PostController extends Controller
     {
         // basic info storing to be validated
         $validated = $request->validate([
-            // 'title' => 'required | max:100', //disabled by 0.1.0
             'body' => 'max:10000',
-            // 'image' => 'image', // disabled by 0.1.0
-            'link'=> 'required|starts_with:https://vrchat.com/home/world/wrld',
             'category_id' => 'numeric',
+            'ichioshi' => 'boolean',
+            'quest' => 'boolean',
+            'pen' => 'boolean',
+            'bed' => 'boolean',
+            'vid' => 'boolean',
+            'jlog' => 'boolean',
+            'imgpad' => 'boolean',
+            'heavy' => 'boolean',
+            'hardtojoin' => 'boolean',
+            'jumpscare' => 'boolean',
+            'violence' => 'boolean',
+            'sexual' => 'boolean',
         ]);
         $validated['user_id'] = auth()->id();
 
-        // image storing // disabled by 0.1.0 
-        /*
-        $file_name = $request->file('image');
-        if($file_name) {
-            $request->file('image')->storeAs('public/img', $file_name);
-            $validated['image'] = 'storage/img/'.$file_name;
-        }
-        */
-
-        // get title and thumbnail ural by API
-        $ch = curl_init(); // init curl session
-
-        $url_raw = $validated['link'];
-        $url_worldId = str_replace("https://vrchat.com/home/world/", "", $url_raw);
-        $url = "https://api.vrchat.cloud/api/1/worlds/".$url_worldId;
-        curl_setopt($ch, CURLOPT_URL, $url); // specify url
-        $userAgent = "Laravel/1.0 (bardblue0821@gmail.com)";
-        curl_setopt($ch, CURLOPT_USERAGENT, $userAgent); // specify user agent
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $res = curl_exec($ch); // get info from url
-        $world_data = json_decode($res, true);
-
-        curl_close($ch); // end session
-
-        $validated['title'] = $world_data['name'];
-        $validated['thumbnail'] = $world_data['thumbnailImageUrl'];
-        $validated['desc'] = $world_data['description'];
-        
         // update
         $post->update($validated);
         $request->session()->flash('message', '更新しました');
