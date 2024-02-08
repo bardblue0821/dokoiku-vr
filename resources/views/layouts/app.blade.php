@@ -13,9 +13,12 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <script src="{{ asset('js/app.js') }}" defer></script>  <!-- image preview -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  <!-- image preview -->
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class=" bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -41,8 +44,9 @@
             <div class="flex flex-col items-center border-t pt-6">
                 <!-- nav - start -->
                 <nav class="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-2 md:justify-start md:gap-6">
-                    <a href="{{route('about.index')}}" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">About</a>
-                    <a href="https://github.com/bardblue0821/test-project2" class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600">Github</a>
+                    <a href="{{route('about.index')}}" class="text-gray-500 transition duration-100 hover:text-teal-500 active:text-teal-600">About</a>
+                    <a href="https://github.com/bardblue0821/test-project2" class="text-gray-500 transition duration-100 hover:text-teal-500 active:text-teal-600">Github</a>
+                    <a href="{{route('term_of_use.index')}}" class="text-gray-500 transition duration-100 hover:text-teal-500 active:text-teal-600">Term of use</a>
                 </nav>
                 <!-- nav - end -->
 

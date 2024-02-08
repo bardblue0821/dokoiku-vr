@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('post.index') }}">
+                    <a href="{{ route('about.index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
                 </div>
@@ -13,13 +13,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                 
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                        どこいく？<br>Worlds
+                        ワールド<br>Worlds
                     </x-nav-link>
-                    @auth
-                    <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                        どこいきたい？<br>Create post
+                    <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
+                        写真<br>Photos
                     </x-nav-link>
-                    @endauth
                 </div>
             </div>
 
@@ -32,7 +30,7 @@
                                 <div>{{ Auth::user()->name }}</div>
                             @endauth
                             @guest
-                                <div>新規登録・ログイン<br>Register / Login</div>
+                                <div>ログイン<br>Login</div>
                             @endguest
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -62,7 +60,6 @@
                         @endauth
 
                         @guest
-                            <x-responsive-nav-link :href="route('register')">新規登録<br>Register</x-responsive-nav-link>
                             <x-responsive-nav-link :href="route('login')">ログイン<br>Login</x-responsive-nav-link>
                         @endguest
                     </x-slot>
@@ -85,13 +82,16 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                どこいく？<br>Worlds
+                ワールド <tb> Worlds
             </x-responsive-nav-link>
             @auth
             <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                どこいきたい？<br>Create post
+                ワールド投稿 <tb> Share World
             </x-responsive-nav-link>
             @endauth
+            <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
+                写真 <tb> Photos
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -120,7 +120,6 @@
                 </div>
             @endauth
             @guest
-                <x-responsive-nav-link :href="route('register')">新規登録<br>Register</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('login')">ログイン<br>Login</x-responsive-nav-link>
             @endguest
         </div>
