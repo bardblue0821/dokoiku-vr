@@ -15,11 +15,6 @@
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                         ワールド<br>Worlds
                     </x-nav-link>
-                    @auth
-                    <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                        ワールド投稿<br>Share World
-                    </x-nav-link>
-                    @endauth
                     <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
                         写真<br>Photos
                     </x-nav-link>
