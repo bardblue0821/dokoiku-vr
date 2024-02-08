@@ -124,14 +124,14 @@
                             <div class="absolute bottom-0 right-0 mb-2 flex ">
                                 @if($post->wanna_visits->count())    
                                     <a href="{{ route('un_wannavisit', $post) }}" class="flex btn btn-success btn-sm">
-                                        <button class="bg-red-100 hover:bg-red-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center bg-opacity-80">
+                                        <button class="bg-red-100 hover:bg-red-200 text-gray-800 font-bold py-1 px-2 rounded inline-flex items-center bg-opacity-80">
                                             <img calss="px-4" src="{{asset('img/wannavisitbutton.png')}}" width="20px">
                                             <span class="badge"> {{ $post->wanna_visits->count() }}</span>    
                                         </button>
                                     </a>
                                 @else
                                     <a href="{{ route('wannavisit', $post) }}" class="flex btn btn-secondary btn-sm">
-                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center bg-opacity-80">
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-1 px-2 rounded inline-flex items-center bg-opacity-80">
                                             <img src="{{asset('img/un_wannavisitbutton.png')}}" width="20px">
                                             <span class="badge"> {{ $post->wanna_visits->count() }}</span>
                                         </button>
@@ -140,14 +140,14 @@
 
                                 @if($post->visiteds->count())    
                                     <a href="{{ route('un_visited', $post) }}" class="flex btn btn-success btn-sm">
-                                        <button class="bg-orange-100 hover:bg-orange-200 text-gray-800 font-bold py-2 px-4 mx-2 rounded inline-flex items-center bg-opacity-80">
+                                        <button class="bg-orange-100 hover:bg-orange-200 text-gray-800 font-bold py-1 px-2 mx-2 rounded inline-flex items-center bg-opacity-80">
                                             <img calss="px-4" src="{{asset('img/visitedbutton.png')}}" width="20px">
                                             <span class="badge"> {{ $post->visiteds->count() }}</span>
                                         </button>
                                     </a>
                                 @else
                                     <a href="{{ route('visited', $post) }}" class="flex btn btn-secondary btn-sm">
-                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 mx-2 rounded inline-flex items-center bg-opacity-80">
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-1 px-2 mx-2 rounded inline-flex items-center bg-opacity-80">
                                             <img src="{{asset('img/un_visitedbutton.png')}}" width="20px">
                                             <span class="badge"> {{ $post->visiteds->count() }}</span>
                                         </button>
