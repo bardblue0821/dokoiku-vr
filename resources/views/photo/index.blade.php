@@ -148,7 +148,7 @@
                             <div class="grid gap-0 grid-cols-2">
                                 @isset($photo->link1)
                                     <div class="flex flex-col overflow-hidden border bg-white">
-                                        <a href="{{$photo->link1}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size1x}}" data-pswp-height="{{$photo->size1x}}" target="_blank">
+                                        <a href="{{$photo->link1}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size1x}}" data-pswp-height="{{$photo->size1y}}" target="_blank">
                                             <img src="{{$photo->link1}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
