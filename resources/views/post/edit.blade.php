@@ -19,7 +19,6 @@
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
                 <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">編集画面⌨️</h2>
-                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Please edit the section you want to edit and press the send button.</p>
             </div>
             <!-- text - end -->
 
@@ -30,13 +29,11 @@
                 @method('patch')
                 <div class="sm:col-span-3">
                     <p class="text-xl font-bold text-teal-500">VRChat サイトの URL <span class="text-base text-orange-400">(必須)</span></p>
-                    <p class="mb-1 text-base text-gray-500">World URL (Required)</p>
                     <p class="text-base text-gray-500">{{old('link', $post->link)}}</p>
                 </div>
 
                 <div class="sm:col-span-1">
                     <p class="text-xl font-bold text-teal-500">カテゴリー <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-2 text-base text-gray-500">Category (Optional)</p>
                     <select class="category_id" id="category_id" name="category_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}" @if($post->categories->name == $category->name) selected @endif>{{$category->name}}</option>
@@ -48,7 +45,6 @@
 
                 <div class="sm:col-span-3">
                     <p class="text-xl font-bold text-teal-500">情報 <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-2 text-base text-gray-500">Information (Optional)</p>
                     <div class="mb-1">
                         <input type="checkbox" id="ichioshi" name="ichioshi" value="1" {{old('ichioshi', $post->ichioshi) ? "checked" : ""}}/>
                         <label class="mr-2 text-gray-700" for="ichioshi">イチ押し✨</label>
@@ -83,7 +79,6 @@
 
                 <div class="sm:col-span-3">
                     <p class="text-xl font-bold text-teal-500">投稿者コメント <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-1 text-base text-gray-500">Comment (Optional)</p>
                     <p class="mb-2 text-sm text-gray-500 ">👍一覧ページで内容を検索できます</p>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
                     <label for="body" class="mb-2 inline-block text-sm text-gray-400 sm:text-base">編集前: {{old('body', $post->body)}}</label>
@@ -91,7 +86,7 @@
                 </div>
                 
                 <div class="flex items-center justify-between sm:col-span-3 mx-auto">
-                    <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-indigo-teal md:text-base">送信 Send</x-primary-button>
+                    <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-indigo-teal md:text-base">送信する</x-primary-button>
                 </div>
 
             </form>

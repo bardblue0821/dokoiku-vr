@@ -27,7 +27,6 @@
                 @csrf
                 <div class="sm:col-span-3">
                     <p class="text-xl font-bold text-teal-500">VRChat サイトの URL <span class="text-base text-orange-400">(必須)</span></p>
-                    <p class="mb-1 text-base text-gray-500">World URL (Required)</p>
                     <p class="mb-2 text-sm text-gray-500 ">🙅‍♂️制作者があなた以外のプライベートワールドは投稿しないでください</p>
                     <input name="link" id='link' value="{{old('link')}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('link')" class="mt-2" />
@@ -35,7 +34,6 @@
 
                 <div class="sm:col-span-1">
                     <p class="text-xl font-bold text-teal-500">カテゴリー <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-2 text-base text-gray-500">Category (Optional)</p>
                     <select class="category_id" id="category_id" name="category_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -45,7 +43,6 @@
 
                 <div class="sm:col-span-3">
                     <p class="text-xl font-bold text-teal-500">情報 <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-2 text-base text-gray-500">Information (Optional)</p>
                     <div class="mb-1">
                         <input type="checkbox" id="ichioshi" name="ichioshi" value="1"/>
                         <label class="mr-2 text-gray-700" for="ichioshi">イチ押し✨</label>
@@ -80,7 +77,6 @@
 
                 <div class="sm:col-span-3">
                     <p class="text-xl font-bold text-teal-500">投稿者コメント <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-1 text-base text-gray-500">Comment (Optional)</p>
                     <p class="mb-2 text-sm text-gray-500 ">👍一覧ページで内容を検索できます</p>
                     
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>

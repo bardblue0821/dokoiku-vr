@@ -13,10 +13,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                 
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                        ワールド<br>Worlds
+                        ワールド
                     </x-nav-link>
                     <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
-                        写真<br>Photos
+                        写真
                     </x-nav-link>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                                 <div>{{ Auth::user()->name }}</div>
                             @endauth
                             @guest
-                                <div>ログイン<br>Login</div>
+                                <div>ログイン</div>
                             @endguest
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -60,7 +60,7 @@
                         @endauth
 
                         @guest
-                            <x-responsive-nav-link :href="route('login')">ログイン<br>Login</x-responsive-nav-link>
+                            <x-responsive-nav-link :href="route('login')">ログイン</x-responsive-nav-link>
                         @endguest
                     </x-slot>
                 </x-dropdown>
@@ -82,15 +82,15 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                ワールド <tb> Worlds
+                ワールド
             </x-responsive-nav-link>
             @auth
             <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                ワールド投稿 <tb> Share World
+                ワールド投稿
             </x-responsive-nav-link>
             @endauth
-            <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                写真 <tb> Photos
+            <x-responsive-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
+                写真
             </x-responsive-nav-link>
         </div>
 
@@ -120,7 +120,7 @@
                 </div>
             @endauth
             @guest
-                <x-responsive-nav-link :href="route('login')">ログイン<br>Login</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('login')">ログイン</x-responsive-nav-link>
             @endguest
         </div>
     </div>

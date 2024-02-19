@@ -21,7 +21,6 @@
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
                 <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}}さん、どこいく？🤔<br></h2>
-                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Hi {{Auth::user()->name}}, Where shall we go today?</p>
             </div>
             <!-- text - end -->
 
@@ -31,12 +30,12 @@
                     <div class="flex mb-8">
                         <div class="flex mx-auto justify-center md:flex md:items-center">
                             <label class="text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                                ワールド名<br>Name
+                                ワールド名
                             </label>
-                            <input class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" type="search_body" name="search_body" placeholder="検索ワード Query" value="{{request()->search_body}}">
+                            <input class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" type="search_body" name="search_body" placeholder="検索ワード" value="{{request()->search_body}}">
                         
                             <label class="text-gray-500 font-bold md:text-right ml-4 mb-1 md:mb-0 pr-4 ml:40" for="inline-full-name">
-                                ワールド分類<br>Category
+                                ワールド分類
                             </label>
                             <select class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_category" name="search_category">
                                 <option value=""></option>
@@ -46,7 +45,7 @@
                             </select>
                         
                             <label class="text-gray-500 font-bold md:text-right ml-4 mb-1 md:mb-0 pr-4" for="inline-full-name">
-                                マイセレクト<br>Selection
+                                マイセレクト
                             </label>
                         
                             <select class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_selection" name="search_selection">
@@ -75,7 +74,7 @@
                         <input type="checkbox" id="imgpad" name="imgpad" value="1" {{request()->imgpad == 1 ? "checked" : ""}}/>
                         <label class="ml-1 mr-2 text-gray-700" for="imgpad">イメージパッド</label>
                     </div>
-                    <div class="flex mb-8 mx-auto justify-center md:flex md:items-center">
+                    {{--<div class="flex mb-8 mx-auto justify-center md:flex md:items-center">
                         <input type="checkbox" id="heavy" name="heavy" value="1" {{request()->heavy == 1 ? "checked" : ""}}/>
                         <label class="ml-1 mr-2 text-gray-700" for="heavy">高負荷</label>
                         <input type="checkbox" id="hardtojoin" name="hardtojoin" value="1" {{request()->hardtojoin == 1 ? "checked" : ""}}/>
@@ -86,7 +85,7 @@
                         <label class="ml-1 mr-2 text-gray-700" for="violence">暴力表現</label>
                         <input type="checkbox" id="sexual" name="sexual" value="1" {{request()->sexsual == 1 ? "checked" : ""}}/>
                         <label class="ml-1 mr-2 text-gray-700" for="sexual">性的表現</label>
-                    </div>
+                    </div>--}}
 
                     
                     <!-- <div class="flex mb-8">
@@ -105,12 +104,12 @@
 
                     <div class="flex mb-4">
                         <div class="mx-auto items-center md:flex md:items-center">
-                            <button class="mx-4 bg-teal-500 hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                                検索 Search
+                            <button class="mx-4 bg-teal-500 hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 rounded" type="submit">
+                                検索
                             </button>
                             <a href="{{ route('post.index') }}">
-                                <button class="mx-4 bg-gray-400 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                                    クリア Cancel
+                                <button class="mx-4 bg-gray-400 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-7 rounded" type="button">
+                                    クリア
                                 </button>
                             </a>
                         </div>
@@ -120,7 +119,7 @@
                 <div class="flex justify-center">
                     <a href="{{ route('post.create') }}"">
                         <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold mx-4 my-2 py-2 px-5 rounded inline-flex items-center">
-                            投稿する Post
+                            投稿する
                         </button>
                     </a>
                 </div>
@@ -178,7 +177,7 @@
                             <a href="{{route('post.show', $post)}}" class="transition duration-100 hover:text-indigo-500 active:text-indigo-600">{{\Illuminate\Support\Str::limit($post->title, 100, '...')}}</a>
                             </h2>
 
-                            <p class="mb-8 text-gray-500">{{\Illuminate\Support\Str::limit($post->desc, 100, '...')}}</p>
+                            <p class="mb-8 text-gray-500">{{\Illuminate\Support\Str::limit($post->body, 100, '...')}}</p>
 
                             <div class="mt-auto flex items-end justify-between">
                                 <div class="flex items-center gap-2">
@@ -187,7 +186,7 @@
                                     </div>
 
                                     <div>
-                                        <span class="block text-indigo-500">{{$post->user->name??'Unknown'}}</span>
+                                        <span class="block text-teal-500">{{$post->user->name??'Unknown'}}</span>
                                         <span class="block text-sm text-gray-400">{{$post->created_at}}</span>
                                     </div>
                                 </div>

@@ -28,8 +28,7 @@
                 
                 <div class="mb-10">
                     <p class="text-xl font-bold text-teal-500">写真 <span class="text-base text-orange-400">(必須)</span></p>
-                    <p class="mb-2 text-base text-gray-600">Photos (Required)</p>
-                    <p class="mb-2 text-sm text-gray-500 ">👍みどりのエリアにドラッグ・アンド・ドロップできます</p>
+                    <p class="mb-2 text-sm text-gray-500 ">👍グレーのエリアにドラッグ・アンド・ドロップできます</p>
                     
                     <div class="grid grid-cols-3 gap-1 mb-10">
                         <input type="file" name="link1" id="icon1" class="bg-gray-200 grid-cols-2 px-5 py-10" accept="image/*" onchange="setImage">    
@@ -148,7 +147,6 @@
 
                 <div class="mb-10">
                     <p class="text-xl font-bold text-teal-500">VRChat ワールドリンク <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-2 text-base text-gray-600">World link to the official VRchat web site (Optional)</p>
                     <p class="mb-2 text-sm text-gray-500 ">このサイトに登録されていない場合は、自動で登録されます。</p>
                     <input name="world_link" id='world_link' value="{{old('world_link')}}" placeholder="https://vrchat.com/home/world/wrld_xxxxxxxx" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
                     <x-input-error :messages="$errors->get('world_link')" class="mt-2" />
@@ -156,13 +154,12 @@
 
                 <div class="mb-10">
                     <p class="text-xl font-bold text-teal-500">投稿文 <span class="text-base text-gray-400">(任意)</span></p>
-                    <p class="mb-2 text-base text-gray-600">Comment; How was it? (Optional)</p>
                     <textarea name="body" id='body' class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
                     <x-input-error :messages="$errors->get('body')" class="mt-2" />
                 </div>
 
                 <div class="flex justify-center mx-auto mb-2">
-                    <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-teal-700 md:text-base">送信 Send</x-primary-button>
+                    <x-primary-button class="inline-block rounded-lg bg-teal-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-teal-600 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-teal-700 md:text-base">送信する</x-primary-button>
                 </div>
                 
                 <div class="flex justify-center mx-auto">

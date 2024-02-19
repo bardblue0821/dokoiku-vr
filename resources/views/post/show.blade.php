@@ -52,7 +52,7 @@
                     <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
                         <!-- Link button -->
                         <div class="flex py-4">                        
-                            @if($wannavisit)    
+                            @if($post->wanna_visits()->where('post_id', $post->id)->where('user_id', Auth::user()->id)->count()) 
                                 <a href="{{ route('un_wannavisit', $post) }}" class="btn btn-success btn-sm">
                                     <button class="text-sm border-2 border-red-500 bg-red-800 hover:bg-red-800 bg-opacity-70 text-white font-bold py-1 px-3 rounded inline-flex items-center">
                                         <img class="mr-2" src="{{asset('img/wannavisitbutton.png')}}" width="20px">
@@ -68,7 +68,7 @@
                                 </a>
                             @endif
 
-                            @if($visited)    
+                            @if($post->visiteds()->where('post_id', $post->id)->where('user_id', Auth::user()->id)->count())
                                 <a href="{{ route('un_visited', $post) }}" class="btn btn-success btn-sm">
                                     <button class="ml-2 text-sm border-2 border-orange-300 bg-orange-600 hover:bg-orange-600 bg-opacity-70 text-white font-bold py-1 px-3 rounded inline-flex items-center">
                                         <img class="mr-2" src="{{asset('img/visitedbutton.png')}}" width="20px">
@@ -114,12 +114,12 @@
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">       
             <div class="flex flex-wrap">
                 <div class="w-full px-4 lg:w-1/2">
-                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">説明 Description</h2>
+                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">説明</h2>
                     <p class="leading-relaxed mb-4">{{$world_data['description']}}</p>
                 </div>
 
                 <div class="w-full px-4 lg:w-1/2">
-                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">投稿者コメント Comment by {{$post->user->name}}</h2>
+                    <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">投稿者コメント by {{$post->user->name}}</h2>
                     <p class="leading-relaxed mb-4">{{$post->body}}</p>
                 </div>
             </div>
@@ -132,48 +132,48 @@
             <div class="flex flex-wrap">
                 <!-- left -->
                 <div class="w-full px-4 lg:w-1/3">
-                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">情報 Info</h2>
+                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">情報</h2>
 
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">定員 Capacity</span>
+                        <span class="text-gray-500">定員</span>
                         <span class="ml-auto text-gray-900">{{$world_data['capacity']}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">推奨人数 Recommended capacity</span>
+                        <span class="text-gray-500">推奨人数</span>
                         <span class="ml-auto text-gray-900">{{$world_data['recommendedCapacity']}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">ワールド作成者 Created by</span>
+                        <span class="text-gray-500">ワールド作成者</span>
                         <span class="ml-auto text-gray-900">{{$world_data['authorName']}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">ワールド作成日 Created at</span>
+                        <span class="text-gray-500">ワールド作成日</span>
                         <span class="ml-auto text-gray-900">{{$world_data['created_at']}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">ワールド更新日 Updated at</span>
+                        <span class="text-gray-500">ワールド更新日</span>
                         <span class="ml-auto text-gray-900">{{$world_data['updated_at']}}</span>
                     </div>
                     <div class="flex border-t border-b border-gray-200 py-2">
-                        <span class="text-gray-500">ラボ公開日 Lab Publication Date</span>
+                        <span class="text-gray-500">ラボ公開日</span>
                         <span class="ml-auto text-gray-900">{{$world_data['labsPublicationDate']}}</span>
                     </div>
                 </div>
 
                 <!-- center -->
                 <div class="w-full px-4 lg:w-1/3">
-                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">訪問情報 Stat</h2>
+                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">訪問情報</h2>
 
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">総訪問者数 Visits</span>
+                        <span class="text-gray-500">総訪問者数</span>
                         <span class="ml-auto text-gray-900">{{$world_data['visits']}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">お気に入り数 Favs</span>
+                        <span class="text-gray-500">お気に入り数</span>
                         <span class="ml-auto text-gray-900">{{$world_data['favorites']}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">ヒート Heat</span>
+                        <span class="text-gray-500">ヒート</span>
                         <span class="ml-auto text-gray-900">
                             @for($i=0; $i<$world_data['heat']; $i++)
                                 🔥
@@ -182,37 +182,37 @@
                         </span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">現在の訪問者数 Occupants</span>
+                        <span class="text-gray-500">現在の訪問者数</span>
                         <span class="ml-auto text-gray-900">{{$world_data['occupants']}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">現在のパブリック訪問者数 Public Occupants</span>
+                        <span class="text-gray-500">現在のパブリック訪問者数</span>
                         <span class="ml-auto text-gray-900">{{$world_data['privateOccupants']}}</span>
                     </div>
                     <div class="flex border-t border-b border-gray-200 py-2">
-                        <span class="text-gray-500">現在のプライベート訪問者数 Private Occupants</span>
+                        <span class="text-gray-500">現在のプライベート訪問者数</span>
                         <span class="ml-auto text-gray-900">{{$world_data['publicOccupants']}}</span>
                     </div>
                 </div>
                 
                 <!-- right -->
                 <div class="w-full px-4 lg:w-1/3">
-                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">記事情報 Post info</h2>
+                    <h2 class="mb-2 mt-4 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">記事情報</h2>
 
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">投稿者 Posted by</span>
+                        <span class="text-gray-500">投稿者</span>
                         <span class="ml-auto text-gray-900">{{$post->user->name}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">ジャンル World type</span>
+                        <span class="text-gray-500">ジャンル</span>
                         <span class="ml-auto text-gray-900">{{$post->categories->name}}</span>
                     </div>
                     <div class="flex border-t border-gray-200 py-2">
-                        <span class="text-gray-500">記事作成日 Created at</span>
+                        <span class="text-gray-500">記事作成日</span>
                         <span class="ml-auto text-gray-900">{{$post->created_at}}</span>
                     </div>
                     <div class="flex border-t border-b border-gray-200 py-2">
-                        <span class="text-gray-500">記事編集日 Updated at</span>
+                        <span class="text-gray-500">記事編集日</span>
                         <span class="ml-auto text-gray-900">{{$post->updated_at}}</span>
                     </div>
                 </div>

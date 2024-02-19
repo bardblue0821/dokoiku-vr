@@ -33,15 +33,14 @@
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
                 <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}}さん、いい写真撮れた？🖼<br></h2>
-                <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">Let us share photos!</p>
             </div>
 
             <!-- post button -->
             <div class="flex justify-center">
-                <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold my-2 py-5 px-5 rounded inline-flex items-center">
+                <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold my-2 py-3 px-10 rounded inline-flex items-center">
                     <a href="{{ route('photo.create') }}" class="btn btn-secondary btn-sm">
                         <span class="badge">
-                            投稿する Post
+                            投稿する
                         </span>
                     </a>
                 </button>
@@ -311,7 +310,7 @@
                         <form method="post" onsubmit="return confirm('本当に削除しますか？')" action="{{route('photo.destroy', $photo)}}" class="flex-2">
                             @csrf
                             @method('delete')
-                            <button class="flex text-xs text-white bg-red-700 border-0 my-2 py-2 px-2 focus:outline-none hover:bg-red-600 rounded">削除 delete</button>    
+                            <button class="flex text-xs text-white bg-red-700 border-0 my-2 py-2 px-2 focus:outline-none hover:bg-red-600 rounded">削除</button>    
                         </form>
                     @endif
                 </div>  
