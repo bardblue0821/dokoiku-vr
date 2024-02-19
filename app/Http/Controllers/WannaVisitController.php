@@ -20,8 +20,10 @@ class WannaVisitController extends Controller
         $nice->save();
 
         // delete Visited if registered
-        if(DB::table('visiteds')->where('post_id', $post->id)->exists()) {
-            Visited::where('post_id', $post->id)->delete();
+        if(DB::table('visiteds')->where('post_id', $post->id)->where('user_id', Auth::user()->id)->exists()) {
+            $nice = Visited::where('post_id', $post->id)->where('user_id', Auth::user()->id)->first();
+            $nice->delete();
+        return back();
         }
 
         return back();

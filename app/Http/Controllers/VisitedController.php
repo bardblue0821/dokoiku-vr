@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class VisitedController extends Controller
 {
-    public function visited(Post $post, Request $request){
+    public function visited(Post $post, Request $request) {
         // create Visited record
         $nice = New Visited();
         $nice->post_id = $post->id;
@@ -19,10 +19,10 @@ class VisitedController extends Controller
         $nice->save();
 
         // delete wanna visit if registered
-        if(DB::table('wanna_visits')->where('post_id', $post->id)->exists()) {
-            WannaVisit::where('post_id', $post->id)->delete();
+        if(DB::table('wanna_visits')->where('post_id', $post->id)->where('user_id', Auth::user()->id)->exists()) {
+            $nice = WannaVisit::where('post_id', $post->id)->where('user_id', Auth::user()->id)->first();
+            $nice->delete();
         }
-
         return back();
     }
 

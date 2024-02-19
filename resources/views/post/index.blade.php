@@ -139,7 +139,7 @@
                                 <img src='{{$post->thumbnail}}' loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
                             </a>
                             <div class="absolute bottom-0 right-0 mb-2 flex ">
-                                @if($post->wanna_visits->count())    
+                                @if($post->wanna_visits()->where('post_id', $post->id)->where('user_id', Auth::user()->id)->count())
                                     <a href="{{ route('un_wannavisit', $post) }}" class="flex btn btn-success btn-sm">
                                         <button class="bg-red-100 hover:bg-red-200 text-gray-800 font-bold py-1 px-2 rounded inline-flex items-center bg-opacity-80">
                                             <img calss="px-4" src="{{asset('img/wannavisitbutton.png')}}" width="20px">
@@ -155,7 +155,7 @@
                                     </a>
                                 @endif
 
-                                @if($post->visiteds->count())    
+                                @if($post->visiteds()->where('post_id', $post->id)->where('user_id', Auth::user()->id)->count())
                                     <a href="{{ route('un_visited', $post) }}" class="flex btn btn-success btn-sm">
                                         <button class="bg-orange-100 hover:bg-orange-200 text-gray-800 font-bold py-1 px-2 mx-2 rounded inline-flex items-center bg-opacity-80">
                                             <img calss="px-4" src="{{asset('img/visitedbutton.png')}}" width="20px">

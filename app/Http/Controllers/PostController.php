@@ -146,9 +146,17 @@ class PostController extends Controller
         // get category table
         $categories = Category::all();
 
+        // get wannavisit table
+        $wannavisits = WannaVisit::where('user_id', Auth::id())->get();
+
+        // get visited table
+        $visiteds = Visited::where('user_id', Auth::id())->get();
+
         return view('post.index')
             ->with(['posts' => $posts])
-            ->with(['categories' => $categories]);
+            ->with(['categories' => $categories])
+            ->with(['wannavisits' => $wannavisits])
+            ->with(['visiteds' => $visiteds]);
     }
 
     /**
