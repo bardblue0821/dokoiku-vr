@@ -25,13 +25,13 @@
         Your browser does not support the video tag.
       </video>
 
-      <!-- overlay-->
+      <!-- overlaid gray -->
       <div class="absolute inset-0 bg-gray-400 mix-blend-multiply"></div>
 
       <!-- text -->
-      <div class="absolute flex flex-col gap-2.5 sm:flex-row ">
+      <div class="absolute flex flex-col">
         <div class="sm:mx-8 lg:justify-start">
-          <h1 class="text-white lg:text-8xl md:text-7xl font-bold sm:mb-8 text-5xl mb-4">Share Experience<br>In VRChat Together.</h1>
+          <h1 class="text-white lg:text-8xl md:text-7xl font-bold sm:mb-8 text-5xl mb-4 animate-tracking-in-expand-fwd">Share Experience<br>In VRChat Together.</h1>
           <a href="{{route('post.index')}}" class="inline-block rounded-lg bg-teal-500 lg:px-8 lg:py-2 px-4 py-1 text-center lg:text-lg font-semibold text-white outline-none ring-teal-300 transition duration-100 hover:bg-teal-600 focus-visible:ring active:bg-teal-700">VRChat のワールドを探す</a>
         </div>
       </div>
@@ -52,7 +52,7 @@
         <!-- content - end -->
 
         <!-- image - start -->
-        <div class="h-96 relative overflow-hidden rounded-lg bg-gray-100 shadow-lg  lg:h-auto lg:w-1/2 lg:order-2">
+        <div class="h-96 relative overflow-hidden rounded-lg bg-gray-100 shadow-lg  lg:h-auto lg:w-1/2 lg:order-2 animate-rotate-in-2-cw">
           <img src="/img/about1.jpg" loading="lazy" alt="Share Your Favourite VR World" class="h-full w-full object-cover object-center" />
         </div>
         <!-- image - end -->
