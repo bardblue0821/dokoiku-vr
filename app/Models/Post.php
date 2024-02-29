@@ -47,4 +47,14 @@ class Post extends Model
     public function categories() {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($post) {
+            $post->wanna_visits()->delete();
+            $post->visiteds()->delete();
+        });
+    }
 }
