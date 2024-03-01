@@ -1,26 +1,21 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>Dokoiku VR</title>
+    <title>Dokoiku VR - {{$user->name}}</title>
   </head>
 </html>
 
 <meta
-  name="index"
-  content="index"
+  name="users"
+  content="users"
 />
 
 <x-app-layout>
     <div class="bg-white py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl md:px-8">
-            @if(session('message'))
-                <div class="alert alert-success">
-                    {{session('message')}}
-                </div>
-            @endif
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
-                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}}さん、どこいく？🤔<br></h2>
+                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{$user->name}}さんのプロフィール<br></h2>
             </div>
             <!-- text - end -->
 
@@ -205,11 +200,11 @@
                             <div class="mt-auto flex items-end justify-between">
                                 <div class="flex items-center gap-2">
                                     <div class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                                    <a href="{{ route('users.show', $post->user->id) }}"><img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" /></a>
+                                        <img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
                                     </div>
 
                                     <div>
-                                        <a href="{{ route('users.show', $post->user->id) }}"><span class="block text-teal-500">{{$post->user->name??'Unknown'}}</span></a>
+                                        <span class="block text-teal-500">{{$post->user->name??'Unknown'}}</span>
                                         <span class="block text-sm text-gray-400">{{$post->created_at}}</span>
                                     </div>
                                 </div>

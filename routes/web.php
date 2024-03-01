@@ -9,6 +9,7 @@ use App\Http\Controllers\VisitedController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TermOfUseController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,9 @@ Route::get('/term_of_use', [TermOfUseController::class, 'index'])->name('term_of
 // routing to photo gallery
 Route::resource('/photo', PhotoController::class)
 ->middleware(['auth']);
+
+// routing to users detail
+Route::get('/users/{id}', [UsersController::class, 'show'])->middleware(['auth'])->name('users.show');
 
 
 require __DIR__.'/auth.php';
