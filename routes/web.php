@@ -61,7 +61,7 @@ Route::resource('/photo', PhotoController::class)
 ->middleware(['auth']);
 
 // routing to users detail
-Route::get('/users/{id}', [UsersController::class, 'show'])->middleware(['auth'])->name('users.show');
+Route::get('/users/{id}/{info}', [UsersController::class, 'show'])->middleware(['auth'])->name('users.show');
 
 
 require __DIR__.'/auth.php';

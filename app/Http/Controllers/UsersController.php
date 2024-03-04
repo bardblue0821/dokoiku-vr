@@ -14,14 +14,35 @@ use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
-    public function show($id) {
-        $user        = User::find($id);
-        $posts       = Post::where('user_id', $id)->orderBy('created_at','desc')->paginate(12)->withQueryString();
-        $wannavisits = WannaVisit::where('user_id', $id)->orderBy('created_at','desc')->paginate(12)->withQueryString();
-        $visiteds    = Visited::where('user_id', $id)->orderBy('created_at','desc')->paginate(12)->withQueryString();
-        $categories  = Category::all();
-        $photos      = Photo::where('user_id', $id)->orderBy('created_at','desc')->paginate(12)->withQueryString();
+    public function show($id, $info) {
+        $user   = User::find($id);
+        $posts  = Post::where('user_id', $id)->orderBy('created_at','desc')->paginate(12)->withQueryString();
+        $photos = Photo::where('user_id', $id)->orderBy('created_at','desc')->paginate(6)->withQueryString();
         
-        return view('users.show', compact('user','posts', 'wannavisits', 'visiteds', 'categories', 'photos'));
+        $posts_N  = count($posts);
+        $photos_N = count($photos);
+        $wannavisits_N = WannaVisit::where('user_id', $id)->count();
+        $visiteds_N    = Visited::where('user_id', $id)->count();
+        
+        $categories    = Category::all();
+
+        if ($info == 'posted_world') {
+            return view('users.posted_world', compact('user', 'posts', 'posts_N', 'wannavisits_N', 'visiteds_N', 'photos_N', 'categories'));    
+
+        } elseif ($info == 'wannavisit_world') {
+            $posts = Post::whereHas('wanna_visits', function ($query) use ($id) {
+                $query->where('user_id', $id);
+            })->paginate(12)->withQueryString();
+            return view('users.wannavisit_world', compact('user', 'posts', 'posts_N', 'wannavisits_N', 'visiteds_N', 'photos_N', 'categories'));    
+
+        } elseif ($info == 'visited_world') {
+            $posts = Post::whereHas('visiteds', function ($query) use ($id) {
+                $query->where('user_id', $id);
+            })->paginate(12)->withQueryString();
+            return view('users.visited_world', compact('user', 'posts', 'posts_N', 'wannavisits_N', 'visiteds_N', 'photos_N', 'categories'));    
+
+        } elseif ($info == 'posted_photo') {
+            return view('users.posted_photo', compact('user', 'photos', 'posts_N', 'wannavisits_N', 'visiteds_N', 'photos_N', 'categories'));    
+        }
     }
 }
