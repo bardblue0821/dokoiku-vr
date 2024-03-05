@@ -41,7 +41,7 @@
             <div class="w-full border-t border-teal-400 pt-6 px-2">
                 <!-- Search form -->
                 <div class="mb-6 md:mb-6 border rounded rounded-lg px-40 py-6 bg-gray-100">
-                    <form class="" method="GET" action="{{ route('post.index') }}">
+                    <form class="" method="GET" action="{{ route('users.show', ['id' => $user->id, 'info' => 'visited_world']) }}">
                         <div class="grid gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4 xl:gap-5 mb-6">
                             <div class="md:mb-0 pr-4 w-60">
                                 <div class="w-full text-gray-500 font-bold mb-1 " for="inline-full-name">
@@ -145,7 +145,7 @@
                                 <button class="mx-4 bg-teal-500 hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 rounded" type="submit">
                                     検索
                                 </button>
-                                <a href="{{ route('post.index') }}">
+                                <a href="{{ route('users.show', ['id' => $user->id, 'info' => 'visited_world']) }}">
                                     <button class="mx-4 bg-gray-400 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-7 rounded" type="button">
                                         クリア
                                     </button>
