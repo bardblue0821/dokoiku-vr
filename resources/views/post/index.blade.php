@@ -205,7 +205,7 @@
                             <div class="mt-auto flex items-end justify-between">
                                 <div class="flex items-center gap-2">
                                     <div class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                                        <a href="{{ route('users.show', ['id' => $post->user->id, 'info' => 'posted_world']) }}"><img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" /></a>
+                                        <a href="{{ route('users.show', ['id' => $post->user->id, 'info' => 'posted_world']) }}"><img src="{{'/storage/'.$post->user->icon}}" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" /></a>
                                     </div>
 
                                     <div>

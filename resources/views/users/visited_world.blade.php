@@ -16,13 +16,13 @@
             <!-- latest image -->
             <div class="h-1/6 lg:h-1/4 flex justify-center">
                 <div class="h-full w-full overflow-hidden rounded rounded-lg">
-                    <img src="/img/about1.jpg" alt="Your Image" class="w-full h-full object-cover object-center">
+                    <img src="{{'/storage/'.$user->header}}" alt="Your Image" class="w-full h-full object-cover object-center">
                 </div>
             </div>
             <!-- icon -->
             <div class="flex mb-8 px-8 items-end">
                 <div class="-mt-12 lg:h-36 lg:w-36 h-24 w-24 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" class="h-full w-full object-cover object-center" />
+                    <img src="{{'/storage/'.$user->icon}}" loading="lazy" class="h-full w-full object-cover object-center" />
                 </div>
                 <h2 class="lg:pl-8 lg:pb-6 lg:text-4xl  pl-4 text-xl   font-bold text-gray-800">{{$user->name}}</h2>
                 <p  class="lg:pl-8 lg:pb-6 lg:text-base pl-4 text-sm   font-bold text-gray-500">フォロー: nan</p>
@@ -212,7 +212,7 @@
                                 <div class="mt-auto flex items-end justify-between">
                                     <div class="flex items-center gap-2">
                                         <div class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                                            <img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
+                                            <img src="{{'/storage/'.$post->user->icon}}" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
                                         </div>
 
                                         <div>

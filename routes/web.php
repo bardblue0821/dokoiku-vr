@@ -10,6 +10,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TermOfUseController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\IconHeaderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +36,12 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/updateicon/{id}', [IconHeaderController::class, 'update_icon'])->name('profile.updateicon');
+    Route::post('/profile/updateheader/{id}', [IconHeaderController::class, 'update_header'])->name('profile.updateheader');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 // Controllers for PostController
 Route::resource('/post', PostController::class)
