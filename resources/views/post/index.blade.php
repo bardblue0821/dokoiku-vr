@@ -12,7 +12,7 @@
 
 <x-app-layout>
     <div class="bg-white py-6 sm:py-8 lg:py-12">
-        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+        <div class="mx-auto max-w-screen-2xl md:px-8">
             @if(session('message'))
                 <div class="alert alert-success">
                     {{session('message')}}
@@ -25,35 +25,58 @@
             <!-- text - end -->
 
             <!-- Search form -->
-            <div class="mb-10 md:mb-16">
+            <div class="mb-6 md:mb-6 border rounded px-40 py-6 bg-gray-100">
                 <form class="" method="GET" action="{{ route('post.index') }}">
-                    <div class="flex mb-8">
-                        <div class="flex mx-auto justify-center md:flex md:items-center">
-                            <label class="text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                    <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8 mb-6">
+                        <div class="md:mb-0 pr-4 w-60">
+                            <div class="w-full text-gray-500 font-bold mb-1 " for="inline-full-name">
                                 ワールド名
-                            </label>
-                            <input class="rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" type="search_body" name="search_body" placeholder="検索ワード" value="{{request()->search_body}}">
-                        
-                            <label class="text-gray-500 font-bold md:text-right ml-4 mb-1 md:mb-0 pr-4 ml:40" for="inline-full-name">
+                            </div>
+                            <div>
+                                <input class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" type="search_body" name="search_body" placeholder="検索ワード" value="{{request()->search_body}}">
+                            </div>    
+                        </div>
+                        <div class="md:mb-0 pr-4 w-60">
+                            <div class="w-full text-gray-500 font-bold mb-1" for="inline-full-name">
                                 ワールド分類
-                            </label>
-                            <select class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_category" name="search_category">
-                                <option value=""></option>
-                                @foreach ($categories as $category)
-                                    <option value="{{$category->id}}" {{request()->search_category == $category->id ? "selected" : "";}}>{{$category->name}}</option>
-                                @endforeach
-                            </select>
-                        
-                            <label class="text-gray-500 font-bold md:text-right ml-4 mb-1 md:mb-0 pr-4" for="inline-full-name">
+                            </div>
+                            <div>
+                                <select class="w-full appearance-none bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_category" name="search_category">
+                                    <option value=""></option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{$category->id}}" {{request()->search_category == $category->id ? "selected" : "";}}>{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="md:mb-0 pr-4 w-60">
+                            <div class="w-full text-gray-500 font-bold mb-1" for="inline-full-name">
                                 マイセレクト
-                            </label>
-                        
-                            <select class="appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_selection" name="search_selection">
-                                <option value=""></option>
-                                <option value="wannavisit" {{request()->search_selection == "wannavisit" ? "selected" : "";}}>行きたい！ Wannavisit</option>
-                                <option value="visited" {{request()->search_selection == "visited" ? "selected" : "";}}>行ったよ！ Visited</option>
-                            </select>
-                        </div> 
+                            </div>
+                            <div>
+                                <select class="w-full appearance-none bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_selection" name="search_selection">
+                                    <option value=""></option>
+                                    <option value="wannavisit" {{request()->search_selection == "wannavisit" ? "selected" : "";}}>行きたい！</option>
+                                    <option value="visited"    {{request()->search_selection == "visited"    ? "selected" : "";}}>行ったよ！</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="md:mb-0 pr-4 w-60">
+                            <div class="w-full text-gray-500 font-bold mb-1" for="inline-full-name">
+                                検索結果順
+                            </div>
+                            <div>
+                                <select class="w-full appearance-none bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline" type="search_order" name="search_order">
+                                    <option value="date_desc" {{request()->search_order == "date_desc" ? "selected" : "date_desc";}}>投稿日 新しい順</option>
+                                    <option value="date_asc"  {{request()->search_order == "date_asc"  ? "selected" : "date_desc";}}>投稿日 古い順</option>
+                                    <option value="wanna_visits_desc" {{request()->search_order == "wanna_visits_desc" ? "selected" : "date_desc";}}>いきたい数 多い順</option>
+                                    <option value="wanna_visits_asc"  {{request()->search_order == "wanna_visits_asc"  ? "selected" : "date_desc";}}>いきたい数 少ない順</option>
+                                    <option value="visiteds_desc" {{request()->search_order == "visiteds_desc" ? "selected" : "date_desc";}}>いったよ数 多い順</option>
+                                    <option value="visiteds_asc"  {{request()->search_order == "visiteds_asc"  ? "selected" : "date_desc";}}>いったよ数 少ない順</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex mb-4 mx-auto justify-center md:flex md:items-center">
@@ -115,16 +138,16 @@
                         </div>
                     </div>
                 </form>
-
-                <div class="flex justify-center">
-                    <a href="{{ route('post.create') }}"">
-                        <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold mx-4 my-2 py-2 px-5 rounded inline-flex items-center">
-                            投稿する
-                        </button>
-                    </a>
-                </div>
             </div>
             <!-- Search form end -->
+
+            <div class="flex justify-center">
+                <a href="{{ route('post.create') }}"">
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold mx-4 my-2 py-2 px-5 rounded inline-flex items-center">
+                        投稿する
+                    </button>
+                </a>
+            </div>
 
             <div class='py-4'>
                 {{$posts->onEachSide(5)->links()}}
@@ -182,11 +205,11 @@
                             <div class="mt-auto flex items-end justify-between">
                                 <div class="flex items-center gap-2">
                                     <div class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                                        <img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
+                                        <a href="{{ route('users.show', ['id' => $post->user->id, 'info' => 'posted_world']) }}"><img src="{{'/storage/'.$post->user->icon}}" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" /></a>
                                     </div>
 
                                     <div>
-                                        <span class="block text-teal-500">{{$post->user->name??'Unknown'}}</span>
+                                        <a href="{{ route('users.show', ['id' => $post->user->id, 'info' => 'posted_world']) }}"><span class="block text-teal-500">{{$post->user->name??'Unknown'}}</span></a>
                                         <span class="block text-sm text-gray-400">{{$post->created_at}}</span>
                                     </div>
                                 </div>

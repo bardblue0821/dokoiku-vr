@@ -21,6 +21,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'icon',
+        'header',
     ];
 
     /**
@@ -48,7 +50,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
  
     public function wanna_visits() {
-        //return $this->hasMany('App\Models\WannaVisit');
         return $this->hasMany(WannaVisit::class);
     }
 
