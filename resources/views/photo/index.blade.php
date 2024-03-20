@@ -62,7 +62,7 @@
                     </div>
                     <div class="text-gray-600 text-base mb-2">  <!-- body -->
                         @isset($photo->body)
-                            {{\Illuminate\Support\Str::limit($photo->body, 400, '...')}}
+                            {!! nl2br(e(\Illuminate\Support\Str::limit($photo->body, 400, '...'))) !!}
                         @else
                             <div class="text-gray-400 text-base">No comment...</div>
                             

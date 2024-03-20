@@ -125,12 +125,12 @@
             <div class="flex flex-wrap">
                 <div class="w-full px-4 lg:w-1/2">
                     <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">説明</h2>
-                    <p class="leading-relaxed mb-4">{{$world_data['description']}}</p>
+                    <p class="leading-relaxed mb-4">{!! nl2br(e($world_data['description'])) !!}</p>
                 </div>
 
                 <div class="w-full px-4 lg:w-1/2">
                     <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">投稿者コメント by {{$post->user->name}}</h2>
-                    <p class="leading-relaxed mb-4">{{$post->body}}</p>
+                    <p class="leading-relaxed mb-4">{!! nl2br(e($post->body)) !!}</p>
                 </div>
             </div>
         </div>
