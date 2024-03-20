@@ -39,6 +39,7 @@
 
             <!-- posted world -->
             <div class="w-full border-t border-teal-400 pt-6 px-2">
+                {{--
                 <!-- Search form -->
                 <div class="mb-6 md:mb-6 border rounded rounded-lg px-40 py-6 bg-gray-100">
                     <form class="" method="GET" action="{{ route('post.index') }}">
@@ -112,18 +113,6 @@
                             <input type="checkbox" id="imgpad" name="imgpad" value="1" {{request()->imgpad == 1 ? "checked" : ""}}/>
                             <label class="ml-1 mr-2 text-gray-700" for="imgpad">イメージパッド</label>
                         </div>
-                        {{--<div class="flex mb-8 mx-auto justify-center md:flex md:items-center">
-                            <input type="checkbox" id="heavy" name="heavy" value="1" {{request()->heavy == 1 ? "checked" : ""}}/>
-                            <label class="ml-1 mr-2 text-gray-700" for="heavy">高負荷</label>
-                            <input type="checkbox" id="hardtojoin" name="hardtojoin" value="1" {{request()->hardtojoin == 1 ? "checked" : ""}}/>
-                            <label class="ml-1 mr-2 text-gray-700" for="hardtojoin">合流難しい</label>
-                            <input type="checkbox" id="jumpscare" name="jumpscare" value="1" {{request()->jumpscare == 1 ? "checked" : ""}}/>
-                            <label class="ml-1 mr-2 text-gray-700" for="jumpscare">ジャンプスケア</label>
-                            <input type="checkbox" id="violence" name="violence" value="1" {{request()->violence == 1 ? "checked" : ""}}/>
-                            <label class="ml-1 mr-2 text-gray-700" for="violence">暴力表現</label>
-                            <input type="checkbox" id="sexual" name="sexual" value="1" {{request()->sexsual == 1 ? "checked" : ""}}/>
-                            <label class="ml-1 mr-2 text-gray-700" for="sexual">性的表現</label>
-                        </div>--}}
 
                         
                         <!-- <div class="flex mb-8">
@@ -155,6 +144,7 @@
                     </form>
                 </div>
                 <!-- Search form end -->
+                --}}
 
                 <div class='py-4'>
                     {{$posts->onEachSide(5)->links()}}
