@@ -33,11 +33,12 @@ class PhotoController extends Controller
         foreach(range(1,9) as $i) {
             $file_name = $request->file('link'.$i);
             if($file_name) {
+                // change path from public to storage
                 $file_name->storeAs('public/img', $file_name);
                 $validated['link'.$i] = 'storage/img/'.$file_name;
 
-                $size = getimagesize($file_name);
                 // store photo size
+                $size = getimagesize($file_name);
                 $validated['size'.$i.'x'] = $size[0];
                 $validated['size'.$i.'y'] = $size[1];
 

@@ -25,7 +25,7 @@
             <!-- text - end -->
 
             <!-- Search form -->
-            <div class="mb-6 md:mb-6 border rounded px-40 py-6">
+            <div class="mb-6 md:mb-6 border rounded px-40 py-6 bg-gray-100">
                 <form class="" method="GET" action="{{ route('post.index') }}">
                     <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8 mb-6">
                         <div class="md:mb-0 pr-4 w-60">
@@ -205,11 +205,11 @@
                             <div class="mt-auto flex items-end justify-between">
                                 <div class="flex items-center gap-2">
                                     <div class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                                        <img src="https://images.unsplash.com/photo-1611898872015-0571a9e38375?auto=format&q=75&fit=crop&w=64" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
+                                        <a href="{{ route('users.show', ['id' => $post->user->id, 'info' => 'posted_world']) }}"><img src="{{'/storage/'.$post->user->icon}}" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" /></a>
                                     </div>
 
                                     <div>
-                                        <span class="block text-teal-500">{{$post->user->name??'Unknown'}}</span>
+                                        <a href="{{ route('users.show', ['id' => $post->user->id, 'info' => 'posted_world']) }}"><span class="block text-teal-500">{{$post->user->name??'Unknown'}}</span></a>
                                         <span class="block text-sm text-gray-400">{{$post->created_at}}</span>
                                     </div>
                                 </div>
