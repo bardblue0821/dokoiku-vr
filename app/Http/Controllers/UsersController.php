@@ -19,8 +19,8 @@ class UsersController extends Controller
         $posts  = Post::where('user_id', $id)->orderBy('created_at','desc')->paginate(12)->withQueryString();
         $photos = Photo::where('user_id', $id)->orderBy('created_at','desc')->paginate(6)->withQueryString();
         
-        $posts_N  = count($posts);
-        $photos_N = count($photos);
+        $posts_N  = Post::where('user_id', $id)->count();
+        $photos_N = Photo::where('user_id', $id)->count();
         $wannavisits_N = WannaVisit::where('user_id', $id)->count();
         $visiteds_N    = Visited::where('user_id', $id)->count();
         
