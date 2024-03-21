@@ -33,8 +33,8 @@
                     <img src="{{'/storage/'.$user->icon}}" loading="lazy" class="h-full w-full object-cover object-center" />
                 </div>
                 <h2 class="lg:pl-8 lg:pb-6 lg:text-4xl  pl-4 text-xl   font-bold text-gray-800">{{$user->name}}</h2>
-                <p  class="lg:pl-8 lg:pb-6 lg:text-base pl-4 text-sm   font-bold text-gray-500">フォロー: nan</p>
-                <p  class="lg:pl-6 lg:pb-6 lg:text-base pl-4 text-sm   font-bold text-gray-500">フォロワー: nan</p>
+                <!--p  class="lg:pl-8 lg:pb-6 lg:text-base pl-4 text-sm   font-bold text-gray-500">フォロー: nan</p>
+                <p  class="lg:pl-6 lg:pb-6 lg:text-base pl-4 text-sm   font-bold text-gray-500">フォロワー: nan</p-->
             </div>
 
             <div class="flex pt-4">
@@ -42,7 +42,7 @@
                 <div class="flex items-center justify-center mt-2 ml-2 hover:mt-0 hover:bg-orange-300 duration-300 px-4 bg-gray-100 border rounded-t"><a href="{{ route('users.show', ['id' => $user->id, 'info' => 'wannavisit_world']) }}"><div class="lg:text-base text-sm text-gray-500 font-bold items-center justify-center px-2 py-2">行きたいワールド: {{$wannavisits_N}}</div></a></div>
                 <div class="flex items-center justify-center mt-2 ml-2 hover:mt-0 hover:bg-orange-300 duration-300 px-4 bg-gray-100 border rounded-t"><a href="{{ route('users.show', ['id' => $user->id, 'info' => 'visited_world']) }}">   <div class="lg:text-base text-sm text-gray-500 font-bold items-center justify-center px-2 py-2">行ったワールド: {{$visiteds_N}}</div></a></div>
                 <div class="flex items-center justify-center mt-2 ml-2 hover:mt-0                     duration-300 px-4 bg-teal-400 border rounded-t"><a href="{{ route('users.show', ['id' => $user->id, 'info' => 'posted_photo']) }}">    <div class="lg:text-base text-sm text-white    font-bold items-center justify-center px-2 py-2">写真: {{$photos_N}}</div></a></div>
-                <div class="flex items-center justify-center mt-2 ml-2 hover:mt-0 hover:bg-orange-300 duration-300 px-4 bg-gray-100 border rounded-t"><div class="lg:text-base text-sm text-gray-500 font-bold items-center justify-center px-2 py-2">ノート: nan</div></div>
+                <!--div class="flex items-center justify-center mt-2 ml-2 hover:mt-0 hover:bg-orange-300 duration-300 px-4 bg-gray-100 border rounded-t"><div class="lg:text-base text-sm text-gray-500 font-bold items-center justify-center px-2 py-2">ノート: nan</div></div-->
             </div>
 
             <!-- posted photo -->
@@ -62,7 +62,7 @@
                             </div>
                             <div class="text-gray-600 text-base mb-2">  <!-- body -->
                                 @isset($photo->body)
-                                    {{\Illuminate\Support\Str::limit($photo->body, 400, '...')}}
+                                    {!! nl2br(e(\Illuminate\Support\Str::limit($photo->body, 400, '...'))) !!}
                                 @else
                                     <div class="text-gray-400 text-base">No comment...</div>
                                     

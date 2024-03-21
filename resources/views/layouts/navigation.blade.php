@@ -43,8 +43,11 @@
                     
                     <x-slot name="content">
                         @auth    
+                            <x-dropdown-link :href="route('users.show', ['id' => Auth::user()->id, 'info' => 'posted_world'])">
+                                プロフィール
+                            </x-dropdown-link>
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                プロフィール編集
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -80,19 +83,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                ワールド
-            </x-responsive-nav-link>
-            @auth
-            <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                ワールド投稿
-            </x-responsive-nav-link>
-            @endauth
-            <x-responsive-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
-                写真
-            </x-responsive-nav-link>
-        </div>
+        
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
@@ -101,10 +92,18 @@
                     <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
-
-                <div class="mt-3 space-y-1">
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
+                        ワールド
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
+                        写真
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('users.show', ['id' => Auth::user()->id, 'info' => 'posted_world'])">
+                        プロフィール
+                    </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
+                        プロフィール編集
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
