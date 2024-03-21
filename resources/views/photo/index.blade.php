@@ -70,80 +70,81 @@
                     </div>
                     <div class="gallery" id="photoGallery">  <!-- photo -->
                         @if($photo->number == 1) <!-- 1 photo view-->
+                        @elseif($photo->number > 1 && $photo->number <= 2)  <!-- 2 photos view-->
                             <div class="grid gap-0 grid-cols-1">
                                 @isset($photo->link1)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link1}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size1x}}" data-pswp-height="{{$photo->size1y}}" target="_blank">
-                                            <img src="{{$photo->link1}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link1}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
                                 
                                 @isset($photo->link2)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link2}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size2x}}" data-pswp-height="{{$photo->size2y}}" target="_blank">
-                                            <img src="{{$photo->link2}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link2}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
 
                                 @isset($photo->link3)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link3}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size3x}}" data-pswp-height="{{$photo->size3y}}" target="_blank">
-                                            <img src="{{$photo->link3}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link3}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
 
                                 @isset($photo->link4)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link4}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size4x}}" data-pswp-height="{{$photo->size4y}}" target="_blank">
-                                            <img src="{{$photo->link4}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link4}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
 
                                 @isset($photo->link5)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link5}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size5x}}" data-pswp-height="{{$photo->size5y}}" target="_blank">
-                                            <img src="{{$photo->link5}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link5}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
 
                                 @isset($photo->link6)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link6}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size6x}}" data-pswp-height="{{$photo->size6y}}" target="_blank">
-                                            <img src="{{$photo->link6}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link6}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
 
                                 @isset($photo->link7)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link7}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size7x}}" data-pswp-height="{{$photo->size7y}}" target="_blank">
-                                            <img src="{{$photo->link7}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link7}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
 
                                 @isset($photo->link8)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link8}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size8x}}" data-pswp-height="{{$photo->size8y}}" target="_blank">
-                                            <img src="{{$photo->link8}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link8}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
 
                                 @isset($photo->link9)
-                                    <div class="flex flex-col overflow-hidden border bg-white">
+                                    <div class="aspect-ratio-2/1 flex flex-col overflow-hidden border bg-white">
                                         <a href="{{$photo->link9}}" class="group relative block overflow-hidden bg-gray-100" data-pswp-width="{{$photo->size9x}}" data-pswp-height="{{$photo->size9y}}" target="_blank">
-                                            <img src="{{$photo->link9}}" alt="" loading="lazy" class="aspect-square object-cover object-center transition duration-200 group-hover:scale-110"/>
+                                            <img src="{{$photo->link9}}" alt="" loading="lazy" class="object-cover object-center transition duration-200 group-hover:scale-110"/>
                                         </a>
                                     </div>
                                 @endisset
                             </div>
-                        @elseif($photo->number > 1 && $photo->number <= 4)  <!-- 4 photos view-->
+                        @elseif($photo->number > 2 && $photo->number <= 4)  <!-- 4 photos view-->
                             <div class="grid gap-0 grid-cols-2">
                                 @isset($photo->link1)
                                     <div class="flex flex-col overflow-hidden border bg-white">
