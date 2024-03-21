@@ -23,14 +23,20 @@
         <div class="mx-auto max-w-screen-2xl md:px-8 px-4">
             <!-- latest image -->
             <div class="h-1/6 lg:h-1/4 flex justify-center">
-                <div class="h-full w-full overflow-hidden rounded rounded-lg">
-                    <img src="{{'/storage/'.$user->header}}" alt="Your Image" class="w-full h-full object-cover object-center">
+                <div class="h-full w-full overflow-hidden rounded rounded-lg bg-gradient-to-b from-teal-500 to-teal-200">
+                    @isset($user->header)
+                        <img src="{{'/storage/'.$user->header}}" alt="Your Image" class="w-full h-full object-cover object-center">
+                    @endisset
                 </div>
             </div>
             <!-- icon -->
             <div class="flex mb-8 px-8 items-end">
                 <div class="-mt-12 lg:h-36 lg:w-36 h-24 w-24 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img src="{{'/storage/'.$user->icon}}" loading="lazy" class="h-full w-full object-cover object-center" />
+                    @isset($user->icon)
+                        <img src="{{'/storage/'.$user->icon}}" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
+                    @else
+                        <img src="/img/icon/noicon.png" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" />
+                    @endisset
                 </div>
                 <h2 class="lg:pl-8 lg:pb-6 lg:text-4xl  pl-4 text-xl   font-bold text-gray-800">{{$user->name}}</h2>
                 <!--p  class="lg:pl-8 lg:pb-6 lg:text-base pl-4 text-sm   font-bold text-gray-500">フォロー: nan</p>
