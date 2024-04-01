@@ -1,8 +1,9 @@
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <title>Dokoiku VR - Photo Post</title>
-  </head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Dokoiku VR - Photo Post</title>
+        <link rel="shortcut icon" href="img/favicon.ico">
+    </head>
 </html>
 
 <meta

@@ -17,6 +17,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>  <!-- image preview -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  <!-- image preview -->
     </head>
+
     <body class="font-sans antialiased">
         <div class=" bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
@@ -36,9 +37,7 @@
             </main>
         </div>
     </body>
-    
-
-    
+        
     <div class="pt-4 sm:pt-10 lg:pt-12">
         <footer class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <div class="flex flex-col items-center border-t pt-6">

@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Dokoiku VR - {{$user->name}}</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
   </head>
 </html>
 
