@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Dokoiku VR - Photo gallery</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
 
     <link
         rel="stylesheet"

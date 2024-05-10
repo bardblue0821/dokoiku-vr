@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Dokoiku VR - {{$world_data['name']}}</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
 
     <link
         rel="stylesheet"
