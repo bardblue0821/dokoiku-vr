@@ -9,7 +9,7 @@
         <meta property="og:title" content="DokoIkuVR">
         <meta property="og:description" content="VRChat上のワールドを共有しよう！写真の投稿もできます。さあ、今日はどこいく？">
         <meta property="og:site_name" content="DokoIkuVR">
-        <meta property="og:image" content="public/img/logo-box-bk.png">
+        <meta property="og:image" content="{{asset('img/logo-box-bk.png')}}">
 
         <title>{{ config('app.name', 'Dokoiku-VR') }}</title>
 
