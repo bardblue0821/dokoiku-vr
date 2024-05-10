@@ -4,4 +4,4 @@
 </svg-->
 
 
-<img src="{{asset('img/logo.png')}}" width=180>
+<img src="{{asset('img/logo-wide.png')}}" width=180>
