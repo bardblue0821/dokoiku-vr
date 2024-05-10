@@ -5,6 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <!-- OGP -->
+        <meta property="og:title" content="DokoIkuVR">
+        <meta property="og:description" content="VRChat上のワールドを共有しよう！写真の投稿もできます。さあ、今日はどこいく？">
+        <meta property="og:site_name" content="DokoIkuVR">
+        <meta property="og:image" content="public/img/logo-box-bk.png">
+
         <title>{{ config('app.name', 'Dokoiku-VR') }}</title>
 
         <!-- Fonts -->
@@ -37,7 +43,7 @@
             </main>
         </div>
     </body>
-        
+
     <div class="pt-4 sm:pt-10 lg:pt-12">
         <footer class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <div class="flex flex-col items-center border-t pt-6">
