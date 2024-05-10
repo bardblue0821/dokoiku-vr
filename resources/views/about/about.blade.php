@@ -13,7 +13,7 @@
 
 <!--https://flowrift.com/c/full-page/6tdav?view=preview-->
 
-<x-app-layout>  
+<x-app-layout>
   <!-- welcome movie -->
   <div class="bg-white pb-10 sm:pb-12 lg:pb-16">
     <div class="relative flex flex-1 shrink-0 items-center justify-center aspect-w-4 aspect-h-3 overflow-hidden bg-gray-100 h-full">
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-  </div>     
+  </div>
   <!-- hero - start -->
   <div class="bg-white pb-6 sm:pb-8 lg:pb-12">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -42,7 +42,7 @@
     <!-- Share Your Favourite VR World -->
       <section class="flex flex-col justify-between lg:gap-10 gap-4 lg:flex-row lg:mb-20 mb-16">
         <!-- content - start -->
-        <div class="flex flex-col justify-center text-center lg:py-12 lg:text-left lg:w-1/2 lg:py-24 lg:order-1">
+        <div class="flex flex-col justify-center text-center lg:text-left lg:w-1/2 lg:py-24 lg:order-1">
           <p class="mb-2 font-bold text-teal-500 text:xl lg:mb-4 lg:text-2xl">教えて おすすめ VR 世界</p>
           <h1 class="mb-4 text-4xl font-bold text-black lg:mb-5 lg:text-7xl">Share Your<br>Favourite VR World.</h1>
           <p class="leading-relaxed text-sm font-bold text-gray-500 lg:text-2xl">みんなで行きたいワールド、<br>あなたが行ってよかったワールドを共有しよう！</p>
@@ -59,7 +59,7 @@
       <!-- Share Your Owesome photos with us -->
       <section class="flex flex-col justify-between text-center lg:gap-10 gap-4 lg:flex-row lg:mb-20 mb-16">
         <!-- content - start -->
-        <div class="flex flex-col justify-center lg:py-12 lg:text-left lg:w-1/2 lg:py-24 lg:order-2">
+        <div class="flex flex-col justify-center lg:text-left lg:w-1/2 lg:py-24 lg:order-2">
           <p class="mb-2 font-bold text-teal-500 text:xl lg:mb-4 lg:text-2xl">いい写真撮れた？</p>
           <h1 class="mb-4 text-4xl font-bold text-black lg:mb-5 lg:text-7xl">Share Your Awesome <br> Photos With Us.</h1>
           <p class="leading-relaxed text-sm font-bold text-gray-500 lg:text-2xl">素敵な写真をみんなと共有しよう！</p>
@@ -76,7 +76,7 @@
     <!-- Share our knowledge and help each other.-->
     <section class="flex flex-col justify-between text-center lg:gap-10 gap-4 lg:flex-row lg:mb-20 mb-16">
         <!-- content - start -->
-        <div class="flex flex-col justify-center lg:py-12 lg:text-left lg:w-1/2 lg:py-24 lg:order-1">
+        <div class="flex flex-col justify-center lg:text-left lg:w-1/2 lg:py-24 lg:order-1">
           <p class="mb-2 font-bold text-teal-500 text:xl lg:mb-4 lg:text-2xl">VRChat は助け合い</p>
           <h1 class="mb-4 text-4xl font-bold text-black lg:mb-5 lg:text-7xl">Share Our Knowledge and <br>Help Each Other.</h1>
           <p class="leading-relaxed text-sm font-bold text-gray-500 lg:text-2xl">知識をみんなで集めよう！(実装予定)</p>
