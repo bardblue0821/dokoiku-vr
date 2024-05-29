@@ -11,6 +11,7 @@ use App\Http\Controllers\TermOfUseController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\IconHeaderController;
+use App\Http\Controllers\TechBoardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,9 @@ Route::resource('/photo', PhotoController::class)
 // routing to users detail
 Route::get('/users/{id}/{info}', [UsersController::class, 'show'])->middleware(['auth'])->name('users.show');
 
+// routing to tech board
+Route::resource('tech_board', TechBoardController::class)
+->middleware((['auth']));
 
 require __DIR__.'/auth.php';
 

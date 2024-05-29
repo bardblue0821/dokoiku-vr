@@ -9,14 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up() {
-        Schema::create('tech_posts', function (Blueprint $table) {
+    public function up(): void
+    {
+        Schema::create('tech_figures', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('body');
-            $table->foreignId('tech_category_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tech_post_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+            $table->string('url');
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tech_posts');
+        Schema::dropIfExists('tech_figures');
     }
 };
