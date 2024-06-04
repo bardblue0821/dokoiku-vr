@@ -19,12 +19,14 @@
                     {{session('message')}}
                 </div>
             @endif
+
             <!-- text - start -->
-            <div class="mb-10 md:mb-16">
-                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}}さん、みんなの知恵を借りよう！🤖</h2>
+            <div class="m-10 md:m-10">
+                <h2 class="text-center text-2xl font-bold text-gray-800 lg:text-3xl">{{Auth::user()->name}}さん、みんなの知恵を借りよう！🤖</h2>
             </div>
             <!-- text - end -->
 
+            {{--
             <!-- Search form -->
             <div class="mb-6 md:mb-6 border rounded px-40 py-6 bg-gray-100">
                 <form class="" method="GET" action="{{ route('post.index') }}">
@@ -95,10 +97,11 @@
                 </form>
             </div>
             <!-- Search form end -->
+            --}}
 
             <div class="flex justify-center">
                 <a href="{{ route('tech_board.create') }}"">
-                    <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold mx-4 my-2 py-2 px-5 rounded inline-flex items-center">
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold mb-10 py-2 px-5 rounded inline-flex items-center">
                         投稿する
                     </button>
                 </a>
@@ -126,7 +129,7 @@
                             <span class="text-sm text-gray-400">{{$tech_post->user->name}}</span>
 
                             <h2 class="text-xl font-bold text-gray-800">
-                                <a href="{{route('tech_board.show', $tech_post->id)}}" class="transition duration-100 hover:text-teal-500 active:text-teal-600">{{$tech_post->title}}</a>
+                                <a href="{{route('tech_board.show', $tech_post->id)}}" class="transition duration-100 hover:text-teal-500 active:text-teal-600">{{\Illuminate\Support\Str::limit($tech_post->title, 80, '...')}}</a>
                             </h2>
                             <span class="text-sm text-gray-400">{{$tech_post->created_at}}</span>
                         </div>
