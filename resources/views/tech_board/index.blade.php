@@ -97,7 +97,7 @@
             <!-- Search form end -->
 
             <div class="flex justify-center">
-                <a href="{{ route('post.create') }}"">
+                <a href="{{ route('tech_board.create') }}"">
                     <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold mx-4 my-2 py-2 px-5 rounded inline-flex items-center">
                         投稿する
                     </button>
