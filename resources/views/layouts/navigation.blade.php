@@ -11,12 +11,15 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">                 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                         ワールド
                     </x-nav-link>
                     <x-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
                         写真
+                    </x-nav-link>
+                    <x-nav-link :href="route('tech_board.index')" :active="request()->routeIs('tech_board.index')">
+                        技術投稿板
                     </x-nav-link>
                 </div>
             </div>
@@ -39,10 +42,10 @@
                             </div>
                         </button>
                     </x-slot>
-                    
-                    
+
+
                     <x-slot name="content">
-                        @auth    
+                        @auth
                             <x-dropdown-link :href="route('users.show', ['id' => Auth::user()->id, 'info' => 'posted_world'])">
                                 プロフィール
                             </x-dropdown-link>
@@ -83,7 +86,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
@@ -98,6 +101,9 @@
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('photo.index')" :active="request()->routeIs('photo.index')">
                         写真
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('tech_board.index')" :active="request()->routeIs('tech_board.index')">
+                        技術投稿板
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('users.show', ['id' => Auth::user()->id, 'info' => 'posted_world'])">
                         プロフィール

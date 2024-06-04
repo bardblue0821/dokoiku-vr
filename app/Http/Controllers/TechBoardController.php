@@ -9,9 +9,11 @@ use App\Models\TechCategory;
 class TechBoardController extends Controller
 {
     public function index() {
+        $tech_posts = TechPost::all();
         $tech_categories = TechCategory::all();
 
         return view('tech_board.index')
+        ->with('tech_posts', $tech_posts)
         ->with('tech_categories', $tech_categories);
     }
 
@@ -40,7 +42,10 @@ class TechBoardController extends Controller
         return redirect()->route('tech_board.index')->with('success', 'Post created successfully!');
     }
 
-    public function show() {
+    public function show($tech_post_id) {
+        $post = TechPost::where('id', $tech_post_id)->first();
+
+        return view('tech_board.show', compact('post'));
 
     }
 

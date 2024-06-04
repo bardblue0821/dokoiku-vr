@@ -21,7 +21,7 @@
             @endif
             <!-- text - start -->
             <div class="mb-10 md:mb-16">
-                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}}さん、どこいく？🤔<br></h2>
+                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">{{Auth::user()->name}}さん、みんなの知恵を借りよう！🤖</h2>
             </div>
             <!-- text - end -->
 
@@ -80,25 +80,6 @@
                         </div>
                     </div>
 
-                    <div class="flex mb-4 mx-auto justify-center md:flex md:items-center">
-                        <input type="checkbox" id="ichioshi" name="ichioshi" value="1" {{request()->ichioshi == 1 ? "checked" : ""}}/>
-                        <label class="ml-1 mr-2 text-gray-700" for="ichioshi">イチ押し✨</label>
-                        <input type="checkbox" id="quest" name="quest" value="1" {{request()->quest == 1 ? "checked" : ""}}/>
-                        <label class="ml-1 mr-2 text-gray-700" for="quest">クエスト対応</label>
-                    </div>
-                    <div class="flex mb-4 mx-auto justify-center md:flex md:items-center">
-                        <input type="checkbox" id="pen" name="pen" value="1" {{request()->pen == 1 ? "checked" : ""}}/>
-                        <label class="ml-1 mr-2 text-gray-700" for="pen">ペン</label>
-                        <input type="checkbox" id="bed" name="bed" value="1" {{request()->bed == 1 ? "checked" : ""}}/>
-                        <label class="ml-1 mr-2 text-gray-700" for="bed">ベッド</label>
-                        <input type="checkbox" id="vid" name="vid" value="1" {{request()->vid == 1 ? "checked" : ""}}/>
-                        <label class="ml-1 mr-2 text-gray-700" for="vid">ビデオ</label>
-                        <input type="checkbox" id="jlog" name="jlog" value="1" {{request()->jlog == 1 ? "checked" : ""}}/>
-                        <label class="ml-1 mr-2 text-gray-700" for="jlog">ジョインログ</label>
-                        <input type="checkbox" id="imgpad" name="imgpad" value="1" {{request()->imgpad == 1 ? "checked" : ""}}/>
-                        <label class="ml-1 mr-2 text-gray-700" for="imgpad">イメージパッド</label>
-                    </div>
-
                     <div class="flex mb-4">
                         <div class="mx-auto items-center md:flex md:items-center">
                             <button class="mx-4 bg-teal-500 hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 rounded" type="submit">
@@ -128,6 +109,36 @@
                 {{$tech_posts->onEachSide(5)->links()}}
             </div>
             --}}
+
+            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8">
+                @foreach ($tech_posts as $tech_post)
+                    <!-- article - start -->
+                    <div class="flex flex-col items-center overflow-hidden rounded-lg border md:flex-row">
+                        <a href="{{route('tech_board.show', $tech_post->id)}}" class="group relative block h-48 w-full shrink-0 self-start overflow-hidden bg-gray-100 md:h-full md:w-32 lg:w-48">
+                            @if(0)
+                                <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+                            @else
+                                <img src="{{'/storage/'.$tech_post->user->icon}}" loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" >
+                            @endif
+                        </a>
+
+                        <div class="flex flex-col gap-2 p-4 lg:p-6">
+                            <span class="text-sm text-gray-400">{{$tech_post->created_at}}</span>
+
+                            <h2 class="text-xl font-bold text-gray-800">
+                                <a href="{{route('tech_board.show', $tech_post->id)}}" class="transition duration-100 hover:text-teal-500 active:text-teal-600">{{$tech_post->title}}</a>
+                            </h2>
+
+                            <p class="text-gray-500">{{$tech_post->body}}</p>
+
+                            <div>
+                                <a href="{{route('tech_board.show', $tech_post->id)}}" class="font-semibold text-teal-500 transition duration-100 hover:text-teal-700 active:text-teal-800">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- article - end -->
+                @endforeach
+            </div>
 
 
 
