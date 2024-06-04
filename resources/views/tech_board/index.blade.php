@@ -110,10 +110,10 @@
             </div>
             --}}
 
-            <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8">
+            <div class="grid gap-4 sm:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8">
                 @foreach ($tech_posts as $tech_post)
                     <!-- article - start -->
-                    <div class="flex flex-col items-center overflow-hidden rounded-lg border md:flex-row">
+                    <div class="flex flex-col overflow-hidden rounded-lg border md:flex-row">
                         <a href="{{route('tech_board.show', $tech_post->id)}}" class="group relative block h-48 w-full shrink-0 self-start overflow-hidden bg-gray-100 md:h-full md:w-32 lg:w-48">
                             @if(0)
                                 <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Minh Pham" class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
@@ -123,17 +123,12 @@
                         </a>
 
                         <div class="flex flex-col gap-2 p-4 lg:p-6">
-                            <span class="text-sm text-gray-400">{{$tech_post->created_at}}</span>
+                            <span class="text-sm text-gray-400">{{$tech_post->user->name}}</span>
 
                             <h2 class="text-xl font-bold text-gray-800">
                                 <a href="{{route('tech_board.show', $tech_post->id)}}" class="transition duration-100 hover:text-teal-500 active:text-teal-600">{{$tech_post->title}}</a>
                             </h2>
-
-                            <p class="text-gray-500">{{$tech_post->body}}</p>
-
-                            <div>
-                                <a href="{{route('tech_board.show', $tech_post->id)}}" class="font-semibold text-teal-500 transition duration-100 hover:text-teal-700 active:text-teal-800">Read more</a>
-                            </div>
+                            <span class="text-sm text-gray-400">{{$tech_post->created_at}}</span>
                         </div>
                     </div>
                     <!-- article - end -->
