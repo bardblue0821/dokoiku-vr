@@ -110,7 +110,7 @@
             </div>
             --}}
 
-            <div class="grid gap-4 sm:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8">
+            <div class="mx-auto grid gap-4 sm:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">
                 @foreach ($tech_posts as $tech_post)
                     <!-- article - start -->
                     <div class="flex flex-col overflow-hidden rounded-lg border md:flex-row">

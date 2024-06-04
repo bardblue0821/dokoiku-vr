@@ -42,7 +42,7 @@
                             <a href="{{ route('users.show', ['id' => $post->user->id, 'info' => 'posted_world']) }}"><img src="/img/icon/noicon.png" loading="lazy" alt="Photo by Brock Wegner" class="h-full w-full object-cover object-center" /></a>
                         @endisset
                     </div>
-                    <h1 class="m-3 text-center text-2xl font-bold text-white sm:text-3xl md:m-4 md:text-4xl">{{$post->title}}</h1>
+                    <h1 class="m-3 px-20 text-center text-xl font-bold text-white sm:text-2xl md:m-4 md:text-3xl">{{$post->title}}</h1>
                     <div class="h-10">
                         <p  class="mb-3 sm:text-lg md:mb-4 text-center text-base text-white md:text-xl">{{$post->user->name}}</p>
                     </div>
