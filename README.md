@@ -1,6 +1,9 @@
 # Dokoiku-VR
 ![image](https://github.com/bardblue0821/test-project2/assets/144688827/ca0a4863-1dce-43ea-94de-d0313aa767fc)
 
+## リンク
+- https://dokoiku-vr.bardblue.com/
+
 ## コンセプト
 - 課題: VRChat で集団行動する際に、メンバーが行きたいワールドを知ることが難しい
 - 目標: メンバーが行きたいワールドを検索しやすくし、チームでの VR 体験を高める
